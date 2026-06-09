@@ -1077,12 +1077,14 @@
   });
 
   /* Contact form feedback */
-  document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+document.querySelector('.contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('.btn-submit');
-    const name    = this.querySelector('[name="name"]').value;
-    const email   = this.querySelector('[name="email"]').value;
-    const message = this.querySelector('[name="message"]').value;
+    const first_name = this.querySelector('[name="first_name"]').value;
+    const last_name  = (this.querySelector('[name="last_name"]').value || '');
+    const email      = this.querySelector('[name="email"]').value;
+    const topic      = this.querySelector('[name="topic"]').value;
+    const message    = this.querySelector('[name="message"]').value;
 
     btn.textContent = 'Sending…'; btn.disabled = true;
 
@@ -1090,7 +1092,7 @@
       const resp = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ first_name, last_name, email, topic, message }),
       });
       const data = await resp.json();
       if (data.ok) {
@@ -1098,7 +1100,7 @@
         btn.style.background = '#4a9e6b';
         this.reset();
       } else {
-        btn.textContent = 'Error — try again';
+        btn.textContent = data.error || 'Error — try again';
         btn.style.background = '#c0392b';
         btn.disabled = false;
       }
