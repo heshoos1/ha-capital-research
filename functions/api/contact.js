@@ -9,9 +9,9 @@ export async function onRequestPost({ request, env }) {
   try { data = await request.json(); }
   catch { return json({ error: 'Invalid request body.' }, 400); }
 
-  const name    = (data.name    || '').toString().trim();
-  const email   = (data.email   || '').toString().trim();
-  const message = (data.message || '').toString().trim();
+  const name     = (data.name    || '').toString().trim();
+  const email    = (data.email   || '').toString().trim();
+  const message  = (data.message || '').toString().trim();
   const honeypot = (data.company || '').toString().trim();
 
   if (honeypot) return json({ ok: true });
