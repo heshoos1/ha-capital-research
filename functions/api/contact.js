@@ -45,4 +45,13 @@ export async function onRequestPost({ request, env }) {
 
     if (!resp.ok) {
       const detail = await resp.text().catch(() => '');
-      console.error('Resend error:', resp.status, detai
+      console.error('Resend error:', resp.status, detail);
+      return json({ error: 'Email service error.' }, 502);
+    }
+
+    return json({ ok: true });
+  } catch (err) {
+    console.error('Send failed:', err);
+    return json({ error: 'Failed to send message.' }, 500);
+  }
+}
