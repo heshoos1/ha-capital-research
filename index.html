@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMTIwJz48cmVjdCB3aWR0aD0nMTIwJyBoZWlnaHQ9JzEyMCcgcng9JzE4JyBmaWxsPScjMGQxYjJhJy8+PGNpcmNsZSBjeD0nNjAnIGN5PSc2MCcgcj0nNDInIGZpbGw9J25vbmUnIHN0cm9rZT0nI2M5YTg0Yycgc3Ryb2tlLXdpZHRoPSc0Jy8+PHRleHQgeD0nNjAnIHk9Jzc2JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc0NCcgZm9udC13ZWlnaHQ9JzcwMCcgZmlsbD0nI2U4Yzk3YSc+SEE8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Insights | Hisham Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --navy-light: #243d57;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e9c8;
+    --cream: #faf7f2;
+    --text: #1a1a2e;
+    --text-mid: #3d4a5c;
+    --text-muted: #6b7a90;
+    --border: rgba(201,168,76,0.18);
+    --border-light: rgba(0,0,0,0.07);
+    --white: #ffffff;
+    --section-pad: clamp(4rem, 8vw, 7rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── UTILITY ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+  .gold { color: var(--gold); }
+  .mono { font-family: 'DM Mono', monospace; font-size: 0.8em; letter-spacing: 0.04em; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.35); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px; max-width: 1100px; margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 3rem);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; color: var(--cream); text-decoration: none;
+    letter-spacing: 0.01em;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+  }
+  .nav-logo span { color: var(--gold); }
+  .logo-crest { flex-shrink: 0; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(250,247,242,0.75); text-decoration: none;
+    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--navy) !important; background: var(--gold);
+    padding: 0.45rem 1.1rem; border-radius: 2px;
+    text-transform: uppercase; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--gold) 1px, transparent 1px),
+      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-accent {
+    position: absolute; bottom: -120px; right: -80px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; padding-top: 90px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    font-weight: 600; line-height: 1.1;
+    color: var(--cream); margin-bottom: 1.75rem;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 300;
+    color: rgba(250,247,242,0.65); max-width: 540px; line-height: 1.75;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 500;
+    font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.75rem 1.75rem; border-radius: 2px; transition: all 0.2s;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light);
+    background: transparent;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .hero-stats {
+    display: flex; gap: clamp(2rem, 5vw, 4rem); margin-top: 4rem;
+    padding-top: 2.5rem; border-top: 1px solid rgba(201,168,76,0.15);
+    opacity: 0; animation: fadeUp 0.8s 1s forwards;
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600;
+    color: var(--gold-light); line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color:rgba(250,247,242,0.88); margin-top: 0.35rem;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color:rgba(250,247,242,0.88); font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; animation: bounce 2s infinite;
+  }
+  .hero-scroll::before {
+    content: ''; display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5));
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: var(--section-pad) 0; }
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 600;
+    line-height: 1.2; color: var(--text); margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--navy-mid); }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-muted); max-width: 560px; line-height: 1.75;
+    font-weight: 300;
+  }
+  .divider {
+    width: 48px; height: 2px; background: var(--gold);
+    margin: 1.5rem 0;
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .about-photo-wrap {
+    position: relative;
+  }
+  /* The actual <img> tag */
+  .about-photo {
+    width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top;
+    border-radius: 3px; display: block;
+  }
+  /* Vignette + edge fades layered on top of the photo */
+  .about-photo-overlay {
+    position: absolute; inset: 0; border-radius: 3px; pointer-events: none;
+    background:
+      /* left edge fade */
+      linear-gradient(to right, rgba(13,27,42,0.45) 0%, transparent 30%),
+      /* right edge fade */
+      linear-gradient(to left,  rgba(13,27,42,0.45) 0%, transparent 30%),
+      /* top fade */
+      linear-gradient(to bottom, rgba(13,27,42,0.35) 0%, transparent 22%),
+      /* bottom fade into name bar */
+      linear-gradient(to top, rgba(13,27,42,1) 0%, rgba(13,27,42,0.5) 18%, transparent 42%),
+      /* radial vignette */
+      radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(13,27,42,0.55) 100%);
+  }
+  /* Gold corner accent marks */
+  .about-photo-overlay::before,
+  .about-photo-overlay::after {
+    content: ''; position: absolute; width: 22px; height: 22px;
+  }
+  .about-photo-overlay::before {
+    top: 10px; left: 10px;
+    border-top: 2px solid rgba(201,168,76,0.65);
+    border-left: 2px solid rgba(201,168,76,0.65);
+  }
+  .about-photo-overlay::after {
+    top: 10px; right: 10px;
+    border-top: 2px solid rgba(201,168,76,0.65);
+    border-right: 2px solid rgba(201,168,76,0.65);
+  }
+  /* Bottom-right and bottom-left corners via inner element */
+  .about-photo-corners::before,
+  .about-photo-corners::after {
+    content: ''; position: absolute; width: 22px; height: 22px;
+  }
+  .about-photo-corners::before {
+    bottom: 48px; left: 10px;
+    border-bottom: 2px solid rgba(201,168,76,0.65);
+    border-left: 2px solid rgba(201,168,76,0.65);
+  }
+  .about-photo-corners::after {
+    bottom: 48px; right: 10px;
+    border-bottom: 2px solid rgba(201,168,76,0.65);
+    border-right: 2px solid rgba(201,168,76,0.65);
+  }
+  .about-photo-corners {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .about-photo-corners > .corner-tl,
+  .about-photo-corners > .corner-tr {
+    content: ''; position: absolute; width: 22px; height: 22px; top: 10px;
+  }
+  .about-photo-corners > .corner-tl {
+    left: 10px;
+    border-top: 2px solid rgba(201,168,76,0.65);
+    border-left: 2px solid rgba(201,168,76,0.65);
+  }
+  .about-photo-corners > .corner-tr {
+    right: 10px;
+    border-top: 2px solid rgba(201,168,76,0.65);
+    border-right: 2px solid rgba(201,168,76,0.65);
+  }
+  /* Name bar at bottom */
+  .about-photo-namebar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(8,15,24,0.92); border-radius: 0 0 3px 3px;
+    padding: 0.6rem 1rem 0.7rem; pointer-events: none;
+  }
+  .about-photo-namebar::before {
+    content: ''; display: block; width: 48px; height: 2px;
+    background: var(--gold); margin-bottom: 0.4rem;
+  }
+  .about-photo-namebar-name {
+    font-family: 'Playfair Display', serif; font-size: 0.95rem;
+    font-style: italic; color: var(--cream); display: block; line-height: 1.2;
+  }
+  .about-photo-namebar-title {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-top: 0.2rem;
+  }
+  .about-photo-border {
+    position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px;
+    border: 1px solid var(--border); border-radius: 3px; z-index: -1;
+  }
+  /* Logo panel that replaces the photo — keeps the same framed footprint */
+  .about-logo-panel {
+    width: 100%; aspect-ratio: 4/5; border-radius: 3px; display: flex;
+    align-items: center; justify-content: center;
+    background:
+      radial-gradient(ellipse at 50% 40%, #1a2e45 0%, #0d1b2a 70%);
+    border: 1px solid rgba(201,168,76,0.18);
+  }
+  .about-logo-crest { width: 58%; height: auto; }
+  .about-credentials { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+  .credential {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.875rem; color: var(--text-mid);
+  }
+  .credential::before {
+    content: ''; flex-shrink: 0; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+  }
+  .about-text p { line-height: 1.85; color: var(--text-mid); margin-bottom: 1.25rem; font-weight: 300; }
+  .about-text p:first-child { font-size: 1.1rem; color: var(--text); }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .skill-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.06em; padding: 0.3rem 0.75rem;
+    border: 1px solid var(--border-light); border-radius: 2px;
+    color: var(--text-mid); background: var(--cream);
+  }
+
+  /* ── RESEARCH ── */
+  #research { background: var(--cream); }
+  .research-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; }
+  .research-card {
+    background: var(--white); padding: 2rem 2rem 1.75rem;
+    border-left: 3px solid transparent; transition: border-color 0.25s, transform 0.25s;
+    cursor: default;
+  }
+  .research-card:hover { border-left-color: var(--gold); transform: translateX(3px); }
+  .research-card.featured { border-left-color: var(--gold); background: var(--navy); }
+  .card-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; display: block;
+  }
+  .research-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600;
+    line-height: 1.35; margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+  .research-card.featured h3 { color: var(--cream); }
+  .research-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+  .research-card.featured p { color: rgba(250,247,242,0.6); }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1.5rem; padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+  .research-card.featured .card-footer { border-top-color: rgba(201,168,76,0.2); }
+  .card-date { font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+  .card-link {
+    color: var(--gold); text-decoration: none; font-weight: 500;
+    letter-spacing: 0.04em; transition: gap 0.2s;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .card-link:hover { gap: 0.6rem; }
+  .card-link::after { content: '→'; font-size: 1em; }
+
+  /* ── FINDINGS / KEY INSIGHTS ── */
+  #findings { background: var(--navy); overflow: hidden; position: relative; }
+  .findings-bg {
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: center; }
+  .findings-left .section-title { color: var(--cream); }
+  .findings-left .section-sub { color: rgba(250,247,242,0.9); }
+  .findings-left .divider { background: var(--gold); }
+  .findings-items { display: flex; flex-direction: column; gap: 0; }
+  .finding-item {
+    padding: 1.5rem 0; border-bottom: 1px solid rgba(201,168,76,0.1);
+    display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start;
+  }
+  .finding-item:first-child { padding-top: 0; }
+  .finding-num {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold);
+    padding-top: 0.2rem; letter-spacing: 0.04em;
+  }
+  .finding-title {
+    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 0.35rem;
+  }
+  .finding-text { font-size: 0.9rem; color: rgba(250,247,242,0.9); line-height: 1.75; font-weight: 400; }
+  .findings-callout {
+    background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 3px; padding: 2rem 2rem 1.75rem;
+  }
+  .callout-label {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .callout-metric {
+    margin-bottom: 1.5rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .callout-metric:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .metric-val {
+    font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600;
+    color: var(--gold-light); line-height: 1;
+  }
+  .metric-name { font-size: 0.85rem; color: rgba(250,247,242,0.88); margin-top: 0.3rem; font-weight: 400; }
+  .metric-bar-wrap { margin-top: 0.6rem; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .metric-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+
+  /* ── FRAMEWORK ── */
+  #framework { background: var(--white); }
+  .framework-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; margin-top: 3rem; }
+  .framework-card {
+    padding: 2rem 1.75rem; background: var(--cream);
+    border-top: 2px solid transparent; transition: border-color 0.25s;
+  }
+  .framework-card:hover { border-top-color: var(--gold); }
+  .fw-icon {
+    width: 40px; height: 40px; background: var(--navy); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.04em;
+  }
+  .framework-card h4 {
+    font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600;
+    color: var(--text); margin-bottom: 0.6rem;
+  }
+  .framework-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer-bar {
+    background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 2px; padding: 1.25rem 1.75rem;
+    display: flex; gap: 1rem; align-items: flex-start; margin-top: 3rem;
+  }
+  .disclaimer-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; color: var(--gold); }
+  .disclaimer-bar p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+  .disclaimer-bar strong { font-weight: 500; color: var(--text-mid); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); }
+  .contact-left .section-title { color: var(--cream); }
+  .contact-left .section-sub { color: rgba(250,247,242,0.9); }
+  .contact-left .divider { background: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color:rgba(250,247,242,0.88); font-family: 'DM Mono', monospace; }
+  .form-group input, .form-group textarea, .form-group select {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px; padding: 0.75rem 1rem; color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300;
+    transition: border-color 0.2s; outline: none; resize: vertical;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color:rgba(250,247,242,0.55); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit {
+    background: var(--gold); color: var(--navy); border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.85rem;
+    letter-spacing: 0.06em; text-transform: uppercase; padding: 0.85rem 2rem;
+    border-radius: 2px; transition: background 0.2s, transform 0.2s; margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-item-icon {
+    width: 38px; height: 38px; border: 1px solid rgba(201,168,76,0.25); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+  .contact-item-text label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
+  .contact-item-text a, .contact-item-text span { font-size: 0.9rem; color: rgba(250,247,242,0.6); text-decoration: none; font-weight: 300; }
+  .contact-item-text a:hover { color: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080f18; padding: 2rem 0;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif; font-size: 1rem;
+    color:rgba(250,247,242,0.88); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-note { font-size: 0.78rem; color:rgba(250,247,242,0.88); font-weight: 400; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.75rem; color:rgba(250,247,242,0.88); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); padding: 1rem 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+    .nav-links.open { display: flex; }
+    .nav-hamburger { display: flex; }
+    .about-grid, .findings-grid, .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .research-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo"><svg class="logo-crest" width="30" height="30" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="60" cy="60" r="42" stroke="#c9a84c" stroke-width="3.5"/><circle cx="60" cy="60" r="34" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/><text x="60" y="75" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="600" fill="#e8c97a">HA</text></svg>Hisham<span> Ahmed</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="investment-philosophy.html">Philosophy</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#findings">Findings</a></li>
+      <li><a href="#framework">Framework</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow">Independent Research &amp; Analysis</p>
+    <h1>Principled Investing<br>Grounded in <em>First Principles</em></h1>
+    <p class="hero-sub">
+      Independent equity research built on a clear ethical mandate — combining a
+      low-cost halal ETF core with individually researched stocks, rigorous
+      three-statement analysis, and Fama-French factor models to identify durable
+      compounders.
+    </p>
+    <div class="hero-actions">
+      <a href="#research" class="btn btn-gold">View Research</a>
+      <a href="#about" class="btn btn-outline">About Me</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">32</div>
+        <div class="hero-stat-label">Screened Holdings</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-label">Model Portfolios</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">ETFs Analysed</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Statement Lenses</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ══ PHILOSOPHY TEASER ══ -->
+<section id="philosophy" style="background:var(--navy);padding:clamp(4rem,8vw,6.5rem) 0">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:center" class="reveal">
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem">Investment Philosophy</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;line-height:1.15;color:var(--cream);margin-bottom:1.25rem">A Framework,<br>Not Just a <em style="color:var(--gold-light);font-style:italic">Stock List</em></h2>
+        <div style="width:44px;height:2px;background:var(--gold);margin-bottom:1.75rem"></div>
+        <p style="font-size:1rem;color:rgba(250,247,242,0.6);line-height:1.8;font-weight:300;margin-bottom:1rem">
+          Every holding on this site exists within a deliberate three-layer architecture:
+          an ethical screening foundation, a low-cost ETF core providing systematic beta,
+          and a satellite layer of individual stocks targeting the profitability, size, and
+          value factors.
+        </p>
+        <p style="font-size:1rem;color:rgba(250,247,242,0.6);line-height:1.8;font-weight:300;margin-bottom:2rem">
+          The philosophy page explains the full seven-step process — from the first ethical
+          screen to Fama-French regression validation — and why an idea can arrive from any
+          direction, thematic or curiosity-led, yet must clear the same bar before it earns
+          a place among the satellites.
+        </p>
+        <a href="investment-philosophy.html" style="display:inline-block;background:var(--gold);color:var(--navy);font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:0.75rem 1.75rem;border-radius:2px;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='#e8c97a'" onmouseout="this.style.background='var(--gold)'">Read the Philosophy</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px">
+        <div style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.12);padding:1.25rem 1.5rem">
+          <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">Layer 01 · Ethical Foundation</p>
+          <p style="font-size:0.875rem;color:rgba(250,247,242,0.65);line-height:1.6;font-weight:300;margin:0">Four exclusion screens. Quantitative halal ratios. Applied at the business-model level — not the sector code.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.12);padding:1.25rem 1.5rem">
+          <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">Layer 02 · Core ETFs (65–70%)</p>
+          <p style="font-size:0.875rem;color:rgba(250,247,242,0.65);line-height:1.6;font-weight:300;margin:0">Certified halal ETFs — five available to Canadian investors (SPUS, HLAL, MNZL, SPSK, WSHR). Each is already Shariah-screened by its provider. Low-cost, automatically rebalanced.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.12);padding:1.25rem 1.5rem">
+          <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">Layer 03 · Stock Satellites (30–35%)</p>
+          <p style="font-size:0.875rem;color:rgba(250,247,242,0.65);line-height:1.6;font-weight:300;margin:0">The individual stocks I cover — 20 large-cap quality compounders (RMW+) and 12 small-cap value names (confirmed SMB+ size tilt). Each validated against primary filings. The alpha engine.</p>
+        </div>
+        <div style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);padding:1rem 1.5rem;text-align:center">
+          <span style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)">Large-cap book RMW loading · </span>
+          <span style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold-light);font-weight:600">+0.33</span>
+          <span style="font-size:0.75rem;color:rgba(250,247,242,0.88);display:block;margin-top:0.2rem;font-weight:300">Confirmed by 83-month Fama-French regression. The small-cap value book adds SMB &amp; HML.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-photo-wrap">
+          <div class="about-logo-panel">
+            <svg class="about-logo-crest" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Hisham Ahmed monogram">
+              <circle cx="60" cy="60" r="46" fill="none" stroke="#c9a84c" stroke-width="2"/>
+              <circle cx="60" cy="60" r="38" fill="none" stroke="#c9a84c" stroke-width="0.75" opacity="0.5"/>
+              <text x="60" y="76" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="44" font-weight="600" fill="#e8c97a">HA</text>
+            </svg>
+          </div>
+          <div class="about-photo-corners"><span class="corner-tl"></span><span class="corner-tr"></span></div>
+          <div class="about-photo-namebar">
+            <span class="about-photo-namebar-name">Hisham Ahmed</span>
+            <span class="about-photo-namebar-title">Independent Researcher</span>
+          </div>
+          <div class="about-photo-border"></div>
+        </div>
+        <div class="about-credentials">
+          <div class="credential">Fundamental Analysis</div>
+          <div class="credential">Halal Investing</div>
+          <div class="credential">Independent Equity Researcher</div>
+          <div class="credential">Fama-French Factor Practitioner</div>
+        </div>
+      </div>
+      <div class="about-text reveal" style="transition-delay: 0.15s">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Conviction-Based.<br><em>Ethically Grounded.</em></h2>
+        <div class="divider"></div>
+        <!-- ✏️ REPLACE THIS WITH YOUR OWN BIO -->
+        <p>
+          I am an independent researcher and investor focused on identifying high-quality,
+          ethically-screened US and Canadian equities. My work sits at the intersection of
+          fundamental analysis and quantitative factor research, organised around a single
+          coherent framework: an ethical foundation, a core of certified halal ETFs, and a
+          satellite layer of individual stocks I research and cover.
+        </p>
+        <p>
+          For the stocks I pick, my screening process explicitly excludes gambling, alcohol,
+          weapons, banking, and any company that generates material revenue from lending or
+          interest; the core ETFs satisfy the same standard by construction, since each is
+          already a certified Shariah-compliant fund. Within that universe, I assess quality
+          across all three financial statements — balance-sheet strength, income-statement
+          durability, and cash-flow integrity — to separate genuine compounders from value traps.
+        </p>
+        <p>
+          Ideas reach the satellites from wherever they happen to come — a structural theme I am
+          following, a company someone asks me to look into, or simple curiosity — and then
+          earn their place against the same quality bar. The satellites span two complementary
+          books: a large-cap quality book tilted toward the profitability factor (RMW), and a
+          small-cap value book tilted toward size and value (SMB, HML). I apply the
+          Fama-French five-factor model as an explanatory framework to verify each book's
+          factor exposures align with its stated mandate.
+        </p>
+        <div class="skills-grid">
+          <span class="skill-tag">Equity Research</span>
+          <span class="skill-tag">Factor Investing</span>
+          <span class="skill-tag">Halal Screening</span>
+          <span class="skill-tag">SEC EDGAR</span>
+          <span class="skill-tag">SEDAR+</span>
+          <span class="skill-tag">Python / statsmodels</span>
+          <span class="skill-tag">Three-Statement Analysis</span>
+          <span class="skill-tag">OLS Regression</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESEARCH ══ -->
+<section id="research">
+  <div class="container">
+    <div class="research-header reveal">
+      <div>
+        <p class="section-label">Research</p>
+        <h2 class="section-title">Published Work</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline" style="color: var(--text-mid); border-color: var(--border-light); font-size:0.78rem;">All Research →</a>
+    </div>
+    <div class="research-grid reveal">
+
+      <!-- 1 · INVESTMENT PHILOSOPHY (the strategic centrepiece) -->
+      <div class="research-card featured">
+        <span class="card-tag">⭑ Start Here · Investment Philosophy</span>
+        <h3>The Framework: Ethical Foundation, Core ETFs &amp; Stock Satellites</h3>
+        <p>
+          The strategic framework behind every holding on this site — a three-layer
+          architecture (ethical screen, certified halal ETF core, individual-stock satellites)
+          and the seven-step process every idea must clear, whatever direction it arrives
+          from, from the first exclusion screen to Fama-French validation.
+        </p>
+        <div class="card-footer">
+          <span class="card-date">May 2026</span>
+          <a href="investment-philosophy.html" class="card-link" style="color: var(--gold-light);">Read</a>
+        </div>
+      </div>
+
+      <!-- 2 · HALAL ETF COMPARISON + MODEL PORTFOLIOS -->
+      <div class="research-card featured">
+        <span class="card-tag">⭑ Featured · ETF Analysis · Model Portfolios</span>
+        <h3>Halal ETF Comparison &amp; Six Model Portfolios</h3>
+        <p>
+          A quantitative comparison of the five Canada-available halal ETFs — SPUS, HLAL,
+          MNZL, SPSK and the CAD-denominated WSHR — across annual returns, since-inception
+          CAGR, drawdowns, concentration and cost, plus six model portfolios that each pair a
+          different ETF core with the individual stock satellites.
+        </p>
+        <div class="card-footer">
+          <span class="card-date">May 2026</span>
+          <a href="halal-etf-comparison.html" class="card-link" style="color:var(--gold-light)">Read</a>
+        </div>
+      </div>
+
+      <!-- 3 · SMALL-CAP VALUE PORTFOLIO -->
+      <div class="research-card">
+        <span class="card-tag">Small-Cap Value · Three-Statement Analysis</span>
+        <h3>A Small-Cap Value Satellite Book</h3>
+        <p>
+          A second book within the satellites, targeting the size (SMB) and value (HML) premia the
+          large-cap book gives up. Screened halal, filtered through a strict debt/equity &lt; 30%
+          balance-sheet rule, and assessed with deep three-statement quality analysis grounded
+          in the CFA curriculum.
+        </p>
+        <div class="card-footer">
+          <span class="card-date">May 2026</span>
+          <a href="smallcap-value-portfolio.html" class="card-link">Read</a>
+        </div>
+      </div>
+
+      <!-- 4 · SMALL-CAP VALUE FINDINGS -->
+      <div class="research-card">
+        <span class="card-tag">Key Findings · What the Data Shows</span>
+        <h3>Small-Cap Value: What the Data Actually Shows</h3>
+        <p>
+          The headline conclusions from the small-cap value screen — seven findings on
+          factor loadings, the complementarity with the large-cap book, verified metrics on
+          the twelve holdings, and an honest account of what the regression can and cannot
+          prove.
+        </p>
+        <div class="card-footer">
+          <span class="card-date">May 2026</span>
+          <a href="smallcap-findings.html" class="card-link">Read</a>
+        </div>
+      </div>
+
+      <!-- 5 · STRYKER -->
+      <div class="research-card">
+        <span class="card-tag">Thematic Investing · Medical Technology</span>
+        <h3>Where Megatrends Meet Medicine: The Case for Stryker</h3>
+        <p>
+          Five structural forces — demographic ageing, robotics disruption, emerging-market
+          wealth, urbanisation, and rising healthcare spending — converge on a single
+          company that passes every screen. Includes an original KPI dashboard built from
+          SEC 8-K filings, organic growth analysis, and a Mako robotics moat discussion.
+        </p>
+        <div class="card-footer">
+          <span class="card-date">May 2026</span>
+          <a href="stryker-megatrends.html" class="card-link">Read</a>
+        </div>
+      </div>
+
+      <!-- 6 · NORDSON & THERMO FISHER -->
+      <div class="research-card">
+        <span class="card-tag">Company Analysis · Halal Screen · Statement Quality</span>
+        <h3>Nordson &amp; Thermo Fisher: A Halal Screen and Five-Year Statement Quality</h3>
+        <p>
+          Two quality compounders run through the seven-step satellite process — four exclusion
+          screens, the quantitative halal ratios, and a dedicated five-year analysis of the balance
+          sheet, cash flow, and income statement. Both pass the ethics; the financials, and an
+          insignificant RMW loading, decide where they belong.
+        </p>
+        <div class="card-footer">
+          <span class="card-date">June 2026</span>
+          <a href="company-analysis-ndsn-tmo.html" class="card-link">Read</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINDINGS ══ -->
+<section id="findings">
+  <div class="findings-bg"></div>
+  <div class="container">
+    <div class="findings-grid">
+      <div class="reveal">
+        <p class="section-label" style="color: var(--gold);">Key Findings</p>
+        <h2 class="section-title" style="color: var(--cream);">What the Data<br><em>Actually Shows</em></h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="color: rgba(250,247,242,0.88); margin-bottom: 2.5rem;">
+          Portfolio-level regression across 83 monthly observations confirms the
+          mandate's thesis — with a few important nuances.
+        </p>
+        <div class="findings-items">
+          <div class="finding-item">
+            <span class="finding-num">01</span>
+            <div>
+              <p class="finding-title">RMW loading of +0.33 confirms the cash-flow thesis</p>
+              <p class="finding-text">The profitability factor is positive and meaningful — mathematical confirmation that the CFO screen is selecting for genuinely profitable companies, not just growing ones.</p>
+            </div>
+          </div>
+          <div class="finding-item">
+            <span class="finding-num">02</span>
+            <div>
+              <p class="finding-title">Portfolio R² of 0.87 — returns are factor-explained</p>
+              <p class="finding-text">87% of monthly return variance is explained by the five factors. No statistically significant alpha means returns come from factor premia, not luck or stock-picking. This is the expected, honest outcome.</p>
+            </div>
+          </div>
+          <div class="finding-item">
+            <span class="finding-num">03</span>
+            <div>
+              <p class="finding-title">Deliberate trade-off: quality over size and value</p>
+              <p class="finding-text">SMB –0.12 and HML –0.05 confirm this is a large-cap, near-growth portfolio. It gives up the size and value premia in exchange for quality — a defensible but explicit trade-off.</p>
+            </div>
+          </div>
+          <div class="finding-item">
+            <span class="finding-num">04</span>
+            <div>
+              <p class="finding-title">P&G and J&amp;J are the weakest mandate fits</p>
+              <p class="finding-text">Both pass every ethical screen but CFO CAGRs of 0.5% and 0.8% respectively are functionally flat. High RMW factor loadings save them on profitability but growth is absent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- METRICS CALLOUT — edit numbers to match your actual results -->
+      <div class="findings-callout reveal" style="transition-delay: 0.2s">
+        <p class="callout-label">Portfolio Factor Loadings</p>
+
+        <div class="callout-metric">
+          <div class="metric-val">+0.328</div>
+          <div class="metric-name">RMW — Profitability (robust minus weak)</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="66%"></div></div>
+        </div>
+        <div class="callout-metric">
+          <div class="metric-val">0.863</div>
+          <div class="metric-name">Market Beta (Mkt-RF)</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="86%"></div></div>
+        </div>
+        <div class="callout-metric">
+          <div class="metric-val">−0.119</div>
+          <div class="metric-name">SMB — Size (negative = large-cap)</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="24%"></div></div>
+        </div>
+        <div class="callout-metric">
+          <div class="metric-val">−0.054</div>
+          <div class="metric-name">HML — Value (near-neutral)</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="11%"></div></div>
+        </div>
+        <div class="callout-metric">
+          <div class="metric-val">0.87</div>
+          <div class="metric-name">R² — Factor explanatory power</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="87%"></div></div>
+        </div>
+        <div class="callout-metric" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+          <div class="metric-val" style="font-size:1.5rem; color: rgba(250,247,242,0.6);">+0.87%</div>
+          <div class="metric-name">Annualised Alpha (t = 0.38 — not significant)</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-width="17%" style="background: rgba(201,168,76,0.35);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FRAMEWORK ══ -->
+<section id="framework">
+  <div class="container">
+    <div class="reveal" style="max-width: 560px;">
+      <p class="section-label">Framework</p>
+      <h2 class="section-title">How the Screens<br><em>Work</em></h2>
+      <div class="divider"></div>
+      <p class="section-sub">
+        Two exclusion screens applied before any financial analysis, followed by a
+        three-part quality assessment across the balance sheet, income statement, and
+        cash flow statement — then validated by the Fama-French five-factor model. The
+        same framework drives both books of satellites: the large-cap quality
+        book leads with cash-flow quality, while the small-cap value book leads with
+        balance-sheet strength (debt/equity below 30%). The lending screen does more
+        work than it appears, removing captive-finance arms, insurers, and hidden
+        lending operations inside otherwise-clean names.
+      </p>
+    </div>
+    <div class="framework-grid reveal" style="transition-delay:0.1s">
+      <div class="framework-card">
+        <div class="fw-icon">S1</div>
+        <h4>Sin Screens</h4>
+        <p>Excludes gambling, alcohol, war and ammunition. Applied at the business-model level — is this a primary activity, not a trace exposure.</p>
+      </div>
+      <div class="framework-card">
+        <div class="fw-icon">S2</div>
+        <h4>Lending Screen</h4>
+        <p>Excludes banks, captive-finance arms (Caterpillar, Deere, Ford), insurers, Shopify Capital, PC Financial. Incidental interest on corporate cash is not excluded.</p>
+      </div>
+      <div class="framework-card">
+        <div class="fw-icon">CF</div>
+        <h4>Cash Flow Quality</h4>
+        <p>Requires high operating cash flow with a track record of organic growth. Serial acquirers (Constellation Software, Couche-Tard) fail even if ethics screens pass. Source: SEC EDGAR / SEDAR+.</p>
+      </div>
+      <div class="framework-card">
+        <div class="fw-icon">BS</div>
+        <h4>Balance Sheet Quality</h4>
+        <p>Screens for financial strength and capital discipline — low financial leverage, strong interest coverage, conservative debt maturity profiles, and minimal off-balance-sheet exposure. Favours asset-light models with durable equity bases.</p>
+      </div>
+      <div class="framework-card">
+        <div class="fw-icon">IS</div>
+        <h4>Income Statement Quality</h4>
+        <p>Examines revenue quality, margin durability, and earnings consistency. Prefers recurring-revenue and subscription models over transactional. Scrutinises non-GAAP adjustments and flags companies where reported earnings persistently diverge from operating cash flow.</p>
+      </div>
+      <div class="framework-card">
+        <div class="fw-icon">FF5</div>
+        <h4>Factor Validation</h4>
+        <p>Fama-French 5-factor OLS regression tests whether each book's factor exposures align with its mandate. The large-cap book shows a positive RMW (profitability) loading; the small-cap book shows a significant positive SMB (size) loading, with a weaker value tilt. Uses Kenneth French Data Library (Dartmouth).</p>
+      </div>
+    </div>
+    <div class="disclaimer-bar reveal" style="transition-delay:0.2s">
+      <span class="disclaimer-icon">⚠</span>
+      <p>
+        <strong>Not investment advice.</strong> All research published here is for informational and educational purposes only. It reflects my own independent analysis and does not constitute a recommendation to buy, sell, or hold any security. Past factor loadings and cash-flow trends do not guarantee future performance. Verify all figures against primary filings (SEC EDGAR, SEDAR+) before making any investment decision. Consult a licensed financial advisor.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="section-label" style="color:var(--gold)">Contact</p>
+        <h2 class="section-title" style="color:var(--cream)">Get in Touch</h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="color:rgba(250,247,242,0.88)">
+          Interested in the research, the methodology, or collaborating on a project?
+          I'd welcome the conversation.
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon" style="color:var(--gold)">✉</div>
+            <div class="contact-item-text">
+              <label>Email</label>
+              <!-- Replace with your email -->
+              <a href="mailto:hisham.ahmed@rotmanalum.utoronto.ca">hisham.ahmed@rotmanalum.utoronto.ca</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <!-- 
+          TO MAKE THE FORM ACTUALLY SEND EMAILS:
+          Replace action="#" with your Cloudflare Pages Form endpoint, or
+          use a free service like Formspree: action="https://formspree.io/f/YOUR_ID"
+        -->
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="first_name" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="last_name" placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option value="">Select a topic…</option>
+              <option>Research methodology</option>
+              <option>Portfolio construction</option>
+              <option>Factor model questions</option>
+              <option>Collaboration</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Your message…" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container footer-inner">
+    <a href="#top" class="footer-logo"><svg width="24" height="24" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0"><circle cx="60" cy="60" r="42" fill="none" stroke="#c9a84c" stroke-width="3.5" opacity="0.6"/><text x="60" y="75" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="600" fill="#c9a84c" opacity="0.7">HA</text></svg>Hisham<span> Ahmed</span></a>
+    <p class="footer-note">© 2026. Independent research. Not investment advice.</p>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#framework">Framework</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* NAV scroll state */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* Hamburger */
+  const burger = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+
+  /* Reveal on scroll */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* Animate metric bars when they enter view */
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.metric-bar').forEach(bar => {
+          const w = bar.getAttribute('data-width');
+          if (w) setTimeout(() => bar.style.width = w, 200);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.findings-callout').forEach(el => barObserver.observe(el));
+
+  /* Smooth scroll for nav links */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        links.classList.remove('open');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* Contact form feedback */
+  document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    const btn = this.querySelector('.btn-submit');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    /* If you wire up Formspree or CF Forms, remove the preventDefault below */
+    e.preventDefault();
+    setTimeout(() => { btn.textContent = 'Sent ✓'; btn.style.background = '#4a9e6b'; }, 800);
+  });
+</script>
+</body>
+</html>
