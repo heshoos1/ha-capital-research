@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMTIwJz48cmVjdCB3aWR0aD0nMTIwJyBoZWlnaHQ9JzEyMCcgcng9JzE4JyBmaWxsPScjMGQxYjJhJy8+PGNpcmNsZSBjeD0nNjAnIGN5PSc2MCcgcj0nNDInIGZpbGw9J25vbmUnIHN0cm9rZT0nI2M5YTg0Yycgc3Ryb2tlLXdpZHRoPSc0Jy8+PHRleHQgeD0nNjAnIHk9Jzc2JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc0NCcgZm9udC13ZWlnaHQ9JzcwMCcgZmlsbD0nI2U4Yzk3YSc+SEE8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small-Cap Value Satellite Book | Hisham Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d1b2a;--navy-mid:#1a2e45;--navy-light:#243d57;
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-pale:#f5e9c8;
+  --cream:#faf7f2;--white:#fff;
+  --text:#1a1a2e;--text-mid:#3d4a5c;--text-muted:#6b7a90;
+  --border:rgba(201,168,76,0.18);--border-light:rgba(0,0,0,0.07);
+  --green:#4a9e6b;--green-bg:rgba(74,158,107,0.12);
+  --red:#e05a4a;--red-bg:rgba(224,90,74,0.1);
+  --blue:#4a8ab5;--blue-bg:rgba(74,138,181,0.1);
+  --amber:#d4940a;--amber-bg:rgba(212,148,10,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+.container{max-width:980px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.container--wide{max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:0.8rem;color:rgba(250,247,242,0.6);text-decoration:none;letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back:hover{color:var(--gold-light)}
+.nav-back::before{content:'←'}
+
+/* HERO */
+.hero{background:var(--navy);padding:112px 0 60px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;opacity:0.04;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;bottom:-150px;left:-100px;width:650px;height:650px;border-radius:50%;background:radial-gradient(circle,rgba(74,138,181,0.05) 0%,transparent 65%)}
+.hero-cat{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,3.1rem);font-weight:700;line-height:1.12;color:var(--cream);margin-bottom:1.1rem}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:1.02rem;color:rgba(250,247,242,0.6);max-width:660px;line-height:1.75;font-weight:300;margin-bottom:2rem}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.meta-item{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+.meta-label{color:var(--gold);display:block;margin-bottom:0.15rem}
+.meta-val{color:rgba(250,247,242,0.5)}
+
+/* SECTIONS */
+.section{padding:clamp(3rem,6vw,5rem) 0}
+.section--dark{background:var(--navy)}
+.section--white{background:var(--white)}
+.section--cream{background:var(--cream)}
+.eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:600;line-height:1.2;margin-bottom:0.75rem}
+.section-title em{font-style:italic;color:var(--text-muted)}
+.dark-title{color:var(--cream)}.dark-title em{color:var(--gold-light)}
+.divider{width:44px;height:2px;background:var(--gold);margin:1.1rem 0 2rem}
+.prose p{font-size:1rem;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:1.35rem}
+.prose p:first-child{font-size:1.05rem;color:var(--text);font-weight:400}
+.prose strong{font-weight:500;color:var(--text)}
+.prose h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;color:var(--text);margin:2rem 0 0.75rem}
+
+/* CRITERIA CARDS */
+.criteria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;margin:2rem 0}
+.criteria-card{background:var(--white);padding:1.75rem;border-top:3px solid var(--gold)}
+.criteria-card--alt{border-top-color:var(--blue)}
+.crit-num{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--gold);margin-bottom:0.5rem}
+.criteria-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.6rem}
+.criteria-card p{font-size:0.85rem;color:var(--text-muted);line-height:1.7;font-weight:300;margin:0}
+.crit-threshold{display:inline-block;font-family:'DM Mono',monospace;font-size:0.7rem;background:var(--gold-pale);color:var(--navy);padding:0.25rem 0.6rem;border-radius:2px;margin-top:0.75rem;font-weight:500}
+
+/* THREE STATEMENT DEEP DIVE */
+.statement-block{background:var(--navy);border:1px solid var(--border);border-radius:4px;padding:2rem 2.25rem;margin:1.5rem 0}
+.statement-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid rgba(201,168,76,0.15)}
+.statement-icon{width:44px;height:44px;border-radius:3px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.statement-header h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--cream);margin:0}
+.statement-header .sh-sub{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-top:0.2rem}
+.statement-block > p{font-size:0.9rem;color:rgba(250,247,242,0.65);line-height:1.8;font-weight:300;margin-bottom:1rem}
+.metric-row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:center}
+.metric-row:last-child{border-bottom:none}
+.metric-name{font-size:0.85rem;color:rgba(250,247,242,0.7);font-weight:300}
+.metric-name strong{color:var(--gold-light);font-weight:500}
+.metric-target{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--gold);white-space:nowrap}
+
+/* PORTFOLIO TABLE */
+.pf-table-wrap{overflow-x:auto;margin:2rem 0;-webkit-overflow-scrolling:touch}
+.pf-table{width:100%;border-collapse:collapse;min-width:920px}
+.pf-table th{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.85rem 0.9rem;text-align:left;background:var(--navy);color:var(--gold);border-bottom:2px solid var(--border);white-space:nowrap}
+.pf-table td{padding:0.75rem 0.9rem;font-size:0.85rem;border-bottom:1px solid var(--border-light);vertical-align:middle;font-weight:300;color:var(--text-mid)}
+.pf-table tr:nth-child(even) td{background:rgba(201,168,76,0.02)}
+.pf-table tr:hover td{background:rgba(201,168,76,0.05)}
+.tk{font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:500;color:var(--navy);background:var(--gold-pale);padding:0.2rem 0.5rem;border-radius:2px;white-space:nowrap}
+.de-good{color:var(--green);font-weight:500;font-family:'DM Mono',monospace}
+.de-watch{color:var(--amber);font-weight:500;font-family:'DM Mono',monospace}
+.sector-tag{font-size:0.7rem;color:var(--text-muted)}
+
+/* STOCK DEEP CARDS */
+.stock-deep{background:var(--white);border:1px solid var(--border-light);border-radius:4px;padding:1.75rem;margin-bottom:1.25rem}
+.stock-deep-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.4rem;flex-wrap:wrap}
+.stock-deep-head .tk{font-size:0.9rem}
+.stock-deep-head h4{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text);margin:0}
+.stock-deep-sector{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.stock-deep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;margin-bottom:1rem;background:var(--border-light)}
+.sd-metric{background:var(--cream);padding:0.75rem 0.9rem;text-align:center}
+.sd-metric-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--navy);line-height:1}
+.sd-metric-val.green{color:var(--green)}
+.sd-metric-label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-top:0.3rem}
+.stock-deep p{font-size:0.87rem;color:var(--text-mid);line-height:1.75;font-weight:300;margin:0}
+.stock-deep .thesis-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;margin-top:0.5rem}
+
+/* INSIGHT BOXES */
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;margin:2rem 0}
+.insight-box{padding:1.5rem 1.75rem;border-radius:3px}
+.insight-box--gold{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2)}
+.insight-box--navy{background:var(--navy);border:1px solid var(--border)}
+.insight-box--red{background:var(--red-bg);border:1px solid rgba(224,90,74,0.2)}
+.insight-box--green{background:var(--green-bg);border:1px solid rgba(74,158,107,0.2)}
+.insight-label{font-family:'DM Mono',monospace;font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem}
+.insight-box--gold .insight-label,.insight-box--navy .insight-label{color:var(--gold)}
+.insight-box--red .insight-label{color:var(--red)}
+.insight-box--green .insight-label{color:var(--green)}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:0.5rem}
+.insight-box--navy h4{color:var(--cream)}
+.insight-box p{font-size:0.85rem;line-height:1.7;font-weight:300}
+.insight-box--navy p{color:rgba(250,247,242,0.6)}
+
+/* FF5 EXPECTED */
+.ff5-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;margin:1.5rem 0}
+.ff5-cell{background:rgba(255,255,255,0.04);padding:1.25rem;text-align:center}
+.ff5-factor{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.ff5-loading{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;line-height:1}
+.ff5-loading.pos{color:#7ed4a0}.ff5-loading.neg{color:#e8857a}.ff5-loading.neu{color:rgba(250,247,242,0.5)}
+.ff5-desc{font-size:0.72rem;color:rgba(250,247,242,0.45);margin-top:0.4rem;font-weight:300;line-height:1.5}
+
+/* DISCLAIMER */
+.disclaimer{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:2px;padding:1.1rem 1.5rem;display:flex;gap:0.75rem;margin:2.5rem 0}
+.disclaimer p{font-size:0.8rem;color:var(--text-muted);line-height:1.65;font-weight:300}
+.disclaimer strong{font-weight:500;color:var(--text-mid)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+footer{background:#080f18;padding:2rem 0;border-top:1px solid rgba(201,168,76,0.1)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(250,247,242,0.5);text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-note{font-size:0.75rem;color:rgba(250,247,242,0.25);font-weight:300}
+
+@media(max-width:640px){.insight-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><svg width="28" height="28" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;vertical-align:middle"><circle cx="60" cy="60" r="42" fill="none" stroke="#c9a84c" stroke-width="3.5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/><text x="60" y="75" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="600" fill="#e8c97a">HA</text></svg>Hisham<span> Ahmed</span></a>
+    <a href="index.html#research" class="nav-back">All Research</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <p class="hero-cat">Portfolio Construction · Small-Cap Value · Three-Statement Quality</p>
+    <h1>A Small-Cap Value<br><em>Satellite Book</em></h1>
+    <p class="hero-sub">
+      A second book within the satellites, built on the small-cap value premium — screened for halal
+      compliance, filtered through a strict balance-sheet rule (debt/equity below 30%), and
+      assessed with deep three-statement analysis across the balance sheet, income statement,
+      and cash flow statement. Validated, as always, with the Fama-French five-factor model.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Author</span><span class="meta-val">Hisham Ahmed</span></div>
+      <div class="meta-item"><span class="meta-label">Published</span><span class="meta-val">May 2026</span></div>
+      <div class="meta-item"><span class="meta-label">Factor Tilt</span><span class="meta-val">Small Size (SMB+) · Value (HML+) · Quality</span></div>
+      <div class="meta-item"><span class="meta-label">Hard Rule</span><span class="meta-val">Debt / Equity &lt; 30%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: WHY THIS PORTFOLIO -->
+<section class="section section--white">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">The Rationale</p>
+    <h2 class="section-title">Why a Small-Cap Value Sleeve,<br><em>and How It Differs</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="prose reveal" style="transition-delay:0.1s">
+    <p>
+      The original 20-stock book of the sleeve is a large-cap quality book. Its Fama-French
+      regression showed a strong positive RMW (profitability) loading of +0.33, a negative SMB
+      (it tilts large, not small), and a slightly negative HML (it leans growth, not value).
+      That portfolio deliberately gives up the size and value premia in exchange for a
+      concentrated quality and profitability tilt.
+    </p>
+    <p>
+      This second portfolio is designed to be its complement. Where the first book is large-cap
+      and quality-focused, this one targets the two factors the first one gives up: <strong>the
+      size premium (SMB) and the value premium (HML)</strong>. Both are well-documented in the
+      Fama-French literature — the CFA curriculum notes that Fama and French formally outlined
+      value investing by proposing the book-to-market ratio, and that small-cap companies tend
+      to be less mature with potentially greater room for future growth and a lower degree of
+      analyst and public scrutiny. That lower scrutiny is precisely where a disciplined
+      bottom-up investor can find mispricing.
+    </p>
+    <p>
+      But small-cap value is also where the most value traps live — cheap companies that are
+      cheap for good reason. The CFA curriculum is explicit that the value premium may exist
+      partly to compensate investors for the greater likelihood that these companies will
+      experience financial distress. That is exactly why this portfolio inverts the previous
+      screening emphasis. Instead of leading with cash-flow quality, it leads with
+      <strong>balance-sheet strength</strong> — a strict debt/equity ceiling of 30% — and then
+      requires all three financial statements to confirm quality. In small-cap value, a fortress
+      balance sheet is the single most effective defence against the value trap.
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 2: SELECTION CRITERIA -->
+<section class="section section--cream">
+<div class="container--wide">
+  <div class="reveal">
+    <p class="eyebrow">Selection Criteria</p>
+    <h2 class="section-title">The Screening Funnel — <em>Seven Filters</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;font-weight:300;max-width:620px">
+      Applied in strict sequence. A company that fails any filter is excluded before the next is
+      considered. The balance-sheet rule is the defining feature of this portfolio.
+    </p>
+  </div>
+  <div class="criteria-grid reveal" style="transition-delay:0.1s">
+    <div class="criteria-card">
+      <p class="crit-num">Filter 01</p>
+      <h4>Halal Exclusion Screen</h4>
+      <p>No gambling, alcohol, weapons, tobacco, or conventional financial institutions. Applied at the business-model level. This is why the otherwise-rich small-cap banking universe is entirely excluded.</p>
+      <span class="crit-threshold">Qualitative · pass/fail</span>
+    </div>
+    <div class="criteria-card">
+      <p class="crit-num">Filter 02</p>
+      <h4>Quantitative Halal Ratios</h4>
+      <p>Non-compliant income below 5% of revenue; interest-bearing debt below 33% of market cap (DJIM/AAOIFI). Note: our balance-sheet rule below is far stricter than the halal debt ceiling.</p>
+      <span class="crit-threshold">Debt &lt; 33% mkt cap</span>
+    </div>
+    <div class="criteria-card criteria-card--alt">
+      <p class="crit-num">Filter 03 · DEFINING RULE</p>
+      <h4>Balance Sheet — Debt/Equity &lt; 30%</h4>
+      <p>The hard rule. Total debt divided by shareholders' equity must be below 30%. This single filter eliminates most of the small-cap universe and is the primary defence against the value trap and financial-distress risk.</p>
+      <span class="crit-threshold" style="background:var(--blue);color:white">D/E &lt; 0.30 — hard ceiling</span>
+    </div>
+    <div class="criteria-card">
+      <p class="crit-num">Filter 04</p>
+      <h4>Income Statement Quality</h4>
+      <p>Positive and growing net income; durable gross and operating margins; revenue quality (recurring preferred); no persistent divergence between reported earnings and operating cash flow.</p>
+      <span class="crit-threshold">Profitable + margin stability</span>
+    </div>
+    <div class="criteria-card">
+      <p class="crit-num">Filter 05</p>
+      <h4>Cash Flow Quality</h4>
+      <p>Positive operating cash flow that converts cleanly from earnings. Low accruals (the Sloan earnings-quality factor). Free cash flow generation, not just reported profit.</p>
+      <span class="crit-threshold">CFO &gt; 0 · low accruals</span>
+    </div>
+    <div class="criteria-card">
+      <p class="crit-num">Filter 06</p>
+      <h4>Value Characteristic</h4>
+      <p>Reasonable valuation relative to book, earnings, or cash flow — the HML (high book-to-market) tilt. Not deep value at any cost; value with quality, to avoid the trap.</p>
+      <span class="crit-threshold">Reasonable P/B · P/E · P/FCF</span>
+    </div>
+    <div class="criteria-card criteria-card--alt">
+      <p class="crit-num">Filter 07</p>
+      <h4>FF5 Factor Validation</h4>
+      <p>Regression confirms the intended tilts: positive SMB (small), positive HML (value), with quality factors (RMW, CMA) confirming the balance-sheet discipline shows up in the return history.</p>
+      <span class="crit-threshold">SMB+ · HML+ · RMW≥0</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 3: THREE STATEMENT DEEP DIVE -->
+<section class="section section--dark">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--gold)">The Analytical Framework</p>
+    <h2 class="section-title dark-title">Three Statements,<br><em>Three Lenses on Quality</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:rgba(250,247,242,0.55);line-height:1.8;font-weight:300;max-width:620px;margin-bottom:2rem">
+      Each financial statement answers a different question about the durability of a business.
+      Reading all three together — and reconciling them against each other — is the core of the
+      bottom-up process, structured around the financial-statement analysis framework in the
+      CFA curriculum.
+    </p>
+  </div>
+
+  <!-- BALANCE SHEET -->
+  <div class="statement-block reveal" style="transition-delay:0.05s">
+    <div class="statement-header">
+      <div class="statement-icon">🏛️</div>
+      <div>
+        <h3>The Balance Sheet</h3>
+        <div class="sh-sub">Question: Can this company survive a downturn?</div>
+      </div>
+    </div>
+    <p>
+      For small-cap value, the balance sheet is the first and most important lens because the
+      value premium is partly compensation for distress risk. A company that is cheap <em>and</em>
+      financially fragile is a value trap waiting to spring. The defining rule of this portfolio —
+      debt/equity below 30% — lives here. A low-leverage small cap can survive a recession,
+      refinance on its own terms, and use a downturn to take share from over-levered competitors.
+    </p>
+    <div class="metric-row"><span class="metric-name"><strong>Debt / Equity ratio</strong> — the hard ceiling</span><span class="metric-target">&lt; 30% — total debt ÷ equity</span></div>
+    <div class="metric-row"><span class="metric-name">Current ratio — short-term solvency</span><span class="metric-target">&gt; 1.5 preferred</span></div>
+    <div class="metric-row"><span class="metric-name">Interest coverage — ability to service debt</span><span class="metric-target">&gt; 8× (or debt-free)</span></div>
+    <div class="metric-row"><span class="metric-name">Cash &amp; equivalents vs total debt — net cash preferred</span><span class="metric-target">Net cash positive</span></div>
+    <div class="metric-row"><span class="metric-name">Altman Z-Score — composite distress measure</span><span class="metric-target">&gt; 2.99 (safe zone)</span></div>
+    <div class="metric-row"><span class="metric-name">Goodwill / total assets — acquisition reliance</span><span class="metric-target">Low — organic preferred</span></div>
+  </div>
+
+  <!-- INCOME STATEMENT -->
+  <div class="statement-block reveal" style="transition-delay:0.1s">
+    <div class="statement-header">
+      <div class="statement-icon">📈</div>
+      <div>
+        <h3>The Income Statement</h3>
+        <div class="sh-sub">Question: Is this a genuinely profitable, durable business?</div>
+      </div>
+    </div>
+    <p>
+      The income statement tests whether the company makes real money and whether those profits
+      are durable. For value names, the danger is declining profitability masked by a cheap
+      headline multiple. The focus is on margin <em>stability</em> and trend, not just level —
+      a company with stable or expanding gross margins has pricing power; one with eroding margins
+      is often a structurally challenged business that looks cheap because it deserves to be.
+    </p>
+    <div class="metric-row"><span class="metric-name"><strong>Net income</strong> — positive and growing</span><span class="metric-target">5-yr positive, growing</span></div>
+    <div class="metric-row"><span class="metric-name">Gross margin — pricing power and trend</span><span class="metric-target">Stable or expanding</span></div>
+    <div class="metric-row"><span class="metric-name">Operating margin — operating efficiency</span><span class="metric-target">&gt; 10% preferred</span></div>
+    <div class="metric-row"><span class="metric-name"><strong>Return on equity</strong> — profitability per equity dollar</span><span class="metric-target">&gt; 15% preferred</span></div>
+    <div class="metric-row"><span class="metric-name">Revenue quality — recurring vs transactional</span><span class="metric-target">Recurring preferred</span></div>
+    <div class="metric-row"><span class="metric-name">Non-GAAP scrutiny — adjustments vs reality</span><span class="metric-target">Minimal adjustments</span></div>
+  </div>
+
+  <!-- CASH FLOW STATEMENT -->
+  <div class="statement-block reveal" style="transition-delay:0.15s">
+    <div class="statement-header">
+      <div class="statement-icon">💵</div>
+      <div>
+        <h3>The Cash Flow Statement</h3>
+        <div class="sh-sub">Question: Are the reported profits actually real?</div>
+      </div>
+    </div>
+    <p>
+      Cash flow is the lie detector. The CFA curriculum highlights Sloan's seminal earnings-quality
+      research — the finding that the market fails to fully distinguish the accrual and cash-flow
+      components of earnings, and that high-accrual (low cash-conversion) earnings are lower
+      quality and tend to reverse. If a company reports strong earnings but weak operating cash
+      flow, the earnings are suspect. This statement confirms or refutes the income statement.
+    </p>
+    <div class="metric-row"><span class="metric-name"><strong>Operating cash flow</strong> — positive and growing</span><span class="metric-target">5-yr positive, growing</span></div>
+    <div class="metric-row"><span class="metric-name"><strong>CFO / Net Income</strong> — earnings-to-cash conversion</span><span class="metric-target">&gt; 1.0 preferred (Sloan)</span></div>
+    <div class="metric-row"><span class="metric-name">Free cash flow — after capex</span><span class="metric-target">Consistently positive</span></div>
+    <div class="metric-row"><span class="metric-name">Accruals ratio — earnings quality (Sloan factor)</span><span class="metric-target">Low accruals</span></div>
+    <div class="metric-row"><span class="metric-name">Capex intensity — reinvestment needs</span><span class="metric-target">Asset-light preferred</span></div>
+    <div class="metric-row"><span class="metric-name">FCF used for buybacks/dividends vs dilution</span><span class="metric-target">Returning capital</span></div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 4: THE PORTFOLIO TABLE -->
+<section class="section section--white">
+<div class="container--wide">
+  <div class="reveal">
+    <p class="eyebrow">The Portfolio</p>
+    <h2 class="section-title">Twelve Small-Cap Value <em>Candidates</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;font-weight:300;max-width:680px">
+      All financial data verified from SEC filings, company reports, and financial data providers
+      (stockanalysis.com, Simply Wall St, investing.com) as of the most recent fiscal year.
+      Debt/equity is the binding constraint — names are flagged where they sit near the 30% ceiling.
+    </p>
+  </div>
+  <div class="pf-table-wrap reveal" style="transition-delay:0.1s">
+    <table class="pf-table">
+      <thead>
+        <tr>
+          <th>Ticker</th><th>Company</th><th>Sector</th><th>Exchange</th>
+          <th>Mkt Cap</th><th>Debt/Equity</th><th>ROE</th><th>Op. Margin</th><th>Balance Sheet Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="tk">POWL</span></td><td>Powell Industries</td><td class="sector-tag">Electrical Equipment</td><td>NASDAQ</td><td>~$3.6B</td><td class="de-good">0% (debt-free)</td><td>29.5%</td><td>~22%</td><td>Net cash ~$389M; debt-free</td></tr>
+        <tr><td><span class="tk">NSSC</span></td><td>NAPCO Security</td><td class="sector-tag">Security Hardware/SaaS</td><td>NASDAQ</td><td>~$1.4B</td><td class="de-good">0% (debt-free)</td><td>28.0%</td><td>~28%</td><td>Zero debt; ~$100M cash</td></tr>
+        <tr><td><span class="tk">EXPO</span></td><td>Exponent</td><td class="sector-tag">Engineering Consulting</td><td>NASDAQ</td><td>~$4.0B</td><td class="de-good">~0% (debt-free)</td><td>~28%</td><td>~24%</td><td>Asset-light; debt-free</td></tr>
+        <tr><td><span class="tk">UFPT</span></td><td>UFP Technologies</td><td class="sector-tag">Medical Device Mfg</td><td>NASDAQ</td><td>~$1.5B</td><td class="de-watch">29% (borderline)</td><td>16.1%</td><td>~15%</td><td>D/E 0.29 — just inside ceiling</td></tr>
+        <tr><td><span class="tk">EXPD</span></td><td>Expeditors Intl</td><td class="sector-tag">Logistics (asset-light)</td><td>NASDAQ</td><td>~$15B*</td><td class="de-good">~5%</td><td>~35%</td><td>~10%</td><td>Asset-light freight; net cash</td></tr>
+        <tr><td><span class="tk">MGRC</span></td><td>McGrath RentCorp</td><td class="sector-tag">Modular Space Rental</td><td>NASDAQ</td><td>~$2.8B</td><td class="de-watch">~28%</td><td>~17%</td><td>~25%</td><td>Verify — leverage rises with fleet</td></tr>
+        <tr><td><span class="tk">IOSP</span></td><td>Innospec</td><td class="sector-tag">Specialty Chemicals</td><td>NASDAQ</td><td>~$2.2B</td><td class="de-good">~3%</td><td>~12%</td><td>~9%</td><td>Near debt-free; net cash</td></tr>
+        <tr><td><span class="tk">FORM</span></td><td>FormFactor</td><td class="sector-tag">Semiconductor Test</td><td>NASDAQ</td><td>~$2.5B</td><td class="de-good">~4%</td><td>~9%</td><td>~10%</td><td>Minimal debt; cyclical</td></tr>
+        <tr><td><span class="tk">SMPL</span></td><td>Simply Good Foods</td><td class="sector-tag">Nutrition/Consumer</td><td>NASDAQ</td><td>~$3.5B</td><td class="de-watch">~25%</td><td>~12%</td><td>~17%</td><td>Verify — some acquisition debt</td></tr>
+        <tr><td><span class="tk">PLAB</span></td><td>Photronics</td><td class="sector-tag">Semiconductors (masks)</td><td>NASDAQ</td><td>~$1.4B</td><td class="de-good">~7%</td><td>~13%</td><td>~22%</td><td>Low debt; strong net cash</td></tr>
+        <tr><td><span class="tk">CLS.TO</span></td><td>Celestica</td><td class="sector-tag">Electronics Mfg (CA)</td><td>TSX/NYSE</td><td>~large*</td><td class="de-watch">verify</td><td>~25%</td><td>~6%</td><td>Canadian — verify D/E</td></tr>
+        <tr><td><span class="tk">CGY.TO</span></td><td>Calian Group</td><td class="sector-tag">Diversified Tech (CA)</td><td>TSX</td><td>~$0.6B</td><td class="de-watch">verify</td><td>~12%</td><td>~8%</td><td>Canadian small-cap; verify</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.75rem;color:var(--text-muted);font-weight:300;margin-top:-1rem">
+    * Some names (EXPD, CLS) are at the larger end of small/mid-cap and included as quality-value anchors. Market caps and ratios are approximate and must be re-verified against current filings before any investment. Canadian names (.TO) require SEDAR+ verification of debt/equity.
+  </p>
+
+  <div class="insight-grid reveal" style="transition-delay:0.15s">
+    <div class="insight-box insight-box--green">
+      <p class="insight-label">The debt-free core</p>
+      <h4>Powell, NAPCO, Exponent</h4>
+      <p>The three strongest balance-sheet names are entirely debt-free with net cash positions and ROEs near or above 28%. Powell Industries (electrical equipment for data centres and energy) and Exponent (asset-light engineering consulting) are textbook examples of low-leverage compounders trading at value multiples. These form the high-conviction core of the sleeve.</p>
+    </div>
+    <div class="insight-box insight-box--red">
+      <p class="insight-label">Why the bank universe is empty</p>
+      <h4>The Screen's Biggest Exclusion</h4>
+      <p>Most small-cap value screens are dominated by community banks and regional financials — they are perennially cheap on book value. Every one is excluded here by the halal lending screen. This is the single largest difference between this portfolio and a conventional small-cap value index, and it removes a major source of the value factor's historical return.</p>
+    </div>
+    <div class="insight-box insight-box--navy">
+      <p class="insight-label">Borderline cases — flagged, not hidden</p>
+      <h4>UFPT at Exactly 29%</h4>
+      <p style="color:rgba(250,247,242,0.6)">UFP Technologies sits at a debt/equity of 0.29 — inside the 30% ceiling, but only just, and after recent acquisition activity. It is included with that flag visible. AAON, a quality HVAC name, was excluded precisely because its D/E rose to 0.42–0.88 after acquisitions. The rule is applied consistently, even when it costs a good business.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 5: DEEP DIVES ON TOP 3 -->
+<section class="section section--cream">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">Worked Examples</p>
+    <h2 class="section-title">Three Names, <em>Three Statements Each</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;font-weight:300;max-width:620px">
+      The bottom-up process applied in full to the three highest-conviction names —
+      reading each through the balance sheet, income statement, and cash flow lens.
+    </p>
+  </div>
+
+  <div class="reveal" style="transition-delay:0.1s">
+    <!-- POWELL -->
+    <div class="stock-deep">
+      <div class="stock-deep-head"><span class="tk">POWL</span><h4>Powell Industries</h4></div>
+      <div class="stock-deep-sector">Electrical Equipment · Data Centre &amp; Energy Infrastructure · NASDAQ</div>
+      <div class="stock-deep-grid">
+        <div class="sd-metric"><div class="sd-metric-val green">0%</div><div class="sd-metric-label">Debt/Equity</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">29.5%</div><div class="sd-metric-label">ROE</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">$389M</div><div class="sd-metric-label">Net Cash</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">~22%</div><div class="sd-metric-label">Op Margin</div></div>
+        <div class="sd-metric"><div class="sd-metric-val green">7.2</div><div class="sd-metric-label">Altman Z</div></div>
+      </div>
+      <p class="thesis-label">Balance Sheet</p>
+      <p>Entirely debt-free with roughly $389M in cash and short-term investments against zero debt. Short-term assets ($810M) exceed both short-term ($405M) and long-term ($19M) liabilities by a wide margin. This is the strongest possible balance sheet — it passes the 30% rule with a 0% reading.</p>
+      <p class="thesis-label">Income Statement</p>
+      <p>ROE of ~29.5% and operating margin around 22%, both exceptional for an electrical-equipment manufacturer. Revenue has grown strongly on data-centre and LNG infrastructure demand. Operating profit grew ~22% year-over-year. Margins have expanded, not contracted — the mark of genuine pricing power rather than a cheap-for-a-reason value trap.</p>
+      <p class="thesis-label">Cash Flow</p>
+      <p>The net cash position confirms strong cash generation — a company cannot accumulate $389M in net cash without converting earnings to cash efficiently. Capital-light relative to its order book. The combination of debt-free balance sheet, high ROE, and strong cash generation at a reasonable multiple is the ideal small-cap-value-with-quality profile.</p>
+    </div>
+
+    <!-- NAPCO -->
+    <div class="stock-deep">
+      <div class="stock-deep-head"><span class="tk">NSSC</span><h4>NAPCO Security Technologies</h4></div>
+      <div class="stock-deep-sector">Security Hardware + Recurring SaaS (StarLink radios) · NASDAQ</div>
+      <div class="stock-deep-grid">
+        <div class="sd-metric"><div class="sd-metric-val green">0%</div><div class="sd-metric-label">Debt/Equity</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">28%</div><div class="sd-metric-label">ROE</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">~$100M</div><div class="sd-metric-label">Cash</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">25%</div><div class="sd-metric-label">Net Margin</div></div>
+        <div class="sd-metric"><div class="sd-metric-val green">High</div><div class="sd-metric-label">Earn. Quality</div></div>
+      </div>
+      <p class="thesis-label">Balance Sheet</p>
+      <p>A fortress balance sheet — roughly $100M in cash and zero debt. For a company of NAPCO's size this is an enormous cushion, giving it the flexibility to invest through cycles and weather any downturn in equipment sales. Passes the 30% rule at 0%.</p>
+      <p class="thesis-label">Income Statement</p>
+      <p>The story here is the mix shift: recurring SaaS revenue from StarLink cellular radios has grown at a ~34% CAGR since 2019 and now represents nearly 80% of gross profits. Net margin of ~25% and ROE of ~28%. The shift from one-time hardware to recurring subscription revenue is exactly the revenue-quality improvement the income-statement screen rewards — though recent equipment-sales softness is a near-term watch item.</p>
+      <p class="thesis-label">Cash Flow</p>
+      <p>Simply Wall St flags NAPCO's earnings as high quality — meaning reported earnings are backed by cash, with low accruals (the Sloan test passes). The recurring-revenue base produces predictable, high-margin operating cash flow. The combination of zero debt and high-quality recurring cash flow makes this a low-distress-risk value-and-growth name.</p>
+    </div>
+
+    <!-- EXPONENT -->
+    <div class="stock-deep">
+      <div class="stock-deep-head"><span class="tk">EXPO</span><h4>Exponent</h4></div>
+      <div class="stock-deep-sector">Engineering &amp; Scientific Consulting (failure analysis, litigation support) · NASDAQ</div>
+      <div class="stock-deep-grid">
+        <div class="sd-metric"><div class="sd-metric-val green">~0%</div><div class="sd-metric-label">Debt/Equity</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">~28%</div><div class="sd-metric-label">ROE</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">~24%</div><div class="sd-metric-label">EBITDA Mgn</div></div>
+        <div class="sd-metric"><div class="sd-metric-val green">Light</div><div class="sd-metric-label">Capex</div></div>
+        <div class="sd-metric"><div class="sd-metric-val">Yes</div><div class="sd-metric-label">Dividend</div></div>
+      </div>
+      <p class="thesis-label">Balance Sheet</p>
+      <p>Debt-free, asset-light professional-services model. Exponent's balance sheet carries minimal fixed assets — its value is in its PhD-level scientific staff, not capital equipment. This means it passes the 30% rule trivially and requires very little reinvestment to grow. The downside is that book value is low, so it scores less on a pure price-to-book value screen — its value characteristic comes from cash-flow and earnings multiples instead.</p>
+      <p class="thesis-label">Income Statement</p>
+      <p>EBITDA margins around 24% with a diversified revenue base across failure analysis, regulatory consulting, and litigation support. The business is counter-cyclically resilient — dispute and failure-analysis work often increases during economic stress, providing a natural hedge. Revenue is project-based but recurring at the client-relationship level.</p>
+      <p class="thesis-label">Cash Flow</p>
+      <p>Asset-light consulting converts earnings to cash extremely efficiently — minimal capex, low working-capital needs. Exponent has a long record of returning cash through dividends and buybacks rather than accumulating it unproductively or making dilutive acquisitions. High, clean cash conversion is the hallmark of the model.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 6: ACTUAL FF5 PROFILE -->
+<section class="section section--dark">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--gold)">Factor Validation · Actual Regression</p>
+    <h2 class="section-title dark-title">The Fama-French <em>Factor Profile</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:rgba(250,247,242,0.55);line-height:1.8;font-weight:300;max-width:640px;margin-bottom:1.5rem">
+      Run on the final 12 equal-weighted holdings over 83 monthly observations (Jan 2019 – Dec 2025),
+      using the Kenneth French factor series. The regression confirms the size tilt cleanly — and is
+      honest about where the value and quality tilts fell short.
+    </p>
+  </div>
+  <div class="ff5-grid reveal" style="transition-delay:0.1s">
+    <div class="ff5-cell"><div class="ff5-factor">Mkt-RF</div><div class="ff5-loading neu">+0.98</div><div class="ff5-desc">t = 10.49 — market beta near 1</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">SMB (size)</div><div class="ff5-loading pos">+0.43</div><div class="ff5-desc">t = 2.50 — significant size tilt, as designed ✓</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">HML (value)</div><div class="ff5-loading pos">+0.17</div><div class="ff5-desc">t = 1.17 — value tilt directional, not significant</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">RMW (profit)</div><div class="ff5-loading neu">+0.05</div><div class="ff5-desc">t = 0.28 — flat; per-stock loadings cancel out</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">CMA (invest)</div><div class="ff5-loading neg">−0.19</div><div class="ff5-desc">t = −0.89 — not significant</div></div>
+  </div>
+  <div class="ff5-grid reveal" style="transition-delay:0.12s;margin-top:1px">
+    <div class="ff5-cell"><div class="ff5-factor">Alpha (ann.)</div><div class="ff5-loading pos">+12.1%</div><div class="ff5-desc">t = 2.32 — statistically significant</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">R²</div><div class="ff5-loading neu">0.70</div><div class="ff5-desc">five factors explain 70% of returns</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">F-statistic</div><div class="ff5-loading neu">36.0</div><div class="ff5-desc">p &lt; 0.0001 — jointly significant</div></div>
+    <div class="ff5-cell"><div class="ff5-factor">Method</div><div class="ff5-loading neu">OLS</div><div class="ff5-desc">equal-weight · 83 monthly obs.</div></div>
+  </div>
+  <div class="insight-box insight-box--gold reveal" style="transition-delay:0.15s;margin-top:2rem">
+    <p class="insight-label">The complementarity thesis — partly confirmed</p>
+    <h4>What This Book Actually Adds to the Sleeve</h4>
+    <p style="color:var(--text-mid)">The original 20-stock portfolio loads <strong>negative SMB</strong> (large-cap), <strong>negative HML</strong> (growth), and <strong>strongly positive RMW</strong> (+0.33 profitability). This book was built to be its mirror. The regression confirms the most important half of that thesis: <strong>SMB came in at +0.43 (t = 2.50)</strong> — a real, significant small-cap tilt that the large-cap book lacks. The value tilt is present but weak (<strong>HML +0.17, not significant</strong>), the predicted cost of excluding the banking sector where value lives. And the profitability tilt did not materialise at the portfolio level (<strong>RMW +0.05</strong>) — a low debt/equity balance sheet, it turns out, does not guarantee a positive RMW loading. The honest read: this book genuinely diversifies the sleeve on <em>size</em>, but it is more a small-cap book than a clean small-cap-value book, and should not be counted on to add profitability exposure.</p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 7: HONEST CAVEATS -->
+<section class="section section--white">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">What to Verify Before Acting</p>
+    <h2 class="section-title">Honest Caveats &amp; <em>Next Steps</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="prose reveal" style="transition-delay:0.1s">
+    <p>
+      <strong>This is a candidate list, not a finished portfolio.</strong> Every name here must
+      have its current debt/equity ratio, halal compliance, and three-statement quality
+      re-verified against the latest filings before any allocation. Small-cap financials change
+      faster than large-cap ones, and a debt-funded acquisition can push a name over the 30%
+      ceiling between filings — exactly what happened to AAON, which is why it was excluded.
+    </p>
+    <p>
+      <strong>The Canadian names need SEDAR+ verification.</strong> Celestica and Calian are
+      included as candidates but their debt/equity ratios must be confirmed from Canadian filings,
+      and their halal compliance verified — Celestica in particular serves diverse end markets that
+      need segment-level review.
+    </p>
+    <p>
+      <strong>Small-cap value carries real risks the large-cap book does not.</strong> Lower
+      liquidity, wider bid-ask spreads, higher volatility, and greater sensitivity to economic
+      cycles. The size premium is real but it is not free — it compensates for exactly these
+      risks. Position sizing should be smaller per name than in the large-cap sleeve, and the
+      whole small-cap value book should be a minority of the total sleeve allocation.
+    </p>
+    <p>
+      <strong>The halal screen meaningfully reduces the value-factor opportunity set.</strong>
+      By excluding all banks and financials — which dominate conventional small-cap value indices —
+      this portfolio gives up a large portion of where the value premium has historically lived.
+      The names that remain are higher quality on average, but the sleeve will not behave like a
+      standard small-cap value index. That is a deliberate trade-off, consistent with the mandate.
+    </p>
+  </div>
+
+  <div class="disclaimer reveal" style="transition-delay:0.2s">
+    <span style="color:var(--gold);flex-shrink:0;margin-top:0.05rem">⚠</span>
+    <p>
+      <strong>Not investment advice.</strong> This analysis is for informational and educational
+      purposes only. It is a research framework and candidate list, not a recommendation to buy
+      any security. All financial data must be independently re-verified against primary filings
+      (SEC EDGAR, SEDAR+) before any investment decision. Small-cap stocks carry elevated
+      liquidity and volatility risk. Halal compliance must be verified against current DJIM/AAOIFI
+      methodology. Past factor performance does not guarantee future results. Consult a licensed
+      financial advisor.
+    </p>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Hisham<span> Ahmed</span></a>
+    <p class="footer-note">© 2026 · Independent research · Not investment advice</p>
+    <a href="index.html#research" class="nav-back" style="color:rgba(250,247,242,0.35);font-size:0.75rem;text-decoration:none">← All Research</a>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => {
+    e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

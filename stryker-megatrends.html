@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMTIwJz48cmVjdCB3aWR0aD0nMTIwJyBoZWlnaHQ9JzEyMCcgcng9JzE4JyBmaWxsPScjMGQxYjJhJy8+PGNpcmNsZSBjeD0nNjAnIGN5PSc2MCcgcj0nNDInIGZpbGw9J25vbmUnIHN0cm9rZT0nI2M5YTg0Yycgc3Ryb2tlLXdpZHRoPSc0Jy8+PHRleHQgeD0nNjAnIHk9Jzc2JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc0NCcgZm9udC13ZWlnaHQ9JzcwMCcgZmlsbD0nI2U4Yzk3YSc+SEE8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Megatrends Meet Medicine: The Case for Stryker | Hisham Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b2a;--navy-mid:#1a2e45;--navy-light:#243d57;
+    --gold:#c9a84c;--gold-light:#e8c97a;--cream:#faf7f2;
+    --text:#1a1a2e;--text-mid:#3d4a5c;--text-muted:#6b7a90;
+    --border:rgba(201,168,76,0.18);--white:#ffffff;
+    --green:#4a9e6b;--green-bg:rgba(74,158,107,0.1);
+    --red:#e05a4a;--blue:#4a8ab5;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+  .container{max-width:960px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+  .container--wide{max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;
+    height:64px;max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);text-decoration:none}
+  .nav-logo span{color:var(--gold)}
+  .nav-back{font-size:0.8rem;color:rgba(250,247,242,0.6);text-decoration:none;
+    letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+  .nav-back:hover{color:var(--gold-light)}
+  .nav-back::before{content:'←';font-size:1em}
+
+  /* HERO */
+  .article-hero{background:var(--navy);padding:120px 0 64px;position:relative;overflow:hidden}
+  .hero-grid{position:absolute;inset:0;opacity:0.04;
+    background-image:linear-gradient(var(--gold) 1px,transparent 1px),
+    linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px}
+  .hero-glow{position:absolute;bottom:-150px;right:-100px;width:600px;height:600px;
+    border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 70%)}
+  .article-category{font-family:'DM Mono',monospace;font-size:0.72rem;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+  .article-title{font-family:'Playfair Display',serif;
+    font-size:clamp(2rem,5vw,3.4rem);font-weight:600;line-height:1.12;
+    color:var(--cream);margin-bottom:1.25rem}
+  .article-title em{font-style:italic;color:var(--gold-light)}
+  .article-subtitle{font-size:1.05rem;color:rgba(250,247,242,0.6);
+    max-width:640px;line-height:1.75;font-weight:300;margin-bottom:2rem}
+  .article-meta{display:flex;gap:2rem;flex-wrap:wrap}
+  .meta-item{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase}
+  .meta-label{color:var(--gold);display:block;margin-bottom:0.2rem}
+  .meta-val{color:rgba(250,247,242,0.55)}
+
+  /* PROSE */
+  .article-body{padding:4rem 0}
+  .prose p{font-size:1rem;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:1.4rem}
+  .prose p:first-child{font-size:1.1rem;color:var(--text);font-weight:400}
+  .prose h2{font-family:'Playfair Display',serif;font-size:1.7rem;
+    font-weight:600;color:var(--text);margin:2.5rem 0 1rem;line-height:1.25}
+  .prose h3{font-family:'Playfair Display',serif;font-size:1.2rem;
+    font-weight:600;color:var(--text);margin:2rem 0 0.75rem}
+  .prose strong{font-weight:500;color:var(--text)}
+  .divider{width:48px;height:2px;background:var(--gold);margin:1.5rem 0 2rem}
+
+  /* PULL QUOTE */
+  .pull-quote{border-left:3px solid var(--gold);padding:1.25rem 1.75rem;
+    margin:2.5rem 0;background:rgba(201,168,76,0.05)}
+  .pull-quote p{font-family:'Playfair Display',serif;font-size:1.15rem;
+    font-style:italic;color:var(--text);line-height:1.65;margin:0}
+  .pull-quote cite{font-family:'DM Mono',monospace;font-size:0.7rem;
+    letter-spacing:0.1em;color:var(--text-muted);display:block;margin-top:0.75rem;
+    text-transform:uppercase;font-style:normal}
+
+  /* DISCLAIMER / CITATION */
+  .disclaimer{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);
+    border-radius:2px;padding:1.25rem 1.75rem;display:flex;gap:1rem;margin:2rem 0}
+  .disclaimer p{font-size:0.82rem;color:var(--text-muted);line-height:1.65;font-weight:300}
+  .disclaimer strong{font-weight:500;color:var(--text-mid)}
+  .citation-box{background:var(--navy);border:1px solid var(--border);
+    border-radius:3px;padding:1.5rem 2rem;margin:3rem 0}
+  .citation-label{font-family:'DM Mono',monospace;font-size:0.68rem;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+  .citation-box p{font-size:0.88rem;color:rgba(250,247,242,0.6);line-height:1.7;font-weight:300;margin:0}
+  .citation-box a{color:var(--gold-light);text-decoration:none}
+  .citation-box a:hover{text-decoration:underline}
+
+  /* ═══ MEGATREND DASHBOARD ═══ */
+  .dashboard{background:var(--navy);padding:4rem 0;margin:3rem 0}
+  .dashboard-eyebrow{font-family:'DM Mono',monospace;font-size:0.72rem;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+  .dashboard-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);
+    font-weight:600;color:var(--cream);margin-bottom:0.4rem}
+  .dashboard-sub{font-size:0.875rem;color:rgba(250,247,242,0.4);
+    font-weight:300;margin-bottom:2.5rem;max-width:580px}
+
+  /* Megatrend cards */
+  .trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;margin-bottom:2.5rem}
+  .trend-card{background:rgba(255,255,255,0.03);padding:1.75rem 1.5rem;
+    border-top:2px solid transparent;transition:border-color 0.25s,background 0.25s;cursor:default}
+  .trend-card:hover{background:rgba(201,168,76,0.06);border-top-color:var(--gold)}
+  .trend-icon{width:42px;height:42px;border-radius:3px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;margin-bottom:1rem;background:rgba(255,255,255,0.05)}
+  .trend-name{font-family:'Playfair Display',serif;font-size:0.98rem;
+    font-weight:600;color:var(--cream);margin-bottom:0.5rem}
+  .trend-desc{font-size:0.8rem;color:rgba(250,247,242,0.5);line-height:1.65;font-weight:300}
+  .trend-stryker{font-family:'DM Mono',monospace;font-size:0.65rem;
+    letter-spacing:0.06em;color:var(--gold);margin-top:0.85rem;padding-top:0.75rem;
+    border-top:1px solid rgba(201,168,76,0.12)}
+
+  /* Stryker KPI dashboard */
+  .kpi-section{margin-bottom:2.5rem}
+  .kpi-section-label{font-family:'DM Mono',monospace;font-size:0.7rem;
+    letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px}
+  .kpi-card{background:rgba(255,255,255,0.04);padding:1.25rem 1.5rem;text-align:center}
+  .kpi-val{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;
+    color:var(--gold-light);line-height:1;margin-bottom:0.2rem}
+  .kpi-val.green{color:#7ed4a0}
+  .kpi-label{font-family:'DM Mono',monospace;font-size:0.65rem;
+    letter-spacing:0.08em;text-transform:uppercase;color:rgba(250,247,242,0.4)}
+  .kpi-sub{font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.2rem;font-weight:300}
+
+  /* Revenue segement bars */
+  .seg-bars{margin-bottom:2.5rem}
+  .seg-item{margin-bottom:1.25rem}
+  .seg-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.4rem}
+  .seg-name{font-size:0.85rem;color:rgba(250,247,242,0.75);font-weight:300}
+  .seg-stats{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--gold-light)}
+  .seg-track{height:10px;background:rgba(255,255,255,0.07);border-radius:5px;overflow:hidden}
+  .seg-fill{height:100%;border-radius:5px;width:0;transition:width 1.3s cubic-bezier(0.4,0,0.2,1)}
+  .seg-fill.medsurg{background:linear-gradient(90deg,#4a8ab5,#7eb8e8)}
+  .seg-fill.ortho{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+
+  /* Organic growth trend chart */
+  .growth-chart{margin-bottom:2rem}
+  .growth-bar-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem}
+  .growth-bar-label{font-family:'DM Mono',monospace;font-size:0.7rem;
+    letter-spacing:0.06em;color:rgba(250,247,242,0.5);width:60px;text-align:right;flex-shrink:0}
+  .growth-bar-track{flex:1;height:28px;background:rgba(255,255,255,0.05);
+    border-radius:3px;overflow:hidden;position:relative}
+  .growth-bar-fill{height:100%;border-radius:3px;width:0;
+    transition:width 1.2s cubic-bezier(0.4,0,0.2,1);
+    display:flex;align-items:center;justify-content:flex-end;padding-right:0.6rem}
+  .growth-bar-fill span{font-family:'DM Mono',monospace;font-size:0.7rem;
+    color:var(--navy);font-weight:600;white-space:nowrap}
+  .g-gold{background:linear-gradient(90deg,rgba(201,168,76,0.6),var(--gold))}
+  .g-green{background:linear-gradient(90deg,rgba(74,158,107,0.7),#7ed4a0)}
+
+  /* Screen pass panel */
+  .screen-pass{background:rgba(74,158,107,0.08);border:1px solid rgba(74,158,107,0.2);
+    border-radius:3px;padding:1.5rem 1.75rem;margin-top:1.5rem}
+  .screen-pass-title{font-family:'DM Mono',monospace;font-size:0.7rem;
+    letter-spacing:0.12em;text-transform:uppercase;color:#7ed4a0;margin-bottom:1rem}
+  .screen-pass-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+  .screen-item{display:flex;align-items:flex-start;gap:0.5rem;font-size:0.82rem;
+    color:rgba(250,247,242,0.65);line-height:1.5;font-weight:300}
+  .screen-item::before{content:'✓';color:#7ed4a0;font-weight:700;flex-shrink:0;margin-top:0.05rem}
+
+  /* Mako section */
+  .mako-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+    border-radius:3px;padding:1.75rem 2rem;margin-top:2rem}
+  .mako-label{font-family:'DM Mono',monospace;font-size:0.68rem;
+    letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+  .mako-box p{font-size:0.875rem;color:rgba(250,247,242,0.6);line-height:1.7;font-weight:300;margin:0}
+
+  /* Dashboard note */
+  .dashboard-note{font-size:0.72rem;color:rgba(250,247,242,0.28);font-weight:300;
+    margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06);line-height:1.65}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s,transform 0.7s}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* Footer */
+  footer{background:#080f18;padding:2rem 0;border-top:1px solid rgba(201,168,76,0.1)}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(250,247,242,0.5);text-decoration:none}
+  .footer-logo span{color:var(--gold)}
+  .footer-note{font-size:0.75rem;color:rgba(250,247,242,0.25);font-weight:300}
+
+  @media(max-width:680px){
+    .screen-pass-grid{grid-template-columns:1fr}
+    .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><svg width="28" height="28" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;vertical-align:middle"><circle cx="60" cy="60" r="42" fill="none" stroke="#c9a84c" stroke-width="3.5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/><text x="60" y="75" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="600" fill="#e8c97a">HA</text></svg>Hisham<span> Ahmed</span></a>
+    <a href="index.html#research" class="nav-back">All Research</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <p class="article-category">Thematic Investing · Medical Technology · Megatrends</p>
+    <h1 class="article-title">Where Megatrends<br><em>Meet Medicine</em></h1>
+    <p class="article-subtitle">
+      Five structural forces — demographic ageing, technological disruption, emerging-market
+      wealth, urbanisation, and rising healthcare spending — converge on a single company
+      that passes every screen: Stryker Corporation.
+    </p>
+    <div class="article-meta">
+      <div class="meta-item"><span class="meta-label">Author</span><span class="meta-val">Hisham Ahmed</span></div>
+      <div class="meta-item"><span class="meta-label">Published</span><span class="meta-val">May 2026</span></div>
+      <div class="meta-item"><span class="meta-label">Topic</span><span class="meta-val">SYK · Megatrend Analysis</span></div>
+      <div class="meta-item"><span class="meta-label">Read time</span><span class="meta-val">~10 minutes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+<div class="container">
+<div class="prose reveal">
+
+<p>
+  Thematic investing begins with a question: which structural forces are powerful enough,
+  durable enough, and broad enough that they will drive demand for specific goods and
+  services for decades — regardless of which political party is in power, which country
+  is growing fastest, or what the Federal Reserve does next? These forces are called
+  megatrends, and the best investment opportunities sit at the intersection of several
+  of them at once.
+</p>
+<p>
+  Stryker Corporation (NYSE: SYK) is one of the clearest examples of a company
+  positioned at exactly that intersection. It is a global medical-technology business
+  whose core products — robotic joint-replacement systems, surgical instruments,
+  neurosurgery tools, emergency medical equipment, and hospital beds — are demanded
+  more heavily as the world grows older, wealthier, more urban, and more technologically
+  sophisticated. The five megatrends examined below each independently support growing
+  demand for Stryker's products. Together, they make a structural case that is difficult
+  to dismiss.
+</p>
+<p>
+  This is not simply a thesis statement. Stryker's actual financial results — sourced
+  directly from its SEC filings — show that organic revenue has grown at double-digit
+  rates for multiple consecutive years. The business is not waiting for megatrends to
+  arrive. It is already harvesting them.
+</p>
+
+<div class="divider"></div>
+
+<h2>A Personal Note — and an Expensive Lesson in Incomplete Analysis</h2>
+
+<p>
+  My relationship with Stryker started in 2003. I was in my third year of an
+  undergraduate degree in finance — specifically enrolled in
+  <strong>72-371, Intermediate Finance</strong>. The course included a project that
+  has stayed with me ever since: research a publicly traded company, apply both
+  technical and fundamental analysis, and arrive at a fair value for the stock.
+</p>
+<p>
+  I chose Stryker. I remember wrestling to finish the assignment on time — the kind of
+  deadline pressure that makes you reach for the fastest available tools rather than
+  the most rigorous ones. What I reached for, heavily, were charts. Technicals. I
+  looked at price patterns, moving averages, support and resistance levels. The
+  fundamental analysis I applied was thin by comparison — some basic ratio work,
+  a rough valuation. When I assembled everything, my conclusion was that Stryker
+  was worth <strong>approximately $45 per share</strong> — and that at where it
+  was trading, it was overvalued and not worth buying.
+</p>
+<p>
+  An overvalued stock, I reasoned, was a stock to avoid. I had talked myself out of
+  it. I moved on.
+</p>
+<p>
+  I think about that assignment often. The actual closing market price of Stryker
+  at year-end 2003 was <strong>$85.01 per share</strong> (pre-2004 split), which is
+  <strong>$42.51</strong> on a post-split equivalent basis. My $45 estimate was
+  barely above that — close enough that a more confident analyst might even have
+  called it cheap. Instead I read it as fully priced, decided it had nothing to
+  offer, and passed. And then the stock proceeded to compound for two decades. The
+  market was not wrong. My model was just standing still — frozen on a single
+  number while the business underneath it kept moving.
+</p>
+
+<!-- WHAT $100 BECAME -->
+<div style="background:var(--navy);border:1px solid var(--border);border-radius:4px;padding:2rem 2.25rem;margin:2.5rem 0">
+  <p style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">The Cost of the Assignment · 2003 → 2026</p>
+
+  <!-- Top stat row -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;margin-bottom:2rem">
+    <div style="background:rgba(201,168,76,0.06);padding:1.25rem 1.5rem;text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,247,242,0.4);margin-bottom:0.4rem">Actual market price · YE 2003</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--cream);line-height:1">$85.01</div>
+      <div style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.3rem;font-weight:300">pre-2004 split · $42.51 post-split equiv.</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.06);padding:1.25rem 1.5rem;text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,247,242,0.4);margin-bottom:0.4rem">My fair-value estimate · 2003</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--gold-light);line-height:1">$45</div>
+      <div style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.3rem;font-weight:300">judged overvalued — I passed</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.06);padding:1.25rem 1.5rem;text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,247,242,0.4);margin-bottom:0.4rem">Current price · May 2026</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--cream);line-height:1">$285</div>
+      <div style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.3rem;font-weight:300">approx. (investing.com)</div>
+    </div>
+    <div style="background:rgba(74,158,107,0.1);padding:1.25rem 1.5rem;text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#7ed4a0;margin-bottom:0.4rem">$100 → price only</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:#7ed4a0;line-height:1">$670</div>
+      <div style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.3rem;font-weight:300">+$570 · +570%</div>
+    </div>
+    <div style="background:rgba(74,158,107,0.15);padding:1.25rem 1.5rem;text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#7ed4a0;margin-bottom:0.4rem">$100 → dividends reinvested</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:#7ed4a0;line-height:1">~$862</div>
+      <div style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.3rem;font-weight:300">+~$762 · +~762% (estimated)</div>
+    </div>
+  </div>
+
+  <!-- CAGR comparison bar chart -->
+  <p style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">Annual Compounding Rate · 23 Years (2003–2026)</p>
+
+  <div style="margin-bottom:0.85rem">
+    <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem">
+      <span style="font-size:0.82rem;color:rgba(250,247,242,0.7);font-weight:300">SYK — price appreciation only</span>
+      <span style="font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--gold-light)">8.6% CAGR</span>
+    </div>
+    <div style="height:10px;background:rgba(255,255,255,0.07);border-radius:5px;overflow:hidden">
+      <div class="cagr-bar" data-w="83%" style="height:100%;border-radius:5px;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:0;transition:width 1.3s cubic-bezier(0.4,0,0.2,1)"></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:0.85rem">
+    <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem">
+      <span style="font-size:0.82rem;color:rgba(250,247,242,0.7);font-weight:300">SYK — total return (dividends reinvested, estimated)</span>
+      <span style="font-family:'DM Mono',monospace;font-size:0.78rem;color:#7ed4a0">~9.8% CAGR</span>
+    </div>
+    <div style="height:10px;background:rgba(255,255,255,0.07);border-radius:5px;overflow:hidden">
+      <div class="cagr-bar" data-w="95%" style="height:100%;border-radius:5px;background:linear-gradient(90deg,rgba(74,158,107,0.7),#7ed4a0);width:0;transition:width 1.4s cubic-bezier(0.4,0,0.2,1)"></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:1.25rem">
+    <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem">
+      <span style="font-size:0.82rem;color:rgba(250,247,242,0.5);font-weight:300">S&amp;P 500 total return benchmark (estimated, same period)</span>
+      <span style="font-family:'DM Mono',monospace;font-size:0.78rem;color:rgba(250,247,242,0.5)">~10.3% CAGR</span>
+    </div>
+    <div style="height:10px;background:rgba(255,255,255,0.07);border-radius:5px;overflow:hidden">
+      <div class="cagr-bar" data-w="100%" style="height:100%;border-radius:5px;background:rgba(126,184,232,0.5);width:0;transition:width 1.3s cubic-bezier(0.4,0,0.2,1)"></div>
+    </div>
+  </div>
+
+  <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:2px;padding:1rem 1.25rem">
+    <p style="font-size:0.8rem;color:rgba(250,247,242,0.55);line-height:1.7;font-weight:300;margin:0">
+      <strong style="color:rgba(250,247,242,0.75);font-weight:500">Methodology note.</strong>
+      Actual YE 2003 market price: $85.01 (pre-2004 split), sourced from 1stock1.com
+      historical yearly price data. Post-2004-split equivalent: $42.51. The $100 return
+      calculation uses $42.51 as the entry price (post-split adjusted) and ~$285 as the
+      current price (investing.com, May 2026, intraday range $281.98–$286.34).
+      Price-only return uses capital appreciation alone. Dividend estimate assumes ~1.1%
+      average annual yield reinvested over 23 years — consistent with Stryker's historical
+      payout profile. S&P 500 benchmark is an approximation using ~10.3% long-run total
+      return CAGR.
+      <strong style="color:rgba(250,247,242,0.75);font-weight:500">These figures are for illustrative purposes only — not investment advice.</strong>
+    </p>
+  </div>
+</div>
+
+<p>
+  The story has a sting in the tail that is worth being honest about. Using the
+  actual year-end 2003 market price of $42.51 (post-split equivalent) as the entry
+  point, Stryker's price appreciation over 23 years delivers an 8.6% CAGR —
+  <em>below</em> the S&P 500's estimated total return of ~10.3% over the same period.
+  With dividends reinvested, the total return rises to an estimated 9.8% CAGR — still
+  slightly below the index. On the numbers, the market was not obviously wrong to
+  price Stryker where it did in 2003 — and neither, it turns out, was my $45 estimate
+  badly off. A well-run business priced about right and delivering close-to-index
+  compounding is exactly what a quality screen is supposed to find —
+  not a hidden 10-bagger, but a durable, lower-volatility compounder that earns its
+  keep over decades.
+</p>
+<p>
+  The real cost of the assignment was not missing a 10-bagger. It was the habit of
+  thinking it encouraged: that a stock trading near your estimated fair value is
+  overvalued, finished, nothing left to offer. Static fair value analysis — the kind
+  you get from a DCF using conservative assumptions and no structural growth thesis —
+  hands you a single number and tempts you to treat it as a verdict. It systematically
+  blinds you to businesses whose growth runway is long, whose competitive position
+  strengthens over time, and whose demand is driven by forces that compound
+  alongside demographics. In 2003, the US population aged 65 and over was roughly
+  35 million. By 2026, that number is approaching 60 million. That is not a surprise.
+  That was always in the data. It just required macro-trend thinking to see it —
+  and I had let a static price target talk me out of looking.
+</p>
+<p>
+  Had I leaned harder on fundamental analysis — free cash flow margins, reinvestment
+  rate, competitive moat — and incorporated the demographic and technological
+  tailwinds that were already clearly in motion, I would likely have arrived at a
+  materially higher fair value. Not because the assumptions would have been aggressive,
+  but because they would have been honest about what the business was actually capable of.
+</p>
+
+<div class="pull-quote">
+  <p>"The $45 fair value wasn't wrong because the model was broken.
+  It was wrong because the model was standing still in a world
+  that was already moving."</p>
+  <cite>— Hisham Ahmed, reflecting on 72-371 Intermediate Finance, 2003</cite>
+</div>
+
+<div class="divider"></div>
+
+</div>
+</div>
+
+<!-- ═══ MEGATREND DASHBOARD ═══ -->
+<div class="dashboard">
+<div class="container--wide">
+
+  <p class="dashboard-eyebrow">Original Analysis Dashboard</p>
+  <h2 class="dashboard-title">Five Megatrends. One Convergence Point.</h2>
+  <p class="dashboard-sub">How structural global forces create durable, compounding demand for Stryker's product portfolio</p>
+
+  <!-- FIVE TREND CARDS -->
+  <div class="trend-grid reveal">
+    <div class="trend-card">
+      <div class="trend-icon">👴</div>
+      <p class="trend-name">Demographic Ageing</p>
+      <p class="trend-desc">By 2050, 1 in 6 people globally will be over 65. The 65+ cohort is the primary consumer of joint replacements, implants, and surgical procedures. This demand is actuarial — it cannot be cancelled, deferred indefinitely, or disrupted by software.</p>
+      <p class="trend-stryker">→ Stryker: Direct driver of orthopaedic volume growth</p>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">🤖</div>
+      <p class="trend-name">Technological Disruption</p>
+      <p class="trend-desc">Robotics and AI are transforming surgery. Stryker's Mako robotic system is one of the most widely adopted surgical robots in orthopaedics globally — positioned on the right side of the disruption rather than threatened by it.</p>
+      <p class="trend-stryker">→ Stryker: Mako installed base drives recurring instrument & implant revenue</p>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">🌍</div>
+      <p class="trend-name">Emerging Market Wealth</p>
+      <p class="trend-desc">As per-capita income rises in Asia, Latin America, and the Middle East, access to elective medical procedures expands. Joint replacements are highly income-elastic — a procedure aspirational middle-class populations seek as soon as they can afford it.</p>
+      <p class="trend-stryker">→ Stryker: International segment growing; EM exposure is a long-run tailwind</p>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">🏙️</div>
+      <p class="trend-name">Rapid Urbanisation</p>
+      <p class="trend-desc">By 2050, 2.5 billion more people will live in cities than today. Urban populations have better access to hospitals and specialist surgeons. Urbanisation directly expands the addressable market for elective and semi-elective surgical procedures.</p>
+      <p class="trend-stryker">→ Stryker: Hospital infrastructure growth expands procedure access</p>
+    </div>
+    <div class="trend-card">
+      <div class="trend-icon">🏥</div>
+      <p class="trend-name">Rising Healthcare Spending</p>
+      <p class="trend-desc">Healthcare as a share of GDP has risen in nearly every developed economy for 50 years. Ageing populations, technological capability, and rising expectations make this structural, not cyclical. Medical-device companies sit inside this spending growth.</p>
+      <p class="trend-stryker">→ Stryker: Capital equipment, consumables, and implants all benefit</p>
+    </div>
+  </div>
+
+  <!-- KPI DASHBOARD (from SEC filings) -->
+  <div class="kpi-section reveal" style="transition-delay:0.1s">
+    <p class="kpi-section-label">Stryker Corporation — Key Financial Metrics (Source: SEC 8-K Filings)</p>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-val">$25.1B</div>
+        <div class="kpi-label">FY2025 Revenue</div>
+        <div class="kpi-sub">+11.2% year-over-year</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val green">10.2%</div>
+        <div class="kpi-label">FY2025 Organic Growth</div>
+        <div class="kpi-sub">Volume-led; minimal price contribution</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">65%</div>
+        <div class="kpi-label">Gross Margin</div>
+        <div class="kpi-sub">Consistent 63–65% range</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val green">~10%+</div>
+        <div class="kpi-label">Organic Growth Streak</div>
+        <div class="kpi-sub">Multiple consecutive years double-digit</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">$142B</div>
+        <div class="kpi-label">Market Capitalisation</div>
+        <div class="kpi-sub">As of 2026 (approx.)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">21%</div>
+        <div class="kpi-label">Adj. Operating Margin</div>
+        <div class="kpi-sub">Q1 2026 adjusted basis</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUE SEGMENTS -->
+  <div class="seg-bars reveal" style="transition-delay:0.15s">
+    <p class="kpi-section-label">Revenue Segments — FY2025 Full Year</p>
+    <div class="seg-item">
+      <div class="seg-header">
+        <span class="seg-name">MedSurg &amp; Neurotechnology</span>
+        <span class="seg-stats">$15.6B &nbsp;·&nbsp; Organic +10.7% &nbsp;·&nbsp; 62% of revenue</span>
+      </div>
+      <div class="seg-track"><div class="seg-fill medsurg" data-w="62%"></div></div>
+    </div>
+    <div class="seg-item">
+      <div class="seg-header">
+        <span class="seg-name">Orthopaedics</span>
+        <span class="seg-stats">$9.5B &nbsp;·&nbsp; Organic +9.5% &nbsp;·&nbsp; 38% of revenue</span>
+      </div>
+      <div class="seg-track"><div class="seg-fill ortho" data-w="38%"></div></div>
+    </div>
+    <p style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.75rem;font-weight:300">
+      Both segments delivering high single-digit to low double-digit organic growth, volume-driven.
+      MedSurg includes surgical instruments, endoscopy, patient handling, emergency medical equipment.
+    </p>
+  </div>
+
+  <!-- ORGANIC GROWTH CHART -->
+  <div class="growth-chart reveal" style="transition-delay:0.2s">
+    <p class="kpi-section-label">Organic Revenue Growth by Quarter — Selected (Source: SEC 8-K)</p>
+    <div class="growth-bar-row">
+      <span class="growth-bar-label">Q2 2025</span>
+      <div class="growth-bar-track">
+        <div class="growth-bar-fill g-green" data-w="100%" style="max-width:100%"><span>10.2%</span></div>
+      </div>
+    </div>
+    <div class="growth-bar-row">
+      <span class="growth-bar-label">Q3 2025</span>
+      <div class="growth-bar-track">
+        <div class="growth-bar-fill g-gold" data-w="92.7%" style="max-width:100%"><span>9.5%</span></div>
+      </div>
+    </div>
+    <div class="growth-bar-row">
+      <span class="growth-bar-label">Q4 2025</span>
+      <div class="growth-bar-track">
+        <div class="growth-bar-fill g-green" data-w="123%" style="max-width:100%"><span>12.6%</span></div>
+      </div>
+    </div>
+    <div class="growth-bar-row">
+      <span class="growth-bar-label">FY2025</span>
+      <div class="growth-bar-track">
+        <div class="growth-bar-fill g-gold" data-w="100%" style="max-width:100%"><span>10.2% full year</span></div>
+      </div>
+    </div>
+    <div class="growth-bar-row">
+      <span class="growth-bar-label">Q1 2026</span>
+      <div class="growth-bar-track">
+        <div class="growth-bar-fill g-green" data-w="40%" style="max-width:100%"><span>4.1% organic (cyber recovery)</span></div>
+      </div>
+    </div>
+    <p style="font-size:0.72rem;color:rgba(250,247,242,0.3);margin-top:0.75rem;font-weight:300">
+      Q1 2026 organic growth was temporarily dampened by a cybersecurity incident.
+      Management confirmed full-year guidance maintained. Underlying business momentum described as strong.
+      Bar widths indexed to 10% = 100% for clarity.
+    </p>
+  </div>
+
+  <!-- SCREEN PASS PANEL -->
+  <div class="screen-pass reveal" style="transition-delay:0.25s">
+    <p class="screen-pass-title">✓ Screen Assessment — Stryker Corporation (SYK)</p>
+    <div class="screen-pass-grid">
+      <div class="screen-item">No gambling, alcohol, or weapons involvement</div>
+      <div class="screen-item">No banking, lending, or interest-revenue business line</div>
+      <div class="screen-item">No captive finance arm of material size</div>
+      <div class="screen-item">High gross margins (63–65%) — asset-light model</div>
+      <div class="screen-item">Consistent double-digit organic revenue growth</div>
+      <div class="screen-item">Volume-driven growth (not price inflation)</div>
+      <div class="screen-item">Operating cash flow expanding with revenue</div>
+      <div class="screen-item">Megatrend demand is structural, not cyclical</div>
+    </div>
+    <p style="font-size:0.78rem;color:rgba(250,247,242,0.4);margin-top:1rem;font-weight:300">
+      ⚠ Standard caveat: verify interest income as % of total revenue and debt-to-assets
+      ratio against your specific halal screening threshold (typically DJIM or AAOIFI criteria)
+      before including in a halal-mandated portfolio. The business model is clean; secondary
+      balance-sheet screening is the investor's responsibility.
+    </p>
+  </div>
+
+  <!-- MAKO BOX -->
+  <div class="mako-box reveal" style="transition-delay:0.3s">
+    <p class="mako-label">The Mako Advantage — Robotics Moat</p>
+    <p>
+      Stryker's Mako robotic surgical system deserves its own mention because it represents
+      exactly the kind of competitive moat that sustains pricing power and recurring revenue.
+      Once a hospital installs a Mako system, it becomes the platform around which surgical
+      workflows, training, and credentialing are organised. Surgeons become proficient on Mako.
+      Procedural protocols are written around it. The switching cost is not just financial —
+      it is institutional. Each Mako installation then drives a long tail of recurring revenue
+      from the implants, cutting accessories, disposables, and service contracts that only work
+      on the Mako platform. In Q1 2026, Stryker reorganised its Orthopaedics segment to bring
+      Mako, power tools, enabling technologies, and cutting accessories under a single
+      "Ortho Tech" business — a structural acknowledgment that the robotic platform is now
+      the core of the orthopaedics franchise, not an add-on to it.
+    </p>
+  </div>
+
+  <p class="dashboard-note">
+    Financial data sourced from Stryker Corporation SEC 8-K filings (Q2 2025, Q3 2025, Q4 2025 / FY2025 full year, Q1 2026).
+    Market capitalisation approximate as of 2026. Megatrend framework informed by BlackRock / iShares megatrend research series
+    and Visual Capitalist thematic analysis (see further reading). All figures in USD. This dashboard is original analysis.
+  </p>
+
+</div>
+</div>
+<!-- END DASHBOARD -->
+
+<div class="container">
+<div class="prose reveal">
+
+<h2>The Demographic Case — Demand That Cannot Be Disrupted</h2>
+<p>
+  The most powerful argument for Stryker is the simplest: joints wear out. The human
+  hip and knee are not designed for 80 years of use under modern conditions — sedentary
+  work followed by recreational sport, combined with rising rates of obesity and
+  increasing life expectancy. Osteoarthritis affects an estimated 500 million people
+  globally. The number of total hip and knee replacements performed annually is growing
+  at roughly 3–5% per year globally in volume terms, and demand for these procedures is
+  not sensitive to economic cycles in the way that, say, demand for a new car or a
+  holiday is. Pain and immobility are not discretionary inconveniences. They are medical
+  necessities, and increasingly, they are treated as such by patients and healthcare
+  systems alike.
+</p>
+<p>
+  What makes this demographic argument structural rather than simply temporal is the
+  age profile of the global population. The baby boom cohort — the largest generation
+  in history — is now entering its 70s and 80s, precisely the age range in which
+  joint-replacement procedures peak. <strong>This wave is not a forecast. It is
+  already in the population data.</strong> It will take 20 years to work through fully.
+  Any company with a leadership position in joint replacement technology is positioned
+  to harvest this demand for a generation.
+</p>
+
+<h2>The Mako Moat — Technology Working For Stryker, Not Against It</h2>
+<p>
+  One of the most common risks cited for medical-device companies is technological
+  disruption — the fear that robotic surgery, AI diagnostics, or some other innovation
+  will render their products obsolete. For Stryker, this risk is largely inverted.
+  Stryker is the disrupting technology. Its Mako robotic surgical platform is one of the
+  most widely adopted surgical robots in orthopaedics, and its installed base creates a
+  compounding economic advantage that is structural, not temporary.
+</p>
+<p>
+  The economics work as follows: Stryker sells or places a Mako system in a hospital.
+  The capital cost is significant — typically $1–2 million USD per unit — which creates
+  an immediate switching cost. The hospital then trains its surgeons on Mako, builds its
+  scheduling and credentialing processes around the platform, and begins performing
+  procedures. From that point, the hospital sources its implants, cutting accessories,
+  and disposables from Stryker — because only Stryker implants are designed and cleared
+  to work with the Mako system. The installed base becomes a recurring-revenue engine.
+  And critically, the clinical outcomes data from Mako procedures — better implant
+  alignment, reduced readmission rates, faster recovery — continues to strengthen the
+  evidence base that drives further hospital adoption.
+</p>
+
+<div class="pull-quote">
+  <p>"Stryker is not a company hoping robotics doesn't disrupt its implant business.
+  It is a company that owns the robot, the implant, the instrument, and the data —
+  and charges for all four."</p>
+  <cite>— Hisham Ahmed, Investment Thesis Notes</cite>
+</div>
+
+<h2>Screen Compatibility and the Halal Lens</h2>
+<p>
+  Stryker passes every exclusion screen cleanly. It has no involvement in gambling,
+  alcohol, or weapons. It is not a bank and has no lending business. It earns no
+  material financing or interest revenue. It operates in medical technology — an
+  unambiguously permissible sector under halal investment principles.
+</p>
+<p>
+  The secondary screening step — checking interest income as a proportion of total
+  revenue and leverage against the standard halal debt threshold — should be verified
+  against your specific framework (DJIM or AAOIFI criteria are the most widely used).
+  As with all holdings in this portfolio, incidental interest on corporate cash is
+  expected and does not in itself trigger exclusion; what matters is the ratio.
+  Given Stryker's scale and cash-generative model, this is unlikely to be a concern,
+  but the verification step is the investor's responsibility.
+</p>
+<p>
+  From a Fama-French factor perspective, Stryker would be expected to load positively
+  on RMW (profitability) — consistent with the portfolio's overall tilt — and roughly
+  neutral on HML given its growth-at-reasonable-price valuation. Its market beta has
+  historically been sub-1, reflecting the defensive characteristics of healthcare
+  demand. It belongs alongside Abbott in the portfolio as a healthcare name with
+  genuine structural growth, rather than as a defensive staple with flat cash flows.
+</p>
+
+<h2>Why It Is Not Yet in the Current Portfolio — and Why It Should Be Considered</h2>
+<p>
+  The 20-name portfolio presented in the main research was constructed before this
+  analysis was completed. Abbott (ABT) occupies the healthcare slot, and the data
+  from the factor regression shows Abbott's CFO CAGR at 3.9% — modest — and its
+  alpha at –2.2% annualised. Stryker's double-digit organic revenue growth and
+  consistent operating leverage suggest it would score more favourably on the CFO
+  quality screen. A rebalancing analysis that substitutes some or all of the Abbott
+  allocation toward Stryker — and checks the resulting portfolio's RMW loading and
+  CFO CAGR — is the logical next step for this portfolio.
+</p>
+<p>
+  It is also worth noting that Stryker's Q1 2026 organic growth of 4.1% was
+  temporarily suppressed by a cybersecurity incident — not a structural deterioration
+  in demand. Management maintained full-year guidance, and the underlying volume
+  trend in orthopaedics and MedSurg remained intact. A single-quarter disruption
+  does not change the megatrend thesis; if anything, the market's reaction to such
+  events can create entry opportunities.
+</p>
+
+<!-- CITATION -->
+<div class="citation-box">
+  <p class="citation-label">Further Reading &amp; Data Sources</p>
+  <p>
+    For a visual treatment of how macro megatrends shape market opportunities, including
+    demographic change, technological disruption, emerging market wealth, and urbanisation:<br><br>
+    <a href="https://www.visualcapitalist.com/how-macro-trends-shape-the-markets-future/" target="_blank" rel="noopener">
+      "How Macro Trends Shape the Market's Future" — Visual Capitalist
+    </a><br>
+    <span style="font-size:0.8rem;color:rgba(250,247,242,0.35)">visualcapitalist.com · Original dashboard and megatrend framework</span><br><br>
+    Financial data in this article is sourced directly from Stryker Corporation SEC 8-K filings available at
+    <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000310764" target="_blank" rel="noopener">SEC EDGAR (CIK 0000310764)</a>.
+  </p>
+</div>
+
+<div class="disclaimer">
+  <span style="color:var(--gold);flex-shrink:0;margin-top:0.1rem">⚠</span>
+  <p>
+    <strong>Not investment advice.</strong> This article is for informational and educational purposes only.
+    It reflects independent analysis of publicly available information and SEC filings.
+    Nothing here constitutes a recommendation to buy or sell any security.
+    Past revenue growth and factor loadings do not guarantee future performance.
+    Consult a licensed financial advisor and conduct your own due diligence before any investment decision.
+  </p>
+</div>
+
+</div>
+</div>
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Hisham<span> Ahmed</span></a>
+    <p class="footer-note">© 2026. Independent research. Not investment advice.</p>
+    <a href="index.html#research" class="nav-back" style="color:rgba(250,247,242,0.35);font-size:0.75rem;text-decoration:none">← All Research</a>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => {
+    e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }});
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const barObs = new IntersectionObserver(e => {
+    e.forEach(x => {
+      if(x.isIntersecting){
+        x.target.querySelectorAll('[data-w]').forEach((b,i) => {
+          setTimeout(() => b.style.width = b.dataset.w, i * 100);
+        });
+        barObs.unobserve(x.target);
+      }
+    });
+  }, {threshold:0.25});
+  document.querySelectorAll('.kpi-section, .seg-bars, .growth-chart').forEach(el => barObs.observe(el));
+
+  // Animate the CAGR bars in the personal story box
+  const cagrObs = new IntersectionObserver(e => {
+    e.forEach(x => {
+      if(x.isIntersecting){
+        x.target.querySelectorAll('.cagr-bar').forEach((b,i) => {
+          setTimeout(() => b.style.width = b.dataset.w, 200 + i * 150);
+        });
+        cagrObs.unobserve(x.target);
+      }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('[style*="background:var(--navy)"][style*="border-radius:4px"]').forEach(el => cagrObs.observe(el));
+  // Also catch by class if needed
+  document.querySelectorAll('.cagr-bar').forEach(b => {
+    const parent = b.closest('[style]');
+    if(parent) cagrObs.observe(parent);
+  });
+</script>
+</body>
+</html>

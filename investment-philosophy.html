@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMTIwJz48cmVjdCB3aWR0aD0nMTIwJyBoZWlnaHQ9JzEyMCcgcng9JzE4JyBmaWxsPScjMGQxYjJhJy8+PGNpcmNsZSBjeD0nNjAnIGN5PSc2MCcgcj0nNDInIGZpbGw9J25vbmUnIHN0cm9rZT0nI2M5YTg0Yycgc3Ryb2tlLXdpZHRoPSc0Jy8+PHRleHQgeD0nNjAnIHk9Jzc2JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc0NCcgZm9udC13ZWlnaHQ9JzcwMCcgZmlsbD0nI2U4Yzk3YSc+SEE8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Philosophy | Hisham Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d1b2a;--navy-mid:#1a2e45;--navy-light:#243d57;
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-pale:#f5e9c8;
+  --cream:#faf7f2;--white:#fff;
+  --text:#1a1a2e;--text-mid:#3d4a5c;--text-muted:#6b7a90;
+  --border:rgba(201,168,76,0.18);--border-light:rgba(0,0,0,0.07);
+  --green:#4a9e6b;--red:#e05a4a;--blue:#4a8ab5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+.container{max-width:960px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.container--wide{max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;
+  height:64px;max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:0.8rem;color:rgba(250,247,242,0.6);text-decoration:none;
+  letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back:hover{color:var(--gold-light)}
+.nav-back::before{content:'←'}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:116px 0 72px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;opacity:0.035;
+  background-image:linear-gradient(var(--gold) 1px,transparent 1px),
+  linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow-l{position:absolute;top:-80px;left:-120px;width:500px;height:500px;
+  border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 65%)}
+.hero-glow-r{position:absolute;bottom:-120px;right:-80px;width:600px;height:600px;
+  border-radius:50%;background:radial-gradient(circle,rgba(74,138,181,0.04) 0%,transparent 65%)}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.6rem);
+  font-weight:700;line-height:1.08;color:var(--cream);margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-lead{font-size:1.1rem;color:rgba(250,247,242,0.65);max-width:640px;
+  line-height:1.8;font-weight:300;margin-bottom:2.5rem}
+.hero-principles{display:flex;gap:2rem;flex-wrap:wrap;
+  padding-top:2rem;border-top:1px solid rgba(201,168,76,0.15)}
+.principle{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(250,247,242,0.45);
+  display:flex;align-items:center;gap:0.5rem}
+.principle::before{content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0}
+
+/* ── GENERAL ── */
+.section{padding:clamp(3.5rem,7vw,6rem) 0}
+.section--dark{background:var(--navy)}
+.section--white{background:var(--white)}
+.section--cream{background:var(--cream)}
+.eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.65rem}
+.section-title{font-family:'Playfair Display',serif;
+  font-size:clamp(1.65rem,3.5vw,2.4rem);font-weight:600;line-height:1.2;margin-bottom:0.75rem}
+.section-title em{font-style:italic;color:var(--text-muted)}
+.dark-title{color:var(--cream)}
+.dark-title em{color:var(--gold-light);font-style:italic}
+.divider{width:44px;height:2px;background:var(--gold);margin:1.1rem 0 2rem}
+.prose p{font-size:1rem;line-height:1.85;color:var(--text-mid);
+  font-weight:300;margin-bottom:1.35rem}
+.prose p:first-child{font-size:1.05rem;color:var(--text);font-weight:400}
+.prose strong{font-weight:500;color:var(--text)}
+
+/* ── PHILOSOPHY STATEMENT ── */
+.phil-statement{background:var(--navy);border-left:3px solid var(--gold);
+  padding:2rem 2.25rem;margin:3rem 0;position:relative}
+.phil-statement::before{content:'❝';position:absolute;top:0.75rem;right:1.25rem;
+  font-size:3rem;color:rgba(201,168,76,0.15);font-family:'Playfair Display',serif;line-height:1}
+.phil-statement p{font-family:'Playfair Display',serif;font-size:1.15rem;
+  font-style:italic;color:var(--cream);line-height:1.7;margin:0;font-weight:400}
+.phil-statement cite{font-family:'DM Mono',monospace;font-size:0.68rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);
+  display:block;margin-top:0.9rem;font-style:normal}
+
+/* ── THREE-LAYER FRAMEWORK ── */
+.framework-layers{display:flex;flex-direction:column;gap:0;margin:2.5rem 0}
+.layer{display:grid;grid-template-columns:52px 1fr;gap:1.5rem;
+  padding:1.75rem 0;border-bottom:1px solid var(--border-light);align-items:start}
+.layer:last-child{border-bottom:none}
+.layer-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;
+  color:rgba(201,168,76,0.25);line-height:1;padding-top:0.15rem}
+.layer-content h3{font-family:'Playfair Display',serif;font-size:1.15rem;
+  font-weight:600;color:var(--text);margin-bottom:0.4rem}
+.layer-content p{font-size:0.9rem;line-height:1.75;color:var(--text-muted);
+  font-weight:300;margin:0}
+.layer-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.55rem;
+  border-radius:2px;margin-bottom:0.5rem}
+.tag-ethics{background:rgba(74,158,107,0.12);color:var(--green)}
+.tag-beta{background:rgba(201,168,76,0.12);color:var(--gold)}
+.tag-alpha{background:rgba(74,138,181,0.12);color:var(--blue)}
+
+/* ── CORE-PLUS-SATELLITE VISUAL ── */
+.cs-visual{margin:3rem 0;position:relative}
+.cs-arc-labels{display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:1.5rem;gap:1rem;flex-wrap:wrap}
+.cs-arc-label{text-align:center;flex:1;min-width:140px}
+.cs-arc-pct{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;
+  color:var(--gold-light);line-height:1;display:block}
+.cs-arc-name{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--gold);display:block;margin-top:0.25rem}
+.cs-arc-desc{font-size:0.8rem;color:rgba(250,247,242,0.5);margin-top:0.3rem;font-weight:300;line-height:1.5}
+.cs-bar{height:12px;border-radius:6px;background:rgba(255,255,255,0.07);overflow:hidden;margin-bottom:2rem}
+.cs-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 65%,rgba(74,138,181,0.7) 65%,var(--blue) 100%)}
+
+/* ── BOTTOM-UP PROCESS STEPS ── */
+.process-steps{counter-reset:step;display:flex;flex-direction:column;gap:0}
+.process-step{display:grid;grid-template-columns:1px 1fr;gap:1.75rem;
+  padding-bottom:2.25rem;position:relative}
+.process-step:last-child{padding-bottom:0}
+.process-step::before{content:'';position:absolute;left:0;top:28px;bottom:0;
+  width:1px;background:rgba(201,168,76,0.2)}
+.process-step:last-child::before{display:none}
+.step-connector{position:relative}
+.step-dot{width:28px;height:28px;border-radius:50%;
+  border:2px solid var(--gold);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  position:absolute;left:-14px;top:0;flex-shrink:0;
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold);font-weight:500}
+.step-body{padding-left:1.5rem}
+.step-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.step-body h3{font-family:'Playfair Display',serif;font-size:1.1rem;
+  font-weight:600;color:var(--cream);margin-bottom:0.6rem}
+.step-body p{font-size:0.875rem;line-height:1.75;color:rgba(250,247,242,0.6);
+  font-weight:300;margin:0}
+.step-body ul{padding-left:1rem;margin-top:0.6rem}
+.step-body li{font-size:0.875rem;line-height:1.7;color:rgba(250,247,242,0.55);
+  font-weight:300;margin-bottom:0.3rem}
+.step-highlight{background:rgba(201,168,76,0.07);border-left:2px solid var(--gold);
+  padding:0.75rem 1rem;margin-top:0.75rem;border-radius:2px}
+.step-highlight p{font-size:0.82rem;color:rgba(250,247,242,0.65);
+  line-height:1.65;margin:0;font-weight:300}
+
+/* ── WHY BOTTOM-UP MATTERS ── */
+.contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:2rem 0}
+.contrast-col{padding:1.75rem}
+.contrast-col--bad{background:rgba(224,90,74,0.06);border:1px solid rgba(224,90,74,0.15)}
+.contrast-col--good{background:rgba(74,158,107,0.06);border:1px solid rgba(74,158,107,0.15)}
+.contrast-label{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:0.75rem}
+.contrast-col--bad .contrast-label{color:var(--red)}
+.contrast-col--good .contrast-label{color:var(--green)}
+.contrast-col h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;
+  margin-bottom:0.75rem;color:var(--text)}
+.contrast-col ul{padding-left:1rem}
+.contrast-col li{font-size:0.875rem;color:var(--text-muted);line-height:1.7;
+  font-weight:300;margin-bottom:0.3rem}
+
+/* ── INTEGRATION POINTS ── */
+.integration-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;margin:2rem 0}
+.integration-card{background:var(--white);padding:1.75rem;border-top:3px solid transparent;
+  transition:border-color 0.25s}
+.integration-card:hover{border-top-color:var(--gold)}
+.int-icon{font-size:1.4rem;margin-bottom:0.9rem;display:block}
+.int-card-label{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem}
+.integration-card h4{font-family:'Playfair Display',serif;font-size:1rem;
+  font-weight:600;color:var(--text);margin-bottom:0.6rem}
+.integration-card p{font-size:0.85rem;color:var(--text-muted);line-height:1.7;font-weight:300;margin:0}
+
+/* ── DISCLAIMER ── */
+.disclaimer{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);
+  border-radius:2px;padding:1.1rem 1.5rem;display:flex;gap:0.75rem;margin:2.5rem 0}
+.disclaimer p{font-size:0.8rem;color:var(--text-muted);line-height:1.65;font-weight:300}
+.disclaimer strong{font-weight:500;color:var(--text-mid)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.65s,transform 0.65s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:#080f18;padding:2rem 0;border-top:1px solid rgba(201,168,76,0.1)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(250,247,242,0.5);text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-note{font-size:0.75rem;color:rgba(250,247,242,0.25);font-weight:300}
+
+@media(max-width:640px){
+  .contrast-grid{grid-template-columns:1fr}
+  .hero-principles{gap:1rem}
+  .cs-arc-labels{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><svg width="28" height="28" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;vertical-align:middle"><circle cx="60" cy="60" r="42" fill="none" stroke="#c9a84c" stroke-width="3.5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/><text x="60" y="75" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="600" fill="#e8c97a">HA</text></svg>Hisham<span> Ahmed</span></a>
+    <a href="index.html" class="nav-back">Home</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow-l"></div>
+  <div class="hero-glow-r"></div>
+  <div class="container">
+    <p class="hero-eyebrow">Investment Philosophy</p>
+    <h1>A Principled Framework<br>for <em>Purposeful</em> Investing</h1>
+    <p class="hero-lead">
+      Good portfolio construction is not just about picking stocks. It is about
+      building a coherent architecture — one where every layer has a defined role,
+      every security is selected with purpose, and the overall structure reflects
+      both your values and your understanding of how markets actually work.
+      This is mine.
+    </p>
+    <div class="hero-principles">
+      <span class="principle">Halal &amp; ethically screened</span>
+      <span class="principle">Core ETF + stock satellites</span>
+      <span class="principle">Curiosity-led, conviction-weighted</span>
+      <span class="principle">Factor-model validated</span>
+      <span class="principle">Cash-flow quality focused</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 1: THE PHILOSOPHY ═══ -->
+<section class="section section--white">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">The Foundation</p>
+    <h2 class="section-title">Why a Framework Matters<br><em>Before Stock Selection</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="prose reveal" style="transition-delay:0.1s">
+    <p>
+      Most investors start with stocks. They hear about a company, read an article,
+      notice a product they use every day, and decide to invest. That is not a
+      strategy — it is pattern-matching dressed as analysis. A genuine investment
+      framework starts one layer above the individual security and asks a harder
+      question: <strong>what structure should a portfolio have, and why?</strong>
+    </p>
+    <p>
+      My answer to that question is a core-plus-satellite structure — certified halal
+      ETFs at the core, individual stocks I research and cover as the satellites —
+      combined with a disciplined halal screening process and a research practice that
+      draws on whatever lens the question demands — thematic, company-specific, or
+      simply curiosity-led. Each of these elements is independently important. Together,
+      they form an investment process that is systematic enough to be repeatable,
+      principled enough to reflect my values, and rigorous enough to withstand
+      scrutiny.
+    </p>
+    <p>
+      The framework is not a black box. Every decision has a rationale, every screen
+      has a clear definition, and every stock in the satellite layer has been
+      assessed against the same quality criteria — regardless of how it first
+      crossed my desk. The goal is to build something that makes sense in writing —
+      because if you cannot explain exactly why a company belongs in your portfolio,
+      it probably does not belong there.
+    </p>
+  </div>
+
+  <div class="phil-statement reveal" style="transition-delay:0.2s">
+    <p>
+      "Investing is not merely a financial act. For a Muslim investor, every security
+      in a portfolio is also a moral endorsement — a share in how a company earns its
+      money, treats its stakeholders, and engages with the world. The ethical mandate
+      is not a constraint on returns. It is the first principle from which everything
+      else follows."
+    </p>
+    <cite>— Hisham Ahmed, Investment Philosophy Notes</cite>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SECTION 2: THREE-LAYER STRUCTURE ═══ -->
+<section class="section section--cream">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">The Architecture</p>
+    <h2 class="section-title">Three Layers,<br><em>Each With a Defined Role</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;font-weight:300;max-width:580px;margin-bottom:0.5rem">
+      A well-constructed portfolio has layers that do different things. Conflating
+      them — expecting one stock to provide both broad diversification and targeted
+      alpha — leads to a portfolio that does neither well.
+    </p>
+  </div>
+  <div class="framework-layers reveal" style="transition-delay:0.1s">
+    <div class="layer">
+      <div class="layer-num">01</div>
+      <div class="layer-content">
+        <span class="layer-tag tag-ethics">Ethical foundation</span>
+        <h3>The Screening Layer — What the Portfolio Cannot Contain</h3>
+        <p>
+          Before any financial analysis begins, every individual stock I consider for
+          the satellite layer passes four exclusion screens: no gambling, no alcohol,
+          no war or weapons, no banks or companies earning revenue from lending or
+          interest. These are not preferences — they are non-negotiable conditions. A
+          company that fails any one of them is excluded, regardless of its financial
+          quality, its growth prospects, or how attractively it is priced. The screening
+          layer also applies a quantitative halal check: interest-bearing debt below 33%
+          of market capitalisation, and non-compliant income below 5% of total revenue.
+          Both the qualitative and quantitative screens must be satisfied. The core ETFs
+          are not exempt from this principle — they simply satisfy it differently: each
+          is a certified Shariah-compliant fund whose provider already applies an
+          equivalent exclusion-and-ratio screen to every holding. The ethical foundation
+          therefore governs the whole portfolio; I apply it directly to the stocks I pick
+          and rely on the funds' own certification for the core.
+        </p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">02</div>
+      <div class="layer-content">
+        <span class="layer-tag tag-beta">Core ETFs</span>
+        <h3>The Core Layer — Systematic Beta, Low Cost, Broad Diversification</h3>
+        <p>
+          Once the ethical foundation is established, the core layer provides broad,
+          low-cost exposure to the Shariah-screened investment universe. This is not
+          where active judgment is applied — it is where the portfolio captures
+          systematic market returns efficiently. Certified halal ETFs available to
+          Canadian investors — the S&P 500 Shariah, FTSE USA Shariah, and Dow Jones
+          Islamic families chief among them — fill this role. Because each fund is
+          already Shariah-certified, the core inherits the ethical screen by
+          construction. They diversify across hundreds of screened securities,
+          rebalance automatically, and cost a fraction of active management. The core
+          is typically 65–70% of the total portfolio. Its job is to ensure that even
+          if the satellites underperform, the portfolio still earns broad market-level
+          returns. It is the portfolio's insurance policy against the limits of
+          individual stock selection.
+        </p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">03</div>
+      <div class="layer-content">
+        <span class="layer-tag tag-alpha">Satellite stocks</span>
+        <h3>The Satellite Layer — Targeted Factor Tilts and Potential Alpha</h3>
+        <p>
+          The satellite layer is the individual stocks I cover — and where
+          my own analytical work does its most important job. These names are not
+          randomly selected halal-screened stocks. Ideas reach the satellites from
+          several directions: a structural theme I am following, a company someone
+          has asked me to look into, something I stumble on while reading, or plain
+          curiosity. Wherever an idea originates, it earns its place the same way —
+          by passing every ethical screen and then satisfying the quality bar: high
+          operating cash flow with a verifiable track record of organic growth. The
+          aim is to tilt the portfolio toward the profitability factor (RMW in the
+          Fama-French five-factor model) more deliberately than a broad ETF can,
+          because the ETF dilutes the factor across hundreds of names while the
+          satellites concentrate it in the highest-conviction compounders. This is the
+          portfolio's alpha engine, at 30–35% of total capital.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SECTION 3: CORE-PLUS-SATELLITE VISUAL ═══ -->
+<section class="section section--dark">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--gold)">Portfolio Structure</p>
+    <h2 class="section-title dark-title">The Core-Plus-Satellite<br><em>Architecture</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:rgba(250,247,242,0.55);line-height:1.8;
+      font-weight:300;max-width:580px;margin-bottom:2.5rem">
+      Each component has a specific function. The core provides stability and beta.
+      The satellites provide the quality tilt and potential outperformance.
+      Neither can do the other's job effectively.
+    </p>
+  </div>
+
+  <div class="cs-visual reveal" style="transition-delay:0.1s">
+    <div class="cs-arc-labels">
+      <div class="cs-arc-label">
+        <span class="cs-arc-pct">35%</span>
+        <span class="cs-arc-name">SPUS</span>
+        <span class="cs-arc-desc">US large-cap Shariah beta. Highest return track record in the halal ETF universe. Liquid. Low-cost. The primary beta engine.</span>
+      </div>
+      <div class="cs-arc-label">
+        <span class="cs-arc-pct">25%</span>
+        <span class="cs-arc-name">HLAL</span>
+        <span class="cs-arc-desc">Wahed FTSE USA Shariah. A purer-screened US complement to SPUS with better 2022 downside protection. Diversifies index methodology, not just holdings.</span>
+      </div>
+      <div class="cs-arc-label">
+        <span class="cs-arc-pct">5%</span>
+        <span class="cs-arc-name">SPSK</span>
+        <span class="cs-arc-desc">Sukuk (Islamic bonds). Income generation and equity volatility dampening. Optional — omit for full-equity mandates.</span>
+      </div>
+      <div class="cs-arc-label" style="border-left:1px solid rgba(201,168,76,0.2);padding-left:1.5rem">
+        <span class="cs-arc-pct" style="color:#7eb8e8">35%</span>
+        <span class="cs-arc-name" style="color:#7eb8e8">Satellites</span>
+        <span class="cs-arc-desc">Individually researched names — thematic, requested, or curiosity-led — each passing every screen with verified CFO growth. RMW (profitability) concentration. The alpha engine.</span>
+      </div>
+    </div>
+    <!-- allocation bar -->
+    <div style="margin-bottom:0.6rem;display:flex;justify-content:space-between">
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold);letter-spacing:0.08em">← CORE (65%)</span>
+      <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#7eb8e8;letter-spacing:0.08em">SATELLITES (35%) →</span>
+    </div>
+    <div class="cs-bar">
+      <div class="cs-bar-fill" style="width:100%"></div>
+    </div>
+
+    <!-- three principles -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px">
+      <div style="background:rgba(201,168,76,0.06);padding:1.4rem 1.5rem">
+        <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem">Core principle</p>
+        <p style="font-size:0.875rem;color:rgba(250,247,242,0.65);line-height:1.7;font-weight:300;margin:0">The core captures market returns at minimal cost. Even if the satellites underperform, you still own the broad Shariah market return. The core is the portfolio's floor, not its ceiling.</p>
+      </div>
+      <div style="background:rgba(201,168,76,0.06);padding:1.4rem 1.5rem">
+        <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem">Satellite principle</p>
+        <p style="font-size:0.875rem;color:rgba(250,247,242,0.65);line-height:1.7;font-weight:300;margin:0">Satellites are not diversification vehicles — the core handles that. Each position must earn a specific thesis: a quality screen it passes, a factor tilt it reinforces, a CFO growth record it can verify. How the idea arrived does not exempt it from the bar.</p>
+      </div>
+      <div style="background:rgba(201,168,76,0.06);padding:1.4rem 1.5rem">
+        <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem">Interaction principle</p>
+        <p style="font-size:0.875rem;color:rgba(250,247,242,0.65);line-height:1.7;font-weight:300;margin:0">The two layers work together: the core provides the breadth the satellites give up through concentration; the satellites provide the quality tilt the ETF dilutes through breadth. Neither alone achieves what both together do.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SECTION 4: HOW IDEAS ENTER THE SATELLITE LAYER ═══ -->
+<section class="section section--white">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">How Ideas Enter the Satellite Layer</p>
+    <h2 class="section-title">Many Doors In,<br><em>One Bar to Clear</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="prose reveal" style="transition-delay:0.1s">
+    <p>
+      Good ideas arrive from wherever they please
+      — a structural theme I have been following for years, a company a friend or
+      reader asks me to look into, a name that surfaces while I am researching
+      something else entirely, or simple curiosity about a business I keep
+      encountering. <strong>The origin of an idea says nothing about its quality.</strong>
+      What matters is what happens after it arrives.
+    </p>
+    <p>
+      So the question is not "top-down or bottom-up?" — both are lenses, and I use
+      whichever the question demands. A thematic lens is how I noticed that ageing
+      demographics and surgical robotics converge on one company; bottom-up analysis
+      is how I then confirmed whether that company actually deserved capital. The
+      theme opened the door. The filings decided whether the name stayed in the room.
+      Every idea, regardless of how it entered, must clear the same bar: pass every
+      ethical screen, demonstrate verifiable organic cash-flow growth, and survive
+      the factor check. That discipline is non-negotiable. The route in is not.
+    </p>
+  </div>
+
+  <!-- TWO COMPLEMENTARY LENSES -->
+  <div class="contrast-grid reveal" style="transition-delay:0.15s">
+    <div class="contrast-col contrast-col--good">
+      <p class="contrast-label">The thematic / discovery lens — where ideas originate</p>
+      <h4>Starts with a Question</h4>
+      <ul>
+        <li>Follows a structural theme — ageing demographics, electrification, surgical robotics — to the companies positioned to harvest it</li>
+        <li>Surfaces names raised by readers, peers, or specific requests to look into a business</li>
+        <li>Captures companies encountered while researching something else, or out of plain curiosity</li>
+        <li>Casts a wider net than a screen alone — it finds candidates a pure filter would never surface</li>
+        <li>Is explicitly a sourcing tool: it generates the candidate, it does not approve it</li>
+      </ul>
+    </div>
+    <div class="contrast-col contrast-col--good">
+      <p class="contrast-label">The bottom-up lens — where ideas are validated</p>
+      <h4>Confirms the Business</h4>
+      <ul>
+        <li>Opens the actual SEC 10-K / SEDAR+ annual filing before any position is taken</li>
+        <li>Reads the segment disclosures to verify no lending or interest revenue exists in any business line</li>
+        <li>Pulls the Statement of Cash Flows and verifies multi-year organic CFO growth — not just revenue growth</li>
+        <li>Examines the MD&amp;A to distinguish organic from acquired cash-flow growth</li>
+        <li>Runs the FF5 regression to check the stock loads positively on RMW (profitability)</li>
+        <li>Only then asks: does this belong in the portfolio, and at what weight?</li>
+      </ul>
+    </div>
+  </div>
+  <p class="prose reveal" style="transition-delay:0.2s;margin-top:1.75rem;font-size:0.95rem;color:var(--text-mid)">
+    The two lenses are sequential, not rival. The first finds candidates; the second
+    decides which deserve capital. A theme that never survives the filings is just a
+    story — and a filing read in isolation, with no sense of the forces moving the
+    business, can be just as blind. Used together, they are far stronger than either
+    on its own.
+  </p>
+</div>
+</section>
+
+<!-- ═══ SECTION 5: THE SEVEN-STEP PROCESS ═══ -->
+<section class="section section--dark">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--gold)">The Process</p>
+    <h2 class="section-title dark-title">Seven Steps from<br><em>Universe to Portfolio</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:rgba(250,247,242,0.5);line-height:1.8;font-weight:300;
+      max-width:580px;margin-bottom:3rem">
+      This is the exact sequence applied to every idea that reaches the satellite layer —
+      whatever door it came in through. No step is optional. A company that fails
+      any step does not proceed to the next.
+    </p>
+  </div>
+
+  <div class="process-steps reveal" style="transition-delay:0.1s">
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">01</div></div>
+      <div class="step-body">
+        <p class="step-label">Qualitative Exclusion Screen</p>
+        <h3>Does the business pass the four ethical screens?</h3>
+        <p>Every candidate is assessed against the four non-negotiable exclusions: gambling, alcohol, war and weapons, banking and lending. The check is applied at the business-model level — is this a primary activity? — not at the revenue-threshold level. A company whose core business fails any screen is rejected immediately, without proceeding to financial analysis.</p>
+        <div class="step-highlight">
+          <p><strong style="color:var(--gold-light)">Where most screens fail:</strong> The lending exclusion requires reading segment disclosures, not just sector classification. Shopify is classified as "technology" — but Shopify Capital lends money to merchants. Loblaw is classified as "consumer staples" — but PC Financial is a licensed lender. Sector codes do not catch these. The filing does.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">02</div></div>
+      <div class="step-body">
+        <p class="step-label">Quantitative Halal Screen</p>
+        <h3>Do the financial ratios satisfy the halal threshold?</h3>
+        <p>Interest-bearing debt must be below 33% of trailing 24-month average market capitalisation (DJIM/AAOIFI standard). Non-compliant income — interest on cash, any prohibited activity income — must be below 5% of total revenue. These are verified from the company's most recent annual report, not from a third-party screener whose methodology may differ.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">03</div></div>
+      <div class="step-body">
+        <p class="step-label">Cash Flow Quality Assessment</p>
+        <h3>Is operating cash flow high and organically growing?</h3>
+        <p>The Statement of Cash Flows from the SEC EDGAR filing (or SEDAR+ for Canadian companies) is pulled directly. Five years of annual operating cash flow (CFO) data are extracted and a CAGR is computed. This is the primary quality filter. A company with a CFO CAGR below 5% fails — not because it is a bad business, but because it does not satisfy the mandate's quality criterion.</p>
+        <ul>
+          <li>CFO must be consistently positive across the full five-year period — no single-year spikes</li>
+          <li>Organic vs acquired growth is assessed from the MD&A — a company growing CFO entirely through acquisition does not demonstrate organic compounding quality</li>
+          <li>Reported CFO is used, not free cash flow, adjusted EBITDA, or management's preferred metric</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">04</div></div>
+      <div class="step-body">
+        <p class="step-label">Balance Sheet &amp; Income Statement Quality</p>
+        <h3>Do the financial statements confirm durable quality?</h3>
+        <p>Two additional statement-level checks are applied before proceeding. The balance sheet is assessed for financial strength and capital discipline — low leverage, strong interest coverage, no material off-balance-sheet exposure. The income statement is assessed for revenue quality and margin durability — recurring or subscription revenue is preferred over transactional, and persistent divergence between reported earnings and operating cash flow is a disqualifying flag.</p>
+        <div class="step-highlight">
+          <p><strong style="color:var(--gold-light)">The earnings-vs-CFO divergence test:</strong> If a company consistently reports strong earnings but weak operating cash flow, something is wrong with the quality of those earnings — channel stuffing, aggressive revenue recognition, or non-cash charges masking real deterioration. CFO is harder to manipulate than earnings. It is the more honest measure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">05</div></div>
+      <div class="step-body">
+        <p class="step-label">Competitive Position Assessment</p>
+        <h3>Why will this company still be compounding in ten years?</h3>
+        <p>A company with a strong historical CFO track record is not automatically a strong future compounder. The business must have a structural reason to maintain its margins and market position — a switching-cost moat (Cintas), a network effect (Visa/Mastercard), a cost advantage (Dollarama/Grainger), or a unique asset (Franco-Nevada's royalty streams, Stryker's Mako installed base). This assessment is qualitative, not quantitative — but it is applied consistently and documented in the investment thesis before a position is taken.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">06</div></div>
+      <div class="step-body">
+        <p class="step-label">Fama-French Factor Validation</p>
+        <h3>Does the stock load positively on RMW (profitability)?</h3>
+        <p>The Fama-French five-factor model is used as a validation tool — not a stock picker. Each candidate's monthly returns are regressed on the five factors (Market, SMB, HML, RMW, CMA) using the Kenneth French Data Library factor series. The RMW (Robust Minus Weak) loading is the primary check: a significantly positive loading confirms that the stock's return history is consistent with the profitability factor that the satellite layer is designed to harvest. A negative or near-zero RMW loading on a candidate that passed the previous screens is a flag that warrants further investigation.</p>
+        <div class="step-highlight">
+          <p><strong style="color:var(--gold-light)">What this step cannot do:</strong> Factor regression is backward-looking. A positive past RMW loading does not guarantee future profitability — it confirms the stock's historical returns were consistent with the thesis. It is a validation tool, not a prediction. It is most useful for rejecting candidates that claim to be quality compounders but whose return history says otherwise.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-connector"><div class="step-dot">07</div></div>
+      <div class="step-body">
+        <p class="step-label">Portfolio Construction &amp; Weight Discipline</p>
+        <h3>Where does this name fit in the portfolio as a whole?</h3>
+        <p>A security that passes all six previous steps is not automatically added at an arbitrary weight. Each satellite position is sized relative to its conviction level, its correlation with the ETF core, and the overall factor tilts of the portfolio. Names that provide genuine diversification from the ETF core (different geography, different sector, lower tech correlation) receive modestly higher weights. Names that heavily overlap with the ETF core receive lower weights to avoid doubling up on the same exposure. The portfolio RMW loading is checked after each addition — the goal is to maintain a loading above +0.25.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ SECTION 6: HOW THIS CONNECTS ═══ -->
+<section class="section section--cream">
+<div class="container--wide">
+  <div class="reveal">
+    <p class="eyebrow">How It All Connects</p>
+    <h2 class="section-title">The Philosophy in<br><em>Practice — Published Research</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;font-weight:300;
+      max-width:600px;margin-bottom:2.5rem">
+      Each piece of published research on this site is a direct application of one
+      or more layers of this framework. The philosophy is not theoretical —
+      it is worked through in public.
+    </p>
+  </div>
+
+  <div class="integration-grid reveal" style="transition-delay:0.1s">
+    <div class="integration-card">
+      <span class="int-icon">🧱</span>
+      <p class="int-card-label">Ethical foundation + balance-sheet screen</p>
+      <h4>A Small-Cap Value Satellite Sleeve</h4>
+      <p>A worked example of the screens in practice — halal exclusions applied at the business-model level, a strict debt/equity &lt; 30% balance-sheet rule, and deep three-statement quality analysis on twelve names.</p>
+      <a href="smallcap-value-portfolio.html" style="display:inline-block;margin-top:1rem;font-size:0.8rem;color:var(--gold);text-decoration:none;letter-spacing:0.04em">Read →</a>
+    </div>
+    <div class="integration-card">
+      <span class="int-icon">📊</span>
+      <p class="int-card-label">Core ETF layer</p>
+      <h4>Halal ETF Comparison &amp; Model Portfolios</h4>
+      <p>Quantitative analysis of the five Canada-available halal ETFs — SPUS, HLAL, MNZL, SPSK and the CAD-denominated WSHR — across annual returns, since-inception CAGRs, drawdowns, concentration and cost, plus six model portfolios built on different ETF cores.</p>
+      <a href="halal-etf-comparison.html" style="display:inline-block;margin-top:1rem;font-size:0.8rem;color:var(--gold);text-decoration:none;letter-spacing:0.04em">Read →</a>
+    </div>
+    <div class="integration-card">
+      <span class="int-icon">🧮</span>
+      <p class="int-card-label">Satellite selection — all 7 steps</p>
+      <h4>Screened Equity Portfolio: 20 Holdings with FF5 Regression</h4>
+      <p>The complete large-cap satellite book — 20 US and Canadian names, each passing all four exclusion screens, with five-year CFO data from SEC EDGAR and Fama-French regression results confirming RMW +0.33.</p>
+      <a href="index.html#research" style="display:inline-block;margin-top:1rem;font-size:0.8rem;color:var(--gold);text-decoration:none;letter-spacing:0.04em">Read →</a>
+    </div>
+    <div class="integration-card">
+      <span class="int-icon">🏥</span>
+      <p class="int-card-label">Thematic lens, bottom-up validation</p>
+      <h4>Where Megatrends Meet Medicine: The Case for Stryker</h4>
+      <p>A single-company study that starts with a theme and tests it against the filings — megatrend drivers, SEC-sourced CFO and organic growth data, the Mako robotic moat, screen compatibility, and an honest account of how my own valuation thinking has changed.</p>
+      <a href="stryker-megatrends.html" style="display:inline-block;margin-top:1rem;font-size:0.8rem;color:var(--gold);text-decoration:none;letter-spacing:0.04em">Read →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SECTION 7: HONEST CAVEATS ═══ -->
+<section class="section section--white">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">What This Framework Cannot Do</p>
+    <h2 class="section-title">Honest Limits of<br><em>Any Systematic Process</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="prose reveal" style="transition-delay:0.1s">
+    <p>
+      A systematic framework eliminates many errors — emotional decisions, sector
+      fads, headline-driven trading, and the slow drift of a portfolio away from its
+      stated mandate. It does not eliminate all errors, and it is important to be
+      precise about what it cannot guarantee.
+    </p>
+    <p>
+      <strong>The CFO growth screen is backward-looking.</strong> A company with a
+      ten-year track record of 15% annual CFO growth has demonstrated quality — but
+      it has not guaranteed the next ten years. Business models change, competition
+      intensifies, and secular tailwinds fade. The screen selects the strongest
+      historical compounders; it cannot predict which ones will continue.
+    </p>
+    <p>
+      <strong>The factor regression is also backward-looking.</strong> An RMW loading
+      of +0.33 on the portfolio over 83 historical months confirms that the portfolio's
+      return history was consistent with a profitability tilt. It does not guarantee
+      that the same factor loading will persist, or that the profitability premium
+      will continue to be positive in future periods.
+    </p>
+    <p>
+      <strong>The halal screen captures what is visible in filings.</strong> A company
+      that begins a lending programme after its most recent annual report would pass
+      the screen until the next filing is reviewed. The screen is as current as the
+      last time the filings were read — which is why quarterly review is not optional.
+    </p>
+    <p>
+      <strong>The satellites may not outperform the core.</strong> The entire
+      rationale for holding 30–35% in individual stocks rather than adding to the ETF
+      core is the thesis that quality stock selection with a strong CFO mandate and
+      profitability factor tilt will generate incremental return above the ETF. That
+      is a thesis, tested by the regression, supported by academic evidence, but not
+      guaranteed. If three years of live tracking show the satellites consistently
+      underperforming the core, the honest response is to reduce the satellite allocation —
+      not to rationalise continued underperformance.
+    </p>
+  </div>
+
+  <div class="disclaimer reveal" style="transition-delay:0.2s">
+    <span style="color:var(--gold);flex-shrink:0;margin-top:0.05rem">⚠</span>
+    <p>
+      <strong>Not investment advice.</strong> This philosophy page describes my own
+      personal investment framework, developed for my own use. It is published for
+      educational and informational purposes only. Nothing here constitutes a
+      recommendation to adopt this approach, invest in any security mentioned, or
+      follow any specific allocation. Every investor's situation is different.
+      Consult a licensed financial advisor before making any investment decision.
+      Halal screening determinations should be independently verified against
+      current DJIM, AAOIFI, or your preferred Islamic finance authority's methodology.
+    </p>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Hisham<span> Ahmed</span></a>
+    <p class="footer-note">© 2026 · Independent research · Not investment advice</p>
+    <a href="index.html" class="nav-back" style="color:rgba(250,247,242,0.35);font-size:0.75rem;text-decoration:none">← Home</a>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => {
+    e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});
+  }, {threshold:0.09});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

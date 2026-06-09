@@ -1,0 +1,74 @@
+HA-CAPITAL RESEARCH SITE — DEPLOYMENT & CONTACT FORM SETUP
+==========================================================
+
+This folder contains your complete website plus the contact-form handler.
+Keep the folder structure exactly as-is — the functions/api/contact.js
+nesting is what makes the contact form work on Cloudflare Pages.
+
+FOLDER STRUCTURE
+----------------
+  index.html
+  investment-philosophy.html
+  halal-etf-comparison.html
+  stryker-megatrends.html
+  smallcap-value-portfolio.html
+  smallcap-findings.html
+  logo-mark.svg
+  functions/
+    api/
+      contact.js        <-- the form handler (runs on Cloudflare Pages)
+
+IMPORTANT: this must be deployed as a Cloudflare PAGES project (Direct
+Upload), NOT a static-assets Worker. A static Worker cannot run the
+functions/ folder and cannot store the secrets the form needs.
+
+------------------------------------------------------------------
+SETUP STEPS
+------------------------------------------------------------------
+
+1. RESEND (already mostly done)
+   - Your domain ha-capital.org is verified in Resend. Good.
+   - Create an API key in Resend: API Keys -> Create API Key
+     (Sending access is enough). Copy the key (starts with "re_").
+     Resend shows it only once.
+
+2. CREATE THE PAGES PROJECT
+   - Cloudflare dashboard -> Workers & Pages -> Create application
+     -> Pages -> Use direct upload.
+   - Name it (e.g. ha-capital-research) -> Create project.
+   - Drag THIS WHOLE FOLDER into the upload frame -> Deploy site.
+   - It goes live at <project-name>.pages.dev
+
+3. ADD THE THREE VARIABLES
+   - Your new Pages project -> Settings -> Variables and secrets
+     (Production):
+       RESEND_API_KEY  = your re_... key   (mark as Secret/encrypted)
+       CONTACT_TO      = your Gmail address (private recipient)
+       CONTACT_FROM    = Research Site <noreply@ha-capital.org>
+   - Redeploy after adding them (variables only apply to new builds):
+     re-drag the folder, or Deployments -> Create new deployment.
+
+4. TEST ON THE .pages.dev URL FIRST
+   - Submit the form on <project-name>.pages.dev and check your Gmail.
+   - First email may land in Spam/Promotions (new sending domain) —
+     mark "Not spam" once or twice and Gmail learns.
+
+5. MOVE YOUR CUSTOM DOMAIN (do this only after the test works)
+   - Project -> Custom domains -> Set up a custom domain ->
+     research.ha-capital.org
+   - THEN delete the old static Worker ("researchjune") — only after
+     the domain is reattached and confirmed working, to avoid downtime.
+
+------------------------------------------------------------------
+NOTES
+------------------------------------------------------------------
+- The form sends to your Gmail (CONTACT_TO) but the page still shows
+  your alumni address publicly. Your Gmail never appears in the page.
+- Replies in Gmail go to the visitor (Reply-To = their email).
+- The "from" address is noreply@ha-capital.org — this is required
+  (providers reject mail "from" an address you can't authenticate).
+- The form only works on the deployed site, NOT when you open
+  index.html locally by double-clicking — there is no /api/contact
+  server in that case, so a local test will show the error message.
+- Future updates: just re-drag this folder to deploy a new version.
+  Drag-and-drop works on projects CREATED via Direct Upload.
