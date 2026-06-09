@@ -452,6 +452,7 @@
     transition: border-color 0.2s; outline: none; resize: vertical;
   }
   .form-group input::placeholder, .form-group textarea::placeholder { color:rgba(250,247,242,0.55); }
+  .form-group select option { background: var(--navy-mid); color: var(--cream); }
   .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .btn-submit {
@@ -1076,12 +1077,36 @@
   });
 
   /* Contact form feedback */
-  document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    const btn = this.querySelector('.btn-submit');
-    btn.textContent = 'Sending…'; btn.disabled = true;
-    /* If you wire up Formspree or CF Forms, remove the preventDefault below */
+  document.querySelector('.contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    setTimeout(() => { btn.textContent = 'Sent ✓'; btn.style.background = '#4a9e6b'; }, 800);
+    const btn = this.querySelector('.btn-submit');
+    const name    = this.querySelector('[name="name"]').value;
+    const email   = this.querySelector('[name="email"]').value;
+    const message = this.querySelector('[name="message"]').value;
+
+    btn.textContent = 'Sending…'; btn.disabled = true;
+
+    try {
+      const resp = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await resp.json();
+      if (data.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#4a9e6b';
+        this.reset();
+      } else {
+        btn.textContent = 'Error — try again';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error — try again';
+      btn.style.background = '#c0392b';
+      btn.disabled = false;
+    }
   });
 </script>
 </body>
