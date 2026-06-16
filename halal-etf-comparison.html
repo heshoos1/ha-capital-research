@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMTIwJz48cmVjdCB3aWR0aD0nMTIwJyBoZWlnaHQ9JzEyMCcgcng9JzE4JyBmaWxsPScjMGQxYjJhJy8+PGNpcmNsZSBjeD0nNjAnIGN5PSc2MCcgcj0nNDInIGZpbGw9J25vbmUnIHN0cm9rZT0nI2M5YTg0Yycgc3Ryb2tlLXdpZHRoPSc0Jy8+PHRleHQgeD0nNjAnIHk9Jzc2JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LWZhbWlseT0nR2VvcmdpYSxzZXJpZicgZm9udC1zaXplPSc0NCcgZm9udC13ZWlnaHQ9JzcwMCcgZmlsbD0nI2U4Yzk3YSc+SEE8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halal ETF Comparison & Model Portfolios | Hisham Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a; --navy-mid:#1a2e45; --navy-light:#243d57;
+  --gold:#c9a84c; --gold-light:#e8c97a; --gold-pale:#f5e9c8;
+  --cream:#faf7f2; --white:#ffffff;
+  --text:#1a1a2e; --text-mid:#3d4a5c; --text-muted:#6b7a90;
+  --border:rgba(201,168,76,0.18); --border-light:rgba(0,0,0,0.07);
+  --green:#4a9e6b; --green-bg:rgba(74,158,107,0.12);
+  --red:#e05a4a; --red-bg:rgba(224,90,74,0.1);
+  --blue:#4a8ab5; --blue-bg:rgba(74,138,181,0.1);
+  --amber:#d4940a; --amber-bg:rgba(212,148,10,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+.container{max-width:1060px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.container--wide{max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(13,27,42,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;
+  height:64px;max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:0.8rem;color:rgba(250,247,242,0.8);text-decoration:none;
+  letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back:hover{color:var(--gold-light)}
+.nav-back::before{content:'←';font-size:1em}
+
+/* HERO */
+.hero{background:var(--navy);padding:110px 0 56px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;opacity:0.04;
+  background-image:linear-gradient(var(--gold) 1px,transparent 1px),
+  linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;top:-100px;right:-150px;width:700px;height:700px;
+  border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 65%)}
+.hero-cat{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,3rem);
+  font-weight:700;line-height:1.12;color:var(--cream);margin-bottom:1.1rem}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:1rem;color:rgba(250,247,242,0.9);max-width:640px;
+  line-height:1.75;font-weight:300;margin-bottom:2rem}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.meta-item{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+.meta-label{color:var(--gold);display:block;margin-bottom:0.15rem}
+.meta-val{color:rgba(250,247,242,0.85)}
+
+/* PROSE */
+.section{padding:clamp(3rem,6vw,5rem) 0}
+.section--dark{background:var(--navy)}
+.section--white{background:var(--white)}
+.section--cream{background:var(--cream)}
+.section-eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.3rem);
+  font-weight:600;line-height:1.2;margin-bottom:0.75rem}
+.section-title em{font-style:italic;color:var(--text-muted)}
+.section-sub{font-size:1rem;color:var(--text-muted);max-width:600px;line-height:1.75;font-weight:300}
+.divider{width:44px;height:2px;background:var(--gold);margin:1.25rem 0 2rem}
+
+/* DISCLAIMER */
+.disclaimer{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);
+  border-radius:2px;padding:1rem 1.5rem;display:flex;gap:0.75rem;margin:2rem 0}
+.disclaimer p{font-size:0.8rem;color:var(--text-muted);line-height:1.65;font-weight:300}
+.disclaimer strong{font-weight:500;color:var(--text-mid)}
+
+/* ═══ COMPARISON TABLE ═══ */
+.etf-table-wrap{overflow-x:auto;margin:2rem 0;-webkit-overflow-scrolling:touch}
+.etf-table{width:100%;border-collapse:collapse;min-width:800px}
+.etf-table th{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;
+  text-transform:uppercase;padding:0.9rem 1rem;text-align:left;
+  background:var(--navy);color:var(--gold);border-bottom:2px solid var(--border);white-space:nowrap}
+.etf-table th:first-child{width:130px}
+.etf-table td{padding:0.8rem 1rem;font-size:0.875rem;border-bottom:1px solid var(--border-light);
+  vertical-align:middle;font-weight:300;color:var(--text-mid)}
+.etf-table tr:nth-child(even) td{background:rgba(201,168,76,0.02)}
+.etf-table tr:hover td{background:rgba(201,168,76,0.04)}
+.ticker-cell{font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:500;
+  color:var(--navy);background:var(--gold-pale);padding:0.2rem 0.5rem;
+  border-radius:2px;display:inline-block;white-space:nowrap}
+.badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px}
+.badge-green{background:var(--green-bg);color:var(--green)}
+.badge-amber{background:var(--amber-bg);color:var(--amber)}
+.badge-blue{background:var(--blue-bg);color:var(--blue)}
+.badge-red{background:var(--red-bg);color:var(--red)}
+.badge-navy{background:rgba(13,27,42,0.08);color:var(--navy-mid)}
+
+/* ═══ PERFORMANCE BARS ═══ */
+.perf-section-label{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:1.25rem}
+.year-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:2.5rem}
+.year-block h4{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.perf-bar-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem}
+.perf-bar-ticker{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text-muted);
+  width:46px;flex-shrink:0;text-align:right}
+.perf-bar-track{flex:1;height:22px;background:rgba(0,0,0,0.05);border-radius:2px;
+  overflow:hidden;position:relative}
+.perf-bar-fill{height:100%;border-radius:2px;display:flex;align-items:center;
+  padding:0 0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;
+  font-weight:500;white-space:nowrap;width:0;
+  transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.perf-bar-fill span{position:absolute;right:0.4rem;font-family:'DM Mono',monospace;
+  font-size:0.68rem;font-weight:500}
+.bar-spus{background:linear-gradient(90deg,rgba(201,168,76,0.5),var(--gold));color:var(--navy)}
+.bar-hlal{background:linear-gradient(90deg,rgba(74,138,181,0.5),var(--blue));color:white}
+.bar-igda{background:linear-gradient(90deg,rgba(74,158,107,0.5),var(--green));color:white}
+.bar-iswd{background:linear-gradient(90deg,rgba(180,100,60,0.5),#c0784a);color:white}
+.bar-sp500{background:linear-gradient(90deg,rgba(100,100,140,0.3),rgba(100,100,140,0.6));color:var(--text-mid)}
+.bar-neg{background:linear-gradient(90deg,rgba(224,90,74,0.4),var(--red));color:white}
+.neg-track{direction:rtl}
+
+/* ═══ INCEPTION CAGR CHART ═══ */
+.cagr-chart{margin:2rem 0}
+.cagr-row{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.cagr-label{width:200px;flex-shrink:0}
+.cagr-name{font-size:0.875rem;font-weight:400;color:var(--text);display:block;line-height:1.3}
+.cagr-period{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.06em;
+  color:var(--text-muted);display:block;margin-top:0.15rem}
+.cagr-track{flex:1;height:32px;background:rgba(0,0,0,0.05);border-radius:3px;
+  overflow:hidden;position:relative}
+.cagr-fill{height:100%;border-radius:3px;width:0;
+  transition:width 1.3s cubic-bezier(0.4,0,0.2,1);
+  display:flex;align-items:center;justify-content:flex-end;padding-right:0.6rem}
+.cagr-fill span{font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:500;
+  white-space:nowrap}
+.cagr-note{font-size:0.72rem;color:var(--text-muted);margin-left:0.5rem;width:80px;flex-shrink:0}
+
+/* ═══ MODEL PORTFOLIO DIAGRAM ═══ */
+.cs-diagram{background:var(--navy);border:1px solid var(--border);border-radius:4px;
+  padding:2.5rem;margin:2.5rem 0}
+.cs-title{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.75rem}
+.cs-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:2rem;align-items:start}
+.cs-divider{background:rgba(201,168,76,0.2);height:100%;min-height:200px}
+.cs-side-label{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);
+  margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(201,168,76,0.15)}
+.cs-side-label span{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.25rem}
+.cs-alloc{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;
+  color:var(--gold-light);line-height:1;margin-bottom:0.4rem}
+.cs-item{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:0.9rem;
+  padding:0.75rem;background:rgba(255,255,255,0.04);border-radius:2px}
+.cs-item-ticker{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);
+  flex-shrink:0;width:52px;font-weight:500}
+.cs-item-text{font-size:0.85rem;color:rgba(250,247,242,0.9);line-height:1.6;font-weight:400}
+.cs-item-pct{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--gold-light);
+  flex-shrink:0;margin-left:auto;padding-left:0.5rem}
+.cs-rationale{margin-top:1.5rem;padding:1.1rem;background:rgba(201,168,76,0.07);
+  border-left:2px solid var(--gold);border-radius:2px}
+.cs-rationale p{font-size:0.82rem;color:rgba(250,247,242,0.6);line-height:1.7;
+  font-weight:300;margin:0}
+
+/* ═══ SCORECARD ═══ */
+.scorecard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin:2rem 0}
+.score-card{background:var(--white);padding:1.5rem}
+.score-ticker{font-family:'DM Mono',monospace;font-size:1rem;font-weight:500;
+  color:var(--navy);margin-bottom:0.25rem}
+.score-name{font-size:0.78rem;color:var(--text-muted);margin-bottom:1.25rem;font-weight:300}
+.score-row{display:flex;justify-content:space-between;align-items:center;
+  padding:0.35rem 0;border-bottom:1px solid var(--border-light);font-size:0.82rem}
+.score-row:last-child{border-bottom:none}
+.score-row-label{color:var(--text-muted);font-weight:300}
+.score-row-val{font-family:'DM Mono',monospace;font-weight:500;color:var(--text)}
+.score-row-val.positive{color:var(--green)}
+.score-row-val.negative{color:var(--red)}
+.score-row-val.neutral{color:var(--amber)}
+.verdict{margin-top:1rem;padding:0.6rem 0.75rem;border-radius:2px;
+  font-size:0.78rem;line-height:1.5;font-weight:400}
+.verdict-core{background:var(--green-bg);color:var(--green)}
+.verdict-secondary{background:var(--blue-bg);color:var(--blue)}
+.verdict-watch{background:var(--amber-bg);color:var(--amber)}
+.verdict-emerging{background:rgba(100,100,160,0.1);color:#6060b0}
+
+/* ═══ KEY INSIGHT BOXES ═══ */
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:2rem 0}
+.insight-box{padding:1.5rem 1.75rem;border-radius:3px}
+.insight-box--gold{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2)}
+.insight-box--navy{background:var(--navy);border:1px solid var(--border)}
+.insight-box--green{background:var(--green-bg);border:1px solid rgba(74,158,107,0.2)}
+.insight-box--red{background:var(--red-bg);border:1px solid rgba(224,90,74,0.2)}
+.insight-label{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:0.6rem}
+.insight-box--gold .insight-label{color:var(--gold)}
+.insight-box--navy .insight-label{color:var(--gold)}
+.insight-box--green .insight-label{color:var(--green)}
+.insight-box--red .insight-label{color:var(--red)}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;
+  font-weight:600;margin-bottom:0.5rem}
+.insight-box--navy h4{color:var(--cream)}
+.insight-box p{font-size:0.85rem;line-height:1.7;font-weight:300}
+.insight-box--navy p{color:rgba(250,247,242,0.6)}
+
+/* ═══ REBALANCING TABLE ═══ */
+.rebal-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.rebal-table th{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;
+  text-transform:uppercase;padding:0.75rem 1rem;text-align:left;
+  background:rgba(13,27,42,0.06);color:var(--text-mid);border-bottom:1px solid var(--border-light)}
+.rebal-table td{padding:0.7rem 1rem;font-size:0.85rem;border-bottom:1px solid var(--border-light);
+  font-weight:300;color:var(--text-mid)}
+.rebal-table tr:last-child td{border-bottom:none;font-weight:500;color:var(--text)}
+.pct-cell{font-family:'DM Mono',monospace;font-weight:500;color:var(--navy)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:#080f18;padding:2rem 0;border-top:1px solid rgba(201,168,76,0.1)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(250,247,242,0.75);text-decoration:none}
+.footer-logo span{color:var(--gold)}
+.footer-note{font-size:0.75rem;color:rgba(250,247,242,0.88);font-weight:400}
+
+@media(max-width:720px){
+  .cs-grid{grid-template-columns:1fr;}.cs-divider{display:none}
+  .cagr-label{width:140px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><svg width="28" height="28" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;vertical-align:middle"><circle cx="60" cy="60" r="42" fill="none" stroke="#c9a84c" stroke-width="3.5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/><text x="60" y="75" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="600" fill="#e8c97a">HA</text></svg>Hisham<span> Ahmed</span></a>
+    <a href="index.html#research" class="nav-back">All Research</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <p class="hero-cat">Portfolio Construction · Halal ETF Analysis · Model Portfolios</p>
+    <h1>Halal ETF Comparison &amp;<br><em>Six Model Portfolios</em></h1>
+    <p class="hero-sub">
+      A quantitative comparison of the five Shariah-compliant ETFs available to
+      Canadian investors across performance, cost, diversification and risk — then
+      six model portfolios, each pairing a different ETF core with the individual
+      stocks I cover (the satellites) to show how the same satellites behave on
+      different foundations.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Author</span><span class="meta-val">Hisham Ahmed</span></div>
+      <div class="meta-item"><span class="meta-label">Published</span><span class="meta-val">May 2026</span></div>
+      <div class="meta-item"><span class="meta-label">ETFs Covered</span><span class="meta-val">SPUS · HLAL · MNZL · SPSK · WSHR</span></div>
+      <div class="meta-item"><span class="meta-label">Framework</span><span class="meta-val">Core ETF (65–70%) + Stock Satellites (30–35%)</span></div>
+    </div>
+    <div style="margin-top:1.5rem;padding:0.85rem 1.1rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:3px;max-width:640px">
+      <p style="font-size:0.8rem;color:rgba(250,247,242,0.6);line-height:1.6;font-weight:300;margin:0">
+        <strong style="color:var(--gold-light);font-weight:500">Account note:</strong> SPUS, HLAL, MNZL and SPSK are US-listed and <strong>denominated in USD</strong> — a Canadian investor needs a USD investment account to hold them. <strong>WSHR is denominated in CAD</strong> and trades on Cboe Canada, so it is the one core here that needs no USD account.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: SIDE-BY-SIDE COMPARISON TABLE -->
+<section class="section section--white">
+<div class="container--wide">
+  <div class="reveal">
+    <p class="section-eyebrow">Quantitative Comparison</p>
+    <h2 class="section-title">Five ETFs, Side by Side</h2>
+    <div class="divider"></div>
+    <p class="section-sub">The five Shariah-compliant ETFs accessible to Canadian investors. Note the currency column: only WSHR is CAD-denominated; the other four require a USD account. Data sourced from fund providers, SEC filings, stockanalysis.com, and portfolioslab.com. AUM as of May 2026. Returns are total return (price + dividends reinvested).</p>
+  </div>
+  <div class="etf-table-wrap reveal" style="transition-delay:0.1s">
+    <table class="etf-table">
+      <thead>
+        <tr>
+          <th>ETF</th>
+          <th>Full Name</th>
+          <th>Index Tracked</th>
+          <th>Inception</th>
+          <th>AUM</th>
+          <th>Currency</th>
+          <th>Expense Ratio</th>
+          <th>Holdings</th>
+          <th>Exchange</th>
+          <th>Divs</th>
+          <th>CAGR Since Inception</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ticker-cell">SPUS</span></td>
+          <td>SP Funds S&P 500 Sharia Industry Exclusions ETF</td>
+          <td>S&amp;P 500 Shariah Industry Exclusions Index</td>
+          <td>Dec 2019</td>
+          <td>~$1.93B</td>
+          <td><span class="badge badge-amber">USD</span></td>
+          <td><span class="badge badge-amber">0.45%</span></td>
+          <td>~215</td>
+          <td>NYSE Arca (US)</td>
+          <td>Distributes</td>
+          <td><span class="badge badge-green">17.16% p.a.</span></td>
+        </tr>
+        <tr>
+          <td><span class="ticker-cell">HLAL</span></td>
+          <td>Wahed FTSE USA Shariah ETF</td>
+          <td>FTSE Shariah USA Index</td>
+          <td>Jul 2019</td>
+          <td>~$700M</td>
+          <td><span class="badge badge-amber">USD</span></td>
+          <td><span class="badge badge-amber">0.50%</span></td>
+          <td>~197</td>
+          <td>NASDAQ (US)</td>
+          <td>Distributes</td>
+          <td><span class="badge badge-green">16.48% p.a.</span></td>
+        </tr>
+        <tr>
+          <td><span class="ticker-cell">MNZL</span></td>
+          <td>Manzil Russell Halal USA Broad Market ETF</td>
+          <td>Russell IdealRatings Manzil Halal USA Broad Market Index</td>
+          <td>Nov 2025</td>
+          <td>&lt;$50M</td>
+          <td><span class="badge badge-amber">USD</span></td>
+          <td><span class="badge badge-green">0.40%</span></td>
+          <td>~450</td>
+          <td>NASDAQ (US)</td>
+          <td>Distributes</td>
+          <td><span class="badge badge-navy">Insufficient history</span></td>
+        </tr>
+        <tr>
+          <td><span class="ticker-cell">SPSK</span></td>
+          <td>SP Funds Dow Jones Global Sukuk ETF (Islamic bonds)</td>
+          <td>Dow Jones Sukuk Total Return Index</td>
+          <td>Dec 2019</td>
+          <td>~$100M</td>
+          <td><span class="badge badge-amber">USD</span></td>
+          <td><span class="badge badge-green">0.55%</span></td>
+          <td>~50</td>
+          <td>NYSE Arca (US)</td>
+          <td>Distributes monthly</td>
+          <td><span class="badge badge-amber">~3–4% p.a.</span></td>
+        </tr>
+        <tr>
+          <td><span class="ticker-cell">WSHR</span></td>
+          <td>Wealthsimple Shariah World Equity Index ETF (Mackenzie)</td>
+          <td>DJ Islamic Mkt Developed Markets Quality &amp; Low Volatility Index</td>
+          <td>May 2021</td>
+          <td>~$450M CAD</td>
+          <td><span class="badge badge-green">CAD</span></td>
+          <td><span class="badge badge-amber">0.57%</span></td>
+          <td>~162</td>
+          <td>Cboe Canada</td>
+          <td>Distributes quarterly</td>
+          <td><span class="badge badge-amber">~6–7% p.a.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 2: ANNUAL RETURNS -->
+<section class="section section--cream">
+<div class="container--wide">
+  <div class="reveal">
+    <p class="section-eyebrow">Historical Performance</p>
+    <h2 class="section-title">Annual Returns — Year by Year</h2>
+    <div class="divider"></div>
+    <p class="section-sub">All total returns including dividends reinvested. S&P 500 included as conventional benchmark.</p>
+  </div>
+
+  <div class="year-grid reveal" style="transition-delay:0.1s" id="perf-grid">
+
+    <!-- 2020 -->
+    <div>
+      <h4>2020 — COVID Crash + Tech Surge</h4>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">SPUS</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-spus" data-w="69%" data-val="+25.7%"><span>+25.7%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">HLAL</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-hlal" data-w="67%" data-val="+24.7%"><span>+24.7%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">S&amp;P 500</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-sp500" data-w="50%" data-val="+18.4%"><span>+18.4%</span></div></div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;font-weight:300">Both halal US ETFs outperformed the index — a heavy tech weighting was the tailwind.</p>
+    </div>
+
+    <!-- 2021 -->
+    <div>
+      <h4>2021 — Bull Market Recovery</h4>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">SPUS</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-spus" data-w="97%" data-val="+35.9%"><span>+35.9%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">HLAL</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-hlal" data-w="77%" data-val="+28.6%"><span>+28.6%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">S&amp;P 500</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-sp500" data-w="78%" data-val="+28.7%"><span>+28.7%</span></div></div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;font-weight:300">SPUS's larger mega-cap tech overweight produced exceptional outperformance. HLAL slightly underperformed vs S&P 500 due to different index composition.</p>
+    </div>
+
+    <!-- 2022 -->
+    <div>
+      <h4>2022 — Rate Hike Bear Market</h4>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">SPUS</span>
+        <div class="perf-bar-track neg-track"><div class="perf-bar-fill bar-neg" data-w="62%" data-val="−22.8%"><span>−22.8%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">HLAL</span>
+        <div class="perf-bar-track neg-track"><div class="perf-bar-fill bar-hlal" data-w="47%" data-val="−17.6%"><span>−17.6%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">WSHR</span>
+        <div class="perf-bar-track neg-track"><div class="perf-bar-fill bar-iswd" data-w="31%" data-val="−11.3%"><span>−11.3%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">S&amp;P 500</span>
+        <div class="perf-bar-track neg-track"><div class="perf-bar-fill bar-sp500" data-w="49%" data-val="−18.1%"><span>−18.1%</span></div></div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;font-weight:300"><strong style="color:var(--text)">Key finding:</strong> WSHR's low-volatility, globally diversified design gave it the shallowest drawdown of all (−11.3%). HLAL beat SPUS too (−17.6% vs −22.8%). SPUS's heavier tech concentration hurt most.</p>
+    </div>
+
+    <!-- 2023 -->
+    <div>
+      <h4>2023 — AI Rally Recovery</h4>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">SPUS</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-spus" data-w="93%" data-val="+34.2%"><span>+34.2%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">HLAL</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-hlal" data-w="82%" data-val="+30.1%"><span>+30.1%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">WSHR</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-iswd" data-w="32%" data-val="+11.9%"><span>+11.9%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">S&amp;P 500</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-sp500" data-w="72%" data-val="+26.3%"><span>+26.3%</span></div></div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;font-weight:300">Both US halal ETFs outperformed the S&P 500 as Nvidia, Microsoft, Apple, and Meta drove the recovery. WSHR's low-vol, defensive tilt meant it sat out most of the AI rally (+11.9%) — the mirror image of its 2022 resilience.</p>
+    </div>
+
+    <!-- 2024 -->
+    <div>
+      <h4>2024 — US Large-Cap Dominance</h4>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">SPUS</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-spus" data-w="72%" data-val="+26.5%"><span>+26.5%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">HLAL</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-hlal" data-w="46%" data-val="+16.7%"><span>+16.7%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">WSHR</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-iswd" data-w="33%" data-val="+12.2%"><span>+12.2%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">S&amp;P 500</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-sp500" data-w="68%" data-val="+25.0%"><span>+25.0%</span></div></div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;font-weight:300">SPUS narrowly outperformed. HLAL and WSHR both lagged the mega-cap-led market — WSHR by design, as its low-vol screen steers away from the high-beta names that drove the year.</p>
+    </div>
+
+    <!-- 2025 -->
+    <div>
+      <h4>2025 — Broadening Returns</h4>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">SPUS</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-spus" data-w="54%" data-val="+19.8%"><span>+19.8%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">HLAL</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-hlal" data-w="50%" data-val="+18.5%"><span>+18.5%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">WSHR</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-iswd" data-w="15%" data-val="+5.4%"><span>+5.4%</span></div></div>
+      </div>
+      <div class="perf-bar-row"><span class="perf-bar-ticker">S&amp;P 500</span>
+        <div class="perf-bar-track"><div class="perf-bar-fill bar-sp500" data-w="48%" data-val="+17.9%"><span>+17.9%</span></div></div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;font-weight:300">SPUS and HLAL converged and both edged out the S&P 500 as returns broadened. WSHR trailed again (+5.4%) — three straight years confirm its profile: shallow losses, muted gains, lowest beta of the set.</p>
+    </div>
+
+  </div><!-- /year-grid -->
+
+  <!-- CAGR CHART -->
+  <div class="reveal" style="transition-delay:0.2s">
+    <p class="perf-section-label" style="color:var(--text-muted)">📊 Since-Inception CAGR — Total Return</p>
+    <div class="cagr-chart" id="cagrChart">
+      <div class="cagr-row">
+        <div class="cagr-label">
+          <span class="cagr-name">SPUS</span>
+          <span class="cagr-period">Dec 2019 → May 2026 (~6.4 yrs)</span>
+        </div>
+        <div class="cagr-track"><div class="cagr-fill bar-spus" data-w="100%" style="background:linear-gradient(90deg,rgba(201,168,76,0.6),var(--gold))"><span style="color:var(--navy)">17.16% p.a.</span></div></div>
+        <span class="cagr-note" style="color:var(--text-muted)">Best US</span>
+      </div>
+      <div class="cagr-row">
+        <div class="cagr-label">
+          <span class="cagr-name">HLAL</span>
+          <span class="cagr-period">Jul 2019 → May 2026 (~6.8 yrs)</span>
+        </div>
+        <div class="cagr-track"><div class="cagr-fill bar-hlal" data-w="96%" style="background:linear-gradient(90deg,rgba(74,138,181,0.6),var(--blue))"><span style="color:white">16.48% p.a.</span></div></div>
+        <span class="cagr-note" style="color:var(--text-muted)">Close 2nd</span>
+      </div>
+      <div class="cagr-row">
+        <div class="cagr-label">
+          <span class="cagr-name">MNZL (Manzil)</span>
+          <span class="cagr-period">Nov 2025 → May 2026 (&lt;6 mths)</span>
+        </div>
+        <div class="cagr-track"><div class="cagr-fill" data-w="0%" style="background:rgba(100,100,140,0.25)"><span style="color:var(--text-mid)">Insufficient history</span></div></div>
+        <span class="cagr-note" style="color:var(--text-muted)">Too new</span>
+      </div>
+      <div class="cagr-row">
+        <div class="cagr-label">
+          <span class="cagr-name">WSHR (Wealthsimple)</span>
+          <span class="cagr-period">May 2021 → May 2026 (~5 yrs)</span>
+        </div>
+        <div class="cagr-track"><div class="cagr-fill bar-iswd" data-w="38%" style="background:linear-gradient(90deg,rgba(180,100,60,0.6),#c0784a)"><span style="color:white">~6–7% p.a.</span></div></div>
+        <span class="cagr-note" style="color:var(--text-muted)">Lowest vol</span>
+      </div>
+      <div class="cagr-row">
+        <div class="cagr-label">
+          <span class="cagr-name">S&P 500 Total Return</span>
+          <span class="cagr-period">Same period as SPUS (Dec 2019–2026)</span>
+        </div>
+        <div class="cagr-track"><div class="cagr-fill bar-sp500" data-w="78%" style="background:linear-gradient(90deg,rgba(100,100,140,0.4),rgba(100,100,140,0.7))"><span style="color:var(--text-mid)">~13.5% p.a. est.</span></div></div>
+        <span class="cagr-note" style="color:var(--text-muted)">Benchmark</span>
+      </div>
+    </div>
+    <p style="font-size:0.75rem;color:var(--text-muted);font-weight:300;margin-top:0.5rem">
+      ⚠ Period bias: SPUS and HLAL inceptions (2019–2026) coincide with a tech-heavy bull market, so their 16–17% since-inception CAGRs flatter the asset class. A more honest long-run expectation for halal US equity is closer to the ~10% range once a full cycle — including a 2008-style drawdown — is accounted for. WSHR's ~6–7% reflects its deliberate low-volatility design, not weakness — it trades upside for resilience. MNZL is too new to judge.
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 3: SCORECARDS -->
+<section class="section section--white">
+<div class="container--wide">
+  <div class="reveal">
+    <p class="section-eyebrow">Individual Assessments</p>
+    <h2 class="section-title">ETF Scorecards &amp; <em>Verdicts</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="scorecard-grid reveal" style="transition-delay:0.1s">
+
+    <div class="score-card">
+      <div class="score-ticker">SPUS</div>
+      <div class="score-name">SP Funds S&P 500 Shariah</div>
+      <div class="score-row"><span class="score-row-label">Since-inception CAGR</span><span class="score-row-val positive">17.16%</span></div>
+      <div class="score-row"><span class="score-row-label">5-year CAGR</span><span class="score-row-val positive">15.16%</span></div>
+      <div class="score-row"><span class="score-row-label">2022 drawdown</span><span class="score-row-val negative">−22.8%</span></div>
+      <div class="score-row"><span class="score-row-label">Expense ratio</span><span class="score-row-val neutral">0.45%</span></div>
+      <div class="score-row"><span class="score-row-label">Holdings</span><span class="score-row-val">~215</span></div>
+      <div class="score-row"><span class="score-row-label">AUM</span><span class="score-row-val positive">$1.93B</span></div>
+      <div class="score-row"><span class="score-row-label">Top-10 concentration</span><span class="score-row-val negative">~57%</span></div>
+      <div class="score-row"><span class="score-row-label">Beta vs S&P 500</span><span class="score-row-val">~1.05</span></div>
+      <div class="score-row"><span class="score-row-label">US-listed</span><span class="score-row-val positive">Yes</span></div>
+      <div class="verdict verdict-core">★ Primary Core: Best returns record, largest AUM, most liquid. US equity beta engine. Deepest tech overweight is both its engine and its key risk.</div>
+    </div>
+
+    <div class="score-card">
+      <div class="score-ticker">HLAL</div>
+      <div class="score-name">Wahed FTSE USA Shariah</div>
+      <div class="score-row"><span class="score-row-label">Since-inception CAGR</span><span class="score-row-val positive">16.48%</span></div>
+      <div class="score-row"><span class="score-row-label">5-year CAGR</span><span class="score-row-val positive">13.83%</span></div>
+      <div class="score-row"><span class="score-row-label">2022 drawdown</span><span class="score-row-val neutral">−17.6%</span></div>
+      <div class="score-row"><span class="score-row-label">Expense ratio</span><span class="score-row-val negative">0.50%</span></div>
+      <div class="score-row"><span class="score-row-label">Holdings</span><span class="score-row-val">~209</span></div>
+      <div class="score-row"><span class="score-row-label">AUM</span><span class="score-row-val neutral">~$500M</span></div>
+      <div class="score-row"><span class="score-row-label">Top-10 concentration</span><span class="score-row-val neutral">~54%</span></div>
+      <div class="score-row"><span class="score-row-label">Beta vs S&P 500</span><span class="score-row-val positive">0.97</span></div>
+      <div class="score-row"><span class="score-row-label">Annualised alpha</span><span class="score-row-val positive">+2.68%</span></div>
+      <div class="verdict verdict-secondary">Secondary US core or SPUS substitute. Better 2022 downside protection (−17.6% vs −22.8%) but higher fee and lower 5-yr CAGR than SPUS. Positive alpha suggests slightly different index exposure. Strong defensive characteristics.</div>
+    </div>
+
+    <div class="score-card">
+      <div class="score-ticker">MNZL</div>
+      <div class="score-name">Manzil Russell Halal USA Broad Market</div>
+      <div class="score-row"><span class="score-row-label">Inception</span><span class="score-row-val">Nov 2025</span></div>
+      <div class="score-row"><span class="score-row-label">Track record</span><span class="score-row-val negative">&lt;6 months</span></div>
+      <div class="score-row"><span class="score-row-label">Expense ratio</span><span class="score-row-val positive">0.40%</span></div>
+      <div class="score-row"><span class="score-row-label">Holdings</span><span class="score-row-val positive">~450 (most diverse US)</span></div>
+      <div class="score-row"><span class="score-row-label">AUM</span><span class="score-row-val negative">&lt;$50M (low)</span></div>
+      <div class="score-row"><span class="score-row-label">Additional screen</span><span class="score-row-val">AFSC human rights filter</span></div>
+      <div class="score-row"><span class="score-row-label">Index</span><span class="score-row-val">Russell 1000 (broadest US)</span></div>
+      <div class="verdict verdict-watch">Watch &amp; Wait: Compelling design (widest US coverage, lowest fee, additional ethics screen) but AUM is too low for reliable liquidity and 6-month track record is insufficient for meaningful analysis. Revisit at $200M+ AUM in 2027.</div>
+    </div>
+
+    <div class="score-card">
+      <div class="score-ticker">SPSK</div>
+      <div class="score-name">SP Funds Dow Jones Global Sukuk ETF</div>
+      <div class="score-row"><span class="score-row-label">Asset class</span><span class="score-row-val">Islamic bonds (Sukuk)</span></div>
+      <div class="score-row"><span class="score-row-label">Since-inception CAGR</span><span class="score-row-val neutral">~3–4% p.a.</span></div>
+      <div class="score-row"><span class="score-row-label">Expense ratio</span><span class="score-row-val neutral">0.55%</span></div>
+      <div class="score-row"><span class="score-row-label">Monthly distributions</span><span class="score-row-val positive">Yes</span></div>
+      <div class="score-row"><span class="score-row-label">Role in portfolio</span><span class="score-row-val">Income / stability</span></div>
+      <div class="score-row"><span class="score-row-label">Correlation to equities</span><span class="score-row-val positive">Low</span></div>
+      <div class="score-row"><span class="score-row-label">AUM</span><span class="score-row-val neutral">~$100M</span></div>
+      <div class="verdict verdict-emerging">Portfolio stabiliser: Not an equity return driver — its role is income generation and volatility reduction. For a 100% equity mandate (your current structure), SPSK adds diversification at the cost of expected return. Optional allocation for risk-reduction or income needs.</div>
+    </div>
+
+    <div class="score-card">
+      <div class="score-ticker">WSHR</div>
+      <div class="score-name">Wealthsimple Shariah World Equity (Mackenzie)</div>
+      <div class="score-row"><span class="score-row-label">Currency</span><span class="score-row-val positive">CAD (no USD account needed)</span></div>
+      <div class="score-row"><span class="score-row-label">Since-inception CAGR</span><span class="score-row-val neutral">~6–7% p.a.</span></div>
+      <div class="score-row"><span class="score-row-label">2022 drawdown</span><span class="score-row-val positive">−11.3% (shallowest)</span></div>
+      <div class="score-row"><span class="score-row-label">Expense ratio</span><span class="score-row-val negative">0.57% (highest)</span></div>
+      <div class="score-row"><span class="score-row-label">Holdings</span><span class="score-row-val positive">~162 (global developed)</span></div>
+      <div class="score-row"><span class="score-row-label">AUM</span><span class="score-row-val positive">~$450M CAD</span></div>
+      <div class="score-row"><span class="score-row-label">Top-10 concentration</span><span class="score-row-val positive">~9% (lowest by far)</span></div>
+      <div class="score-row"><span class="score-row-label">Beta vs S&P 500</span><span class="score-row-val positive">~0.66 (low-vol)</span></div>
+      <div class="verdict verdict-core">★ The CAD diversifier: The only CAD-denominated option and the only globally diversified one. A quality + low-volatility multi-factor screen and risk-weighting (not cap-weighting) give it the lowest concentration and the shallowest 2022 drawdown of the set. The trade-off is muted upside in tech-led rallies and the highest fee. Ideal core for a CAD-account investor or anyone wanting a defensive, non-US-concentrated anchor.</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- SECTION 4: KEY INSIGHTS -->
+<section class="section section--cream">
+<div class="container">
+  <div class="reveal">
+    <p class="section-eyebrow">Critical Analysis</p>
+    <h2 class="section-title">What the Data <em>Actually Shows</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="insight-grid reveal" style="transition-delay:0.1s">
+    <div class="insight-box insight-box--gold">
+      <p class="insight-label">SPUS vs HLAL — Key Difference</p>
+      <h4>They Are Not the Same Fund</h4>
+      <p>Despite a 0.94 correlation, they track different indices with meaningfully different exclusions. SPUS explicitly excludes aerospace/defense AND financial data companies (S&P Global, ICE, FactSet). HLAL includes those. This makes SPUS the purer halal screen. HLAL's better 2022 drawdown (−17.6% vs −22.8%) suggests its mid-cap inclusion provides a genuine diversification benefit during growth sell-offs.</p>
+    </div>
+    <div class="insight-box insight-box--navy">
+      <p class="insight-label">Period Bias Warning</p>
+      <h4>17% CAGR Is Not Repeatable Forever</h4>
+      <p style="color:rgba(250,247,242,0.6)">SPUS and HLAL's since-inception CAGRs of 17% and 16% are exceptional — but their inception in 2019–2020 coincides with one of the strongest tech bull markets in history. The 14–16% annualised returns came predominantly from technology sector overweight and quality factor loadings. A full market cycle that includes a 2008-style drawdown would almost certainly pull the long-run figure down toward the ~10% range — the more honest planning assumption.</p>
+    </div>
+    <div class="insight-box insight-box--green">
+      <p class="insight-label">HLAL's Quiet Case</p>
+      <h4>A Purer Screen and a Softer Drawdown</h4>
+      <p>HLAL is more than an SPUS clone. It tracks a different index (FTSE Shariah USA), includes some names SPUS screens out, and reaches a little further down the cap spectrum. That cost it ground in the mega-cap-led years of 2024–2025 — but it also delivered a meaningfully softer 2022 drawdown (−17.6% vs −22.8%). For a Canadian investor who wants US halal beta without doubling down entirely on the same top-ten tech names SPUS leans on, pairing the two is the cleanest available diversification.</p>
+    </div>
+    <div class="insight-box insight-box--red">
+      <p class="insight-label">Concentration Risk</p>
+      <h4>All Roads Lead to Mega-Cap Tech</h4>
+      <p>SPUS (57% in top 10) and HLAL (54%) are both heavily concentrated in Nvidia, Apple, Microsoft, Amazon, Alphabet, and Meta — the same names that dominate any US large-cap index. This tech concentration was a return tailwind in 2020–2025 and a real risk in 2022. The mitigations now run three ways: pair SPUS with HLAL to vary the index methodology; add WSHR for genuinely different, globally diversified, low-concentration exposure (its top-10 is only ~9%); and lean on the satellites — individually chosen names that can deliberately reduce overlap with those top-ten holdings.</p>
+    </div>
+    <div class="insight-box insight-box--gold">
+      <p class="insight-label">WSHR — The Different One</p>
+      <h4>CAD, Global, and Built for Low Volatility</h4>
+      <p>WSHR is the structural outlier of the five. It is the only CAD-denominated fund (no USD account required), the only globally diversified one, and the only one that weights by risk rather than market cap — its top holdings are defensive staples like Coca-Cola, Nestlé, J&amp;J and Roche, not mega-cap tech. The result is the lowest beta (~0.66), the lowest concentration (~9% top-10), and the shallowest 2022 drawdown (−11.3%) of the set — paid for with muted upside in tech-led rallies and the highest fee (0.57%). It is less a competitor to SPUS than a complement to it.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 5: SIX MODEL PORTFOLIOS -->
+<section class="section section--dark">
+<div class="container">
+  <div class="reveal">
+    <p class="section-eyebrow" style="color:var(--gold)">Portfolio Construction</p>
+    <h2 class="section-title" style="color:var(--cream)">Six Model <em>Portfolios</em></h2>
+    <div class="divider"></div>
+    <p class="section-sub" style="color:rgba(250,247,242,0.88);margin-bottom:2rem">
+      <span style="color:rgba(250,247,242,0.8)">The plan:</span> six portfolios I intend to build, simulate, and
+      back-test. In each of the first five, the investor picks <em>one</em> of the five ETFs as their core holding
+      and adds the satellites — the individual stocks I cover — on top. <span style="color:var(--gold-light)">The
+      satellites may or may not come from the same index the chosen ETF tracks</span>, so each ETF-core-plus-satellite
+      combination produces a genuinely different portfolio. The sixth combines all five ETFs and all the satellites at
+      optimal weights.
+    </p>
+    <div style="padding:0.85rem 1.1rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:3px;margin-bottom:2.5rem">
+      <p style="font-size:0.82rem;color:rgba(250,247,242,0.6);line-height:1.65;font-weight:300;margin:0">
+        <strong style="color:var(--gold-light);font-weight:500">Status:</strong> the weights below are illustrative
+        starting points. The simulations and back-tests that will set the actual weights — especially the optimal blend
+        in Model 6 — are planned work, not yet complete. This page lays out the structure; the empirical results will
+        follow.
+      </p>
+    </div>
+  </div>
+
+  <!-- MODEL 1 · SPUS -->
+  <div class="cs-diagram reveal" style="transition-delay:0.05s;margin-bottom:1.25rem">
+    <p class="cs-title"><span style="color:var(--gold-light)">Model 1</span> · SPUS Core + Satellites</p>
+    <div class="cs-grid">
+      <div>
+        <div class="cs-side-label"><span>Core — 65%</span> SPUS · US large-cap Shariah beta <span style="color:rgba(250,247,242,0.88)">· USD account</span></div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">SPUS</span>
+          <span class="cs-item-text">The highest-return, most-liquid halal US ETF as the sole core. Maximum exposure to the S&amp;P 500 Shariah names — and to their mega-cap tech concentration.</span>
+          <span class="cs-item-pct">65%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Character:</strong> the highest-beta, most growth-tilted core. Best historical returns, most exposed to a tech-led drawdown. The simplest one-fund core for an investor who wants pure US large-cap halal beta.</p>
+        </div>
+      </div>
+      <div class="cs-divider"></div>
+      <div>
+        <div class="cs-side-label"><span>Satellites — 35%</span> Individual stocks I cover</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">Satellites</span>
+          <span class="cs-item-text">The full screened stock book — large-cap quality compounders (RMW+) plus, optionally, the small-cap value names (SMB+). Each name validated against primary filings.</span>
+          <span class="cs-item-pct">35%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Overlap to manage:</strong> several satellites (Alphabet, Microsoft) already sit near the top of SPUS. On this core, weight them down — the satellites earn their keep through the names SPUS <em>doesn't</em> emphasise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL 2 · HLAL -->
+  <div class="cs-diagram reveal" style="transition-delay:0.05s;margin-bottom:1.25rem">
+    <p class="cs-title"><span style="color:var(--gold-light)">Model 2</span> · HLAL Core + Satellites</p>
+    <div class="cs-grid">
+      <div>
+        <div class="cs-side-label"><span>Core — 65%</span> HLAL · purer-screen US Shariah beta <span style="color:rgba(250,247,242,0.88)">· USD account</span></div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">HLAL</span>
+          <span class="cs-item-text">Wahed FTSE USA Shariah as the sole core. A different index from SPUS, a slightly broader cap range, and a meaningfully softer 2022 drawdown (−17.6% vs −22.8%).</span>
+          <span class="cs-item-pct">65%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Character:</strong> a more defensive twin of Model 1. Gives up some of SPUS's bull-market upside for better downside behaviour. For an investor who wants US halal beta with a gentler ride.</p>
+        </div>
+      </div>
+      <div class="cs-divider"></div>
+      <div>
+        <div class="cs-side-label"><span>Satellites — 35%</span> Individual stocks I cover</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">Satellites</span>
+          <span class="cs-item-text">Same screened book as every model. HLAL's broader, slightly less top-heavy composition leaves a little more room for the satellites' mega-cap names without over-concentrating.</span>
+          <span class="cs-item-pct">35%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Pairs well with:</strong> the small-cap value satellites. HLAL's defensiveness and the SMB tilt reinforce each other in a sell-off.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL 3 · MNZL -->
+  <div class="cs-diagram reveal" style="transition-delay:0.05s;margin-bottom:1.25rem">
+    <p class="cs-title"><span style="color:var(--gold-light)">Model 3</span> · MNZL Core + Satellites</p>
+    <div class="cs-grid">
+      <div>
+        <div class="cs-side-label"><span>Core — 60%</span> MNZL · broadest US halal coverage <span style="color:rgba(250,247,242,0.88)">· USD account</span></div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">MNZL</span>
+          <span class="cs-item-text">Manzil Russell Halal USA Broad Market — the widest US halal coverage (~450 names), lowest US concentration, plus an additional human-rights screen. Newest and smallest of the five.</span>
+          <span class="cs-item-pct">60%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Character:</strong> the most diversified US core — and the most speculative as a fund, given its &lt;6-month record and sub-$50M AUM. A slightly lower core weight reflects that liquidity caveat until the fund scales.</p>
+        </div>
+      </div>
+      <div class="cs-divider"></div>
+      <div>
+        <div class="cs-side-label"><span>Satellites — 40%</span> Individual stocks I cover</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">Satellites</span>
+          <span class="cs-item-text">Where MNZL's breadth dilutes the quality tilt, a slightly larger satellite weight concentrates it back. The satellites do more of the factor work in this model.</span>
+          <span class="cs-item-pct">40%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Watch item:</strong> revisit the core weight as MNZL's AUM grows. At $200M+ and a longer record, this becomes a much stronger standalone core.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL 4 · SPSK -->
+  <div class="cs-diagram reveal" style="transition-delay:0.05s;margin-bottom:1.25rem">
+    <p class="cs-title"><span style="color:var(--gold-light)">Model 4</span> · SPSK Core + Satellites <span style="color:rgba(250,247,242,0.88);font-weight:400">(income-tilted)</span></p>
+    <div class="cs-grid">
+      <div>
+        <div class="cs-side-label"><span>Core — 60%</span> SPSK · sukuk income base <span style="color:rgba(250,247,242,0.88)">· USD account</span></div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">SPSK</span>
+          <span class="cs-item-text">Dow Jones Global Sukuk — Islamic bonds, not equities. Monthly distributions, low correlation to stocks, ~3–4% expected return. A fundamentally different kind of core.</span>
+          <span class="cs-item-pct">60%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Character:</strong> the outlier. A sukuk core trades equity upside for income and stability, so this model behaves nothing like the equity-cored ones. It suits an investor near or in drawdown — capital preservation and cash flow first, with the satellites providing measured growth.</p>
+        </div>
+      </div>
+      <div class="cs-divider"></div>
+      <div>
+        <div class="cs-side-label"><span>Satellites — 40%</span> Individual stocks I cover</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">Satellites</span>
+          <span class="cs-item-text">A larger equity satellite weight carries all the growth here, since the sukuk core contributes little. Lean toward the steadier, lower-beta quality compounders rather than the most aggressive growth names.</span>
+          <span class="cs-item-pct">40%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Honest caveat:</strong> with a bond core, expected total return is well below the equity-cored models. This is a risk-reduction structure, not a return-maximising one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL 5 · WSHR -->
+  <div class="cs-diagram reveal" style="transition-delay:0.05s;margin-bottom:1.25rem">
+    <p class="cs-title"><span style="color:var(--gold-light)">Model 5</span> · WSHR Core + Satellites <span style="color:rgba(250,247,242,0.88);font-weight:400">(CAD account)</span></p>
+    <div class="cs-grid">
+      <div>
+        <div class="cs-side-label"><span>Core — 65%</span> WSHR · global low-vol Shariah beta <span style="color:#7eb8e8">· CAD account</span></div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">WSHR</span>
+          <span class="cs-item-text">Wealthsimple Shariah World Equity — CAD-denominated, globally diversified, risk-weighted with a quality and low-volatility screen. Lowest beta (~0.66) and lowest concentration (~9% top-10) of the five.</span>
+          <span class="cs-item-pct">65%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Character:</strong> the only model a Canadian can run in a plain CAD account, and the most defensive equity core. Global staples instead of US mega-cap tech means the shallowest drawdowns but muted upside in tech rallies. The natural choice for an investor who wants halal equity exposure without a USD account or a tech-concentration bet.</p>
+        </div>
+      </div>
+      <div class="cs-divider"></div>
+      <div>
+        <div class="cs-side-label"><span>Satellites — 35%</span> Individual stocks I cover</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">Satellites</span>
+          <span class="cs-item-text">Here the satellites do something different: WSHR is light on US mega-cap tech, so the high-CFO-growth names (Alphabet, Microsoft, Mastercard) actually <em>add</em> a growth tilt the core lacks, rather than overlapping with it.</span>
+          <span class="cs-item-pct">35%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Most complementary pairing:</strong> a defensive global core plus a concentrated US-quality satellite book may be the cleanest core-and-satellite split of the five — least overlap, most distinct roles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL 6 · OPTIMAL BLEND -->
+  <div class="cs-diagram reveal" style="transition-delay:0.05s;border:1px solid rgba(201,168,76,0.35)">
+    <p class="cs-title"><span style="color:var(--gold-light)">Model 6</span> · Optimal Blend — All Five ETFs + All Satellites</p>
+    <div class="cs-grid">
+      <div>
+        <div class="cs-side-label"><span>Core — 65%</span> Weighted blend of all five ETFs</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">SPUS</span>
+          <span class="cs-item-text">The return engine — largest single core weight for its track record and liquidity.</span>
+          <span class="cs-item-pct">24%</span>
+        </div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">HLAL</span>
+          <span class="cs-item-text">Index diversification and the 2022 downside cushion alongside SPUS.</span>
+          <span class="cs-item-pct">16%</span>
+        </div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">WSHR</span>
+          <span class="cs-item-text">Global, low-vol, CAD ballast — the genuine non-US, non-tech diversifier.</span>
+          <span class="cs-item-pct">13%</span>
+        </div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">MNZL</span>
+          <span class="cs-item-text">Breadth and lower concentration — sized modestly while it builds scale.</span>
+          <span class="cs-item-pct">5%</span>
+        </div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">SPSK</span>
+          <span class="cs-item-text">A sukuk sleeve for income and volatility dampening — drop it for a fully growth-focused mandate.</span>
+          <span class="cs-item-pct">7%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">Why blend:</strong> no single ETF wins on every axis — SPUS on return, HLAL on drawdown, WSHR on diversification and currency, MNZL on breadth, SPSK on stability. Weighting all five lets each contribute its strength while the others offset its weakness. <em>These weights are placeholders</em> — the optimisation that sets them is the back-testing work still to come.</p>
+        </div>
+      </div>
+      <div class="cs-divider"></div>
+      <div>
+        <div class="cs-side-label"><span>Satellites — 35%</span> All the individual stocks I cover</div>
+        <div class="cs-item">
+          <span class="cs-item-ticker">Satellites</span>
+          <span class="cs-item-text">The full screened book, weighted to minimise overlap with the blended core and to hold the portfolio's RMW loading above +0.25 once the ETF exposures are accounted for.</span>
+          <span class="cs-item-pct">35%</span>
+        </div>
+        <div class="cs-rationale">
+          <p><strong style="color:var(--gold-light)">The fullest expression:</strong> the model that uses everything — diversified ETF beta across two currencies, an income cushion, and a concentrated quality satellite book. Also the most work to maintain. Models 1, 2 and 5 are simpler and most of the way there.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="reveal" style="transition-delay:0.2s;margin-top:2rem">
+    <p style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">The Six Models at a Glance</p>
+    <div style="overflow-x:auto">
+    <table class="rebal-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>ETF Core</th>
+          <th>Account</th>
+          <th>Core %</th>
+          <th>Satellites %</th>
+          <th>Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-green">Model 1</span></td>
+          <td>SPUS only</td>
+          <td>USD</td>
+          <td class="pct-cell">65%</td>
+          <td class="pct-cell">35%</td>
+          <td>Highest beta, highest historical return, most tech-concentrated</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-green">Model 2</span></td>
+          <td>HLAL only</td>
+          <td>USD</td>
+          <td class="pct-cell">65%</td>
+          <td class="pct-cell">35%</td>
+          <td>More defensive twin of Model 1; softer drawdowns</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-green">Model 3</span></td>
+          <td>MNZL only</td>
+          <td>USD</td>
+          <td class="pct-cell">60%</td>
+          <td class="pct-cell">40%</td>
+          <td>Broadest, lowest-concentration US core; liquidity caveat</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-amber">Model 4</span></td>
+          <td>SPSK only</td>
+          <td>USD</td>
+          <td class="pct-cell">60%</td>
+          <td class="pct-cell">40%</td>
+          <td>Income / capital-preservation tilt; lowest expected return</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">Model 5</span></td>
+          <td>WSHR only</td>
+          <td>CAD</td>
+          <td class="pct-cell">65%</td>
+          <td class="pct-cell">35%</td>
+          <td>Global, low-vol, CAD-denominated; most complementary to satellites</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">Model 6</span></td>
+          <td>All five, weighted</td>
+          <td>USD + CAD</td>
+          <td class="pct-cell">65%</td>
+          <td class="pct-cell">35%</td>
+          <td>Fullest expression; each ETF contributes its strength (weights TBD by back-test)</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:0.75rem;color:rgba(250,247,242,0.88);margin-top:0.75rem;font-weight:300">
+      All six share the same satellites — the constant across every model; only the core changes. Direct stocks carry no
+      management fee, just brokerage commissions, so a larger satellite weight lowers blended cost. Every weight here is
+      an illustrative starting point pending simulation and back-testing. Not investment advice.
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 6: REBALANCING & MONITORING -->
+<section class="section section--white">
+<div class="container">
+  <div class="reveal">
+    <p class="section-eyebrow">Ongoing Management</p>
+    <h2 class="section-title">Rebalancing &amp; <em>Monitoring</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="insight-grid reveal" style="transition-delay:0.1s">
+    <div class="insight-box insight-box--gold">
+      <p class="insight-label">Rebalancing Trigger</p>
+      <h4>Drift Bands, Not Calendars</h4>
+      <p>Rebalance when any holding drifts more than ±5 percentage points from target (e.g., the core reaches 42% or falls to 28%). Annual review minimum. The S&P Shariah and FTSE Shariah indices rebalance quarterly — your ETFs self-adjust, but your satellite stocks need active monitoring against the three screens (sin, lending, CFO quality).</p>
+    </div>
+    <div class="insight-box insight-box--gold">
+      <p class="insight-label">What to Monitor Quarterly</p>
+      <h4>Four Checks Per Quarter</h4>
+      <p>1. CFO trend per satellite stock (latest 10-K/Q on EDGAR). 2. Confirm no new lending/interest revenue segment in satellite holdings. 3. ETF AUM and tracking error (MNZL and SPSK are still building scale). 4. Run the FF5 regression on the portfolio — does the RMW loading hold above +0.25? If it drifts toward zero, the quality tilt is eroding.</p>
+    </div>
+    <div class="insight-box insight-box--gold">
+      <p class="insight-label">When to Increase Satellite Weight</p>
+      <h4>Three Conditions</h4>
+      <p>Raise the satellite allocation toward 40% when: (a) 3+ years of live tracking confirm satellite alpha vs the ETF core; (b) you have high conviction in 3–5 specific names that cannot be replicated by the ETF; (c) you have time to monitor 20+ positions quarterly. Otherwise, start closer to 20% satellites and 80% core.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer reveal" style="transition-delay:0.2s">
+    <span style="color:var(--gold);flex-shrink:0;margin-top:0.1rem">⚠</span>
+    <p>
+      <strong>Not investment advice.</strong> This analysis is for informational and educational purposes only.
+      Past performance of any ETF does not guarantee future returns.
+      The model portfolios above are illustrative frameworks — not personalised recommendations.
+      ETF performance data sourced from stockanalysis.com, portfolioslab.com, and fund provider websites; verify against primary prospectuses before investing.
+      All halal screening determinations should be independently verified against current S&P Shariah, FTSE Shariah, AAOIFI, or equivalent methodology.
+      Consult a licensed financial advisor before making any investment decision.
+    </p>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Hisham<span> Ahmed</span></a>
+    <p class="footer-note">© 2026 · Independent research · Not investment advice</p>
+    <a href="index.html#research" class="nav-back" style="color:rgba(250,247,242,0.7);font-size:0.75rem;text-decoration:none">← All Research</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(e => {
+    e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }});
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Animate performance bars
+  const barObs = new IntersectionObserver(e => {
+    e.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll('.perf-bar-fill[data-w], .cagr-fill[data-w]').forEach((b,i) => {
+          setTimeout(() => { b.style.width = b.dataset.w; }, i * 80);
+        });
+        barObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('#perf-grid, #cagrChart').forEach(el => barObs.observe(el));
+</script>
+</body>
+</html>
