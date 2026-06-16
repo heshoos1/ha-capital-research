@@ -7,7 +7,7 @@
 <title>Research & Insights | Hisham Ahmed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0d1b2a;
@@ -150,12 +150,12 @@
   }
   .hero-stat-label {
     font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color:rgba(250,247,242,0.88); margin-top: 0.35rem;
+    color: rgba(250,247,242,0.45); margin-top: 0.35rem;
   }
   .hero-scroll {
     position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    color:rgba(250,247,242,0.88); font-size: 0.7rem; letter-spacing: 0.12em;
+    color: rgba(250,247,242,0.3); font-size: 0.7rem; letter-spacing: 0.12em;
     text-transform: uppercase; animation: bounce 2s infinite;
   }
   .hero-scroll::before {
@@ -369,7 +369,7 @@
   }
   .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: center; }
   .findings-left .section-title { color: var(--cream); }
-  .findings-left .section-sub { color: rgba(250,247,242,0.9); }
+  .findings-left .section-sub { color: rgba(250,247,242,0.55); }
   .findings-left .divider { background: var(--gold); }
   .findings-items { display: flex; flex-direction: column; gap: 0; }
   .finding-item {
@@ -385,7 +385,7 @@
     font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600;
     color: var(--cream); margin-bottom: 0.35rem;
   }
-  .finding-text { font-size: 0.9rem; color: rgba(250,247,242,0.9); line-height: 1.75; font-weight: 400; }
+  .finding-text { font-size: 0.875rem; color: rgba(250,247,242,0.5); line-height: 1.7; font-weight: 300; }
   .findings-callout {
     background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.18);
     border-radius: 3px; padding: 2rem 2rem 1.75rem;
@@ -403,7 +403,7 @@
     font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600;
     color: var(--gold-light); line-height: 1;
   }
-  .metric-name { font-size: 0.85rem; color: rgba(250,247,242,0.88); margin-top: 0.3rem; font-weight: 400; }
+  .metric-name { font-size: 0.82rem; color: rgba(250,247,242,0.5); margin-top: 0.3rem; font-weight: 300; }
   .metric-bar-wrap { margin-top: 0.6rem; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
   .metric-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
 
@@ -440,19 +440,18 @@
   #contact { background: var(--navy); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); }
   .contact-left .section-title { color: var(--cream); }
-  .contact-left .section-sub { color: rgba(250,247,242,0.9); }
+  .contact-left .section-sub { color: rgba(250,247,242,0.5); }
   .contact-left .divider { background: var(--gold); }
   .contact-form { display: flex; flex-direction: column; gap: 1rem; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color:rgba(250,247,242,0.88); font-family: 'DM Mono', monospace; }
+  .form-group label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,247,242,0.45); font-family: 'DM Mono', monospace; }
   .form-group input, .form-group textarea, .form-group select {
     background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2);
     border-radius: 2px; padding: 0.75rem 1rem; color: var(--cream);
     font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300;
     transition: border-color 0.2s; outline: none; resize: vertical;
   }
-  .form-group input::placeholder, .form-group textarea::placeholder { color:rgba(250,247,242,0.55); }
-  .form-group select option { background: var(--navy-mid); color: var(--cream); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(250,247,242,0.25); }
   .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .btn-submit {
@@ -485,13 +484,13 @@
   }
   .footer-logo {
     font-family: 'Playfair Display', serif; font-size: 1rem;
-    color:rgba(250,247,242,0.88); text-decoration: none;
+    color: rgba(250,247,242,0.5); text-decoration: none;
     display: inline-flex; align-items: center; gap: 0.5rem;
   }
   .footer-logo span { color: var(--gold); }
-  .footer-note { font-size: 0.78rem; color:rgba(250,247,242,0.88); font-weight: 400; }
+  .footer-note { font-size: 0.75rem; color: rgba(250,247,242,0.25); font-weight: 300; }
   .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { font-size: 0.75rem; color:rgba(250,247,242,0.88); text-decoration: none; transition: color 0.2s; }
+  .footer-links a { font-size: 0.75rem; color: rgba(250,247,242,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--gold); }
 
   /* ── ANIMATIONS ── */
@@ -612,7 +611,7 @@
         <div style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);padding:1rem 1.5rem;text-align:center">
           <span style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)">Large-cap book RMW loading · </span>
           <span style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold-light);font-weight:600">+0.33</span>
-          <span style="font-size:0.75rem;color:rgba(250,247,242,0.88);display:block;margin-top:0.2rem;font-weight:300">Confirmed by 83-month Fama-French regression. The small-cap value book adds SMB &amp; HML.</span>
+          <span style="font-size:0.75rem;color:rgba(250,247,242,0.4);display:block;margin-top:0.2rem;font-weight:300">Confirmed by 83-month Fama-French regression. The small-cap value book adds SMB &amp; HML.</span>
         </div>
       </div>
     </div>
@@ -811,7 +810,7 @@
         <p class="section-label" style="color: var(--gold);">Key Findings</p>
         <h2 class="section-title" style="color: var(--cream);">What the Data<br><em>Actually Shows</em></h2>
         <div class="divider"></div>
-        <p class="section-sub" style="color: rgba(250,247,242,0.88); margin-bottom: 2.5rem;">
+        <p class="section-sub" style="color: rgba(250,247,242,0.5); margin-bottom: 2.5rem;">
           Portfolio-level regression across 83 monthly observations confirms the
           mandate's thesis — with a few important nuances.
         </p>
@@ -952,7 +951,7 @@
         <p class="section-label" style="color:var(--gold)">Contact</p>
         <h2 class="section-title" style="color:var(--cream)">Get in Touch</h2>
         <div class="divider"></div>
-        <p class="section-sub" style="color:rgba(250,247,242,0.88)">
+        <p class="section-sub" style="color:rgba(250,247,242,0.5)">
           Interested in the research, the methodology, or collaborating on a project?
           I'd welcome the conversation.
         </p>
@@ -971,12 +970,7 @@
       </div>
 
       <div class="reveal" style="transition-delay:0.15s">
-        <!-- 
-          TO MAKE THE FORM ACTUALLY SEND EMAILS:
-          Replace action="#" with your Cloudflare Pages Form endpoint, or
-          use a free service like Formspree: action="https://formspree.io/f/YOUR_ID"
-        -->
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First name</label>
@@ -1006,7 +1000,14 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" placeholder="Your message…" required></textarea>
           </div>
+          <!-- Honeypot field: hidden from humans, bots tend to fill it. Leave empty. -->
+          <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+            <label for="company">Company (leave blank)</label>
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
           <button type="submit" class="btn-submit">Send Message</button>
+          <p id="formStatus" role="status" aria-live="polite"
+             style="font-family:'DM Mono',monospace;font-size:0.78rem;line-height:1.5;margin-top:0.25rem;min-height:1.1em"></p>
         </form>
       </div>
     </div>
@@ -1076,38 +1077,58 @@
     });
   });
 
-  /* Contact form feedback */
-document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+  /* Contact form — submits to the Cloudflare Pages Function at /api/contact */
+  document.getElementById('contactForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    const btn = this.querySelector('.btn-submit');
-    const first_name = this.querySelector('[name="first_name"]').value;
-    const last_name  = (this.querySelector('[name="last_name"]').value || '');
-    const email      = this.querySelector('[name="email"]').value;
-    const topic      = this.querySelector('[name="topic"]').value;
-    const message    = this.querySelector('[name="message"]').value;
+    const form = this;
+    const btn = form.querySelector('.btn-submit');
+    const status = document.getElementById('formStatus');
+    const originalLabel = btn.textContent;
 
-    btn.textContent = 'Sending…'; btn.disabled = true;
+    /* Basic client-side validation */
+    if (!form.checkValidity()) {
+      status.style.color = '#e0a96d';
+      status.textContent = 'Please fill in your name, a valid email, and a message.';
+      form.reportValidity();
+      return;
+    }
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    status.style.color = 'rgba(250,247,242,0.5)';
+    status.textContent = '';
+
+    const payload = {
+      first_name: form.first_name.value.trim(),
+      last_name:  form.last_name.value.trim(),
+      email:      form.email.value.trim(),
+      topic:      form.topic.value,
+      message:    form.message.value.trim(),
+      company:    form.company.value /* honeypot */
+    };
 
     try {
-      const resp = await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ first_name, last_name, email, topic, message }),
+        body: JSON.stringify(payload)
       });
-      const data = await resp.json();
-      if (data.ok) {
+
+      if (res.ok) {
+        form.reset();
         btn.textContent = 'Sent ✓';
         btn.style.background = '#4a9e6b';
-        this.reset();
+        status.style.color = '#7fc99a';
+        status.textContent = 'Thank you — your message has been sent. I\u2019ll be in touch.';
       } else {
-        btn.textContent = data.error || 'Error — try again';
-        btn.style.background = '#c0392b';
-        btn.disabled = false;
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Request failed');
       }
-    } catch {
-      btn.textContent = 'Error — try again';
-      btn.style.background = '#c0392b';
+    } catch (err) {
+      btn.textContent = originalLabel;
       btn.disabled = false;
+      status.style.color = '#e0a96d';
+      status.textContent = 'Something went wrong sending your message. Please email me directly at hisham.ahmed@rotmanalum.utoronto.ca.';
     }
   });
 </script>
